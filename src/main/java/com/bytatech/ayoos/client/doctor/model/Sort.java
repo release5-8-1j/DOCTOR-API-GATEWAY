@@ -10,56 +10,56 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * ReviewDTO
+ * Sort
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-04-25T12:48:52.149+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-04-25T12:28:19.615+05:30[Asia/Calcutta]")
 
-public class ReviewDTO   {
-  @JsonProperty("id")
-  private Long id = null;
+public class Sort   {
+  @JsonProperty("sorted")
+  private Boolean sorted = null;
 
-  @JsonProperty("review")
-  private String review = null;
+  @JsonProperty("unsorted")
+  private Boolean unsorted = null;
 
-  public ReviewDTO id(Long id) {
-    this.id = id;
+  public Sort sorted(Boolean sorted) {
+    this.sorted = sorted;
     return this;
   }
 
   /**
-   * Get id
-   * @return id
+   * Get sorted
+   * @return sorted
   **/
   @ApiModelProperty(value = "")
 
 
-  public Long getId() {
-    return id;
+  public Boolean isSorted() {
+    return sorted;
   }
 
-  public void setId(Long id) {
-    this.id = id;
+  public void setSorted(Boolean sorted) {
+    this.sorted = sorted;
   }
 
-  public ReviewDTO review(String review) {
-    this.review = review;
+  public Sort unsorted(Boolean unsorted) {
+    this.unsorted = unsorted;
     return this;
   }
 
   /**
-   * Get review
-   * @return review
+   * Get unsorted
+   * @return unsorted
   **/
   @ApiModelProperty(value = "")
 
 
-  public String getReview() {
-    return review;
+  public Boolean isUnsorted() {
+    return unsorted;
   }
 
-  public void setReview(String review) {
-    this.review = review;
+  public void setUnsorted(Boolean unsorted) {
+    this.unsorted = unsorted;
   }
 
 
@@ -71,23 +71,23 @@ public class ReviewDTO   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ReviewDTO reviewDTO = (ReviewDTO) o;
-    return Objects.equals(this.id, reviewDTO.id) &&
-        Objects.equals(this.review, reviewDTO.review);
+    Sort sort = (Sort) o;
+    return Objects.equals(this.sorted, sort.sorted) &&
+        Objects.equals(this.unsorted, sort.unsorted);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, review);
+    return Objects.hash(sorted, unsorted);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ReviewDTO {\n");
+    sb.append("class Sort {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    review: ").append(toIndentedString(review)).append("\n");
+    sb.append("    sorted: ").append(toIndentedString(sorted)).append("\n");
+    sb.append("    unsorted: ").append(toIndentedString(unsorted)).append("\n");
     sb.append("}");
     return sb.toString();
   }

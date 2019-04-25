@@ -10,42 +10,42 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * QualificationDTO
+ * ContactInfo
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-04-25T12:48:52.149+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-04-25T12:28:19.615+05:30[Asia/Calcutta]")
 
-public class QualificationDTO   {
-  @JsonProperty("doctorId")
-  private Long doctorId = null;
+public class ContactInfo   {
+  @JsonProperty("facebookURL")
+  private String facebookURL = null;
 
   @JsonProperty("id")
   private Long id = null;
 
-  @JsonProperty("qualification")
-  private String qualification = null;
+  @JsonProperty("twitterURL")
+  private String twitterURL = null;
 
-  public QualificationDTO doctorId(Long doctorId) {
-    this.doctorId = doctorId;
+  public ContactInfo facebookURL(String facebookURL) {
+    this.facebookURL = facebookURL;
     return this;
   }
 
   /**
-   * Get doctorId
-   * @return doctorId
+   * Get facebookURL
+   * @return facebookURL
   **/
   @ApiModelProperty(value = "")
 
 
-  public Long getDoctorId() {
-    return doctorId;
+  public String getFacebookURL() {
+    return facebookURL;
   }
 
-  public void setDoctorId(Long doctorId) {
-    this.doctorId = doctorId;
+  public void setFacebookURL(String facebookURL) {
+    this.facebookURL = facebookURL;
   }
 
-  public QualificationDTO id(Long id) {
+  public ContactInfo id(Long id) {
     this.id = id;
     return this;
   }
@@ -65,24 +65,24 @@ public class QualificationDTO   {
     this.id = id;
   }
 
-  public QualificationDTO qualification(String qualification) {
-    this.qualification = qualification;
+  public ContactInfo twitterURL(String twitterURL) {
+    this.twitterURL = twitterURL;
     return this;
   }
 
   /**
-   * Get qualification
-   * @return qualification
+   * Get twitterURL
+   * @return twitterURL
   **/
   @ApiModelProperty(value = "")
 
 
-  public String getQualification() {
-    return qualification;
+  public String getTwitterURL() {
+    return twitterURL;
   }
 
-  public void setQualification(String qualification) {
-    this.qualification = qualification;
+  public void setTwitterURL(String twitterURL) {
+    this.twitterURL = twitterURL;
   }
 
 
@@ -94,25 +94,25 @@ public class QualificationDTO   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    QualificationDTO qualificationDTO = (QualificationDTO) o;
-    return Objects.equals(this.doctorId, qualificationDTO.doctorId) &&
-        Objects.equals(this.id, qualificationDTO.id) &&
-        Objects.equals(this.qualification, qualificationDTO.qualification);
+    ContactInfo contactInfo = (ContactInfo) o;
+    return Objects.equals(this.facebookURL, contactInfo.facebookURL) &&
+        Objects.equals(this.id, contactInfo.id) &&
+        Objects.equals(this.twitterURL, contactInfo.twitterURL);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(doctorId, id, qualification);
+    return Objects.hash(facebookURL, id, twitterURL);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class QualificationDTO {\n");
+    sb.append("class ContactInfo {\n");
     
-    sb.append("    doctorId: ").append(toIndentedString(doctorId)).append("\n");
+    sb.append("    facebookURL: ").append(toIndentedString(facebookURL)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    qualification: ").append(toIndentedString(qualification)).append("\n");
+    sb.append("    twitterURL: ").append(toIndentedString(twitterURL)).append("\n");
     sb.append("}");
     return sb.toString();
   }

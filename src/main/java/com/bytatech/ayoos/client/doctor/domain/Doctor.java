@@ -31,39 +31,40 @@ public class Doctor implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
-   
     private Long id;
 
-    
+   
     private byte[] image;
 
-
+   
     private String imageContentType;
 
-
+   
     private String doctorId;
 
+  
     private String specialization;
 
     private String registerNumber;
 
-  
+ 
     private ZonedDateTime practiceSince;
 
- 
+    
     private Double totalRating;
 
-  
+
     private ContactInfo contactInfo;
 
  
     private Review review;
 
+  
     private UserRating userRating;
 
-  
+   
     private Set<WorkPlace> workPlaces = new HashSet<>();
-  
+   
     private Set<Qualification> qualifications = new HashSet<>();
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {

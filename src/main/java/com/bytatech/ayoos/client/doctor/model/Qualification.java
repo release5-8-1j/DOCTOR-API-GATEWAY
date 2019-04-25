@@ -1,6 +1,7 @@
 package com.bytatech.ayoos.client.doctor.model;
 
 import java.util.Objects;
+import com.bytatech.ayoos.client.doctor.model.Doctor;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
@@ -10,14 +11,14 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * QualificationDTO
+ * Qualification
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-04-25T12:48:52.149+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-04-25T12:28:19.615+05:30[Asia/Calcutta]")
 
-public class QualificationDTO   {
-  @JsonProperty("doctorId")
-  private Long doctorId = null;
+public class Qualification   {
+  @JsonProperty("doctor")
+  private Doctor doctor = null;
 
   @JsonProperty("id")
   private Long id = null;
@@ -25,27 +26,28 @@ public class QualificationDTO   {
   @JsonProperty("qualification")
   private String qualification = null;
 
-  public QualificationDTO doctorId(Long doctorId) {
-    this.doctorId = doctorId;
+  public Qualification doctor(Doctor doctor) {
+    this.doctor = doctor;
     return this;
   }
 
   /**
-   * Get doctorId
-   * @return doctorId
+   * Get doctor
+   * @return doctor
   **/
   @ApiModelProperty(value = "")
 
+  @Valid
 
-  public Long getDoctorId() {
-    return doctorId;
+  public Doctor getDoctor() {
+    return doctor;
   }
 
-  public void setDoctorId(Long doctorId) {
-    this.doctorId = doctorId;
+  public void setDoctor(Doctor doctor) {
+    this.doctor = doctor;
   }
 
-  public QualificationDTO id(Long id) {
+  public Qualification id(Long id) {
     this.id = id;
     return this;
   }
@@ -65,7 +67,7 @@ public class QualificationDTO   {
     this.id = id;
   }
 
-  public QualificationDTO qualification(String qualification) {
+  public Qualification qualification(String qualification) {
     this.qualification = qualification;
     return this;
   }
@@ -94,23 +96,23 @@ public class QualificationDTO   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    QualificationDTO qualificationDTO = (QualificationDTO) o;
-    return Objects.equals(this.doctorId, qualificationDTO.doctorId) &&
-        Objects.equals(this.id, qualificationDTO.id) &&
-        Objects.equals(this.qualification, qualificationDTO.qualification);
+    Qualification qualification = (Qualification) o;
+    return Objects.equals(this.doctor, qualification.doctor) &&
+        Objects.equals(this.id, qualification.id) &&
+        Objects.equals(this.qualification, qualification.qualification);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(doctorId, id, qualification);
+    return Objects.hash(doctor, id, qualification);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class QualificationDTO {\n");
+    sb.append("class Qualification {\n");
     
-    sb.append("    doctorId: ").append(toIndentedString(doctorId)).append("\n");
+    sb.append("    doctor: ").append(toIndentedString(doctor)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    qualification: ").append(toIndentedString(qualification)).append("\n");
     sb.append("}");

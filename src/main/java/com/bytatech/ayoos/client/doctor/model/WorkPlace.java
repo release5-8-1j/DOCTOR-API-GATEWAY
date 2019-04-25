@@ -1,6 +1,7 @@
 package com.bytatech.ayoos.client.doctor.model;
 
 import java.util.Objects;
+import com.bytatech.ayoos.client.doctor.model.Doctor;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
@@ -10,14 +11,14 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * WorkPlaceDTO
+ * WorkPlace
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-04-25T12:48:52.149+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-04-25T12:28:19.615+05:30[Asia/Calcutta]")
 
-public class WorkPlaceDTO   {
-  @JsonProperty("doctorId")
-  private Long doctorId = null;
+public class WorkPlace   {
+  @JsonProperty("doctor")
+  private Doctor doctor = null;
 
   @JsonProperty("id")
   private Long id = null;
@@ -28,27 +29,28 @@ public class WorkPlaceDTO   {
   @JsonProperty("name")
   private String name = null;
 
-  public WorkPlaceDTO doctorId(Long doctorId) {
-    this.doctorId = doctorId;
+  public WorkPlace doctor(Doctor doctor) {
+    this.doctor = doctor;
     return this;
   }
 
   /**
-   * Get doctorId
-   * @return doctorId
+   * Get doctor
+   * @return doctor
   **/
   @ApiModelProperty(value = "")
 
+  @Valid
 
-  public Long getDoctorId() {
-    return doctorId;
+  public Doctor getDoctor() {
+    return doctor;
   }
 
-  public void setDoctorId(Long doctorId) {
-    this.doctorId = doctorId;
+  public void setDoctor(Doctor doctor) {
+    this.doctor = doctor;
   }
 
-  public WorkPlaceDTO id(Long id) {
+  public WorkPlace id(Long id) {
     this.id = id;
     return this;
   }
@@ -68,7 +70,7 @@ public class WorkPlaceDTO   {
     this.id = id;
   }
 
-  public WorkPlaceDTO location(String location) {
+  public WorkPlace location(String location) {
     this.location = location;
     return this;
   }
@@ -88,7 +90,7 @@ public class WorkPlaceDTO   {
     this.location = location;
   }
 
-  public WorkPlaceDTO name(String name) {
+  public WorkPlace name(String name) {
     this.name = name;
     return this;
   }
@@ -117,24 +119,24 @@ public class WorkPlaceDTO   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    WorkPlaceDTO workPlaceDTO = (WorkPlaceDTO) o;
-    return Objects.equals(this.doctorId, workPlaceDTO.doctorId) &&
-        Objects.equals(this.id, workPlaceDTO.id) &&
-        Objects.equals(this.location, workPlaceDTO.location) &&
-        Objects.equals(this.name, workPlaceDTO.name);
+    WorkPlace workPlace = (WorkPlace) o;
+    return Objects.equals(this.doctor, workPlace.doctor) &&
+        Objects.equals(this.id, workPlace.id) &&
+        Objects.equals(this.location, workPlace.location) &&
+        Objects.equals(this.name, workPlace.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(doctorId, id, location, name);
+    return Objects.hash(doctor, id, location, name);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class WorkPlaceDTO {\n");
+    sb.append("class WorkPlace {\n");
     
-    sb.append("    doctorId: ").append(toIndentedString(doctorId)).append("\n");
+    sb.append("    doctor: ").append(toIndentedString(doctor)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");

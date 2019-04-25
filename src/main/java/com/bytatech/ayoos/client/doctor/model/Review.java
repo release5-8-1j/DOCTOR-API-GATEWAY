@@ -1,28 +1,35 @@
 package com.bytatech.ayoos.client.doctor.model;
 
 import java.util.Objects;
+import com.bytatech.ayoos.client.doctor.model.Reply;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * ReviewDTO
+ * Review
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-04-25T12:48:52.149+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-04-25T12:28:19.615+05:30[Asia/Calcutta]")
 
-public class ReviewDTO   {
+public class Review   {
   @JsonProperty("id")
   private Long id = null;
+
+  @JsonProperty("replies")
+  @Valid
+  private List<Reply> replies = null;
 
   @JsonProperty("review")
   private String review = null;
 
-  public ReviewDTO id(Long id) {
+  public Review id(Long id) {
     this.id = id;
     return this;
   }
@@ -42,7 +49,36 @@ public class ReviewDTO   {
     this.id = id;
   }
 
-  public ReviewDTO review(String review) {
+  public Review replies(List<Reply> replies) {
+    this.replies = replies;
+    return this;
+  }
+
+  public Review addRepliesItem(Reply repliesItem) {
+    if (this.replies == null) {
+      this.replies = new ArrayList<Reply>();
+    }
+    this.replies.add(repliesItem);
+    return this;
+  }
+
+  /**
+   * Get replies
+   * @return replies
+  **/
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public List<Reply> getReplies() {
+    return replies;
+  }
+
+  public void setReplies(List<Reply> replies) {
+    this.replies = replies;
+  }
+
+  public Review review(String review) {
     this.review = review;
     return this;
   }
@@ -71,22 +107,24 @@ public class ReviewDTO   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ReviewDTO reviewDTO = (ReviewDTO) o;
-    return Objects.equals(this.id, reviewDTO.id) &&
-        Objects.equals(this.review, reviewDTO.review);
+    Review review = (Review) o;
+    return Objects.equals(this.id, review.id) &&
+        Objects.equals(this.replies, review.replies) &&
+        Objects.equals(this.review, review.review);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, review);
+    return Objects.hash(id, replies, review);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ReviewDTO {\n");
+    sb.append("class Review {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    replies: ").append(toIndentedString(replies)).append("\n");
     sb.append("    review: ").append(toIndentedString(review)).append("\n");
     sb.append("}");
     return sb.toString();

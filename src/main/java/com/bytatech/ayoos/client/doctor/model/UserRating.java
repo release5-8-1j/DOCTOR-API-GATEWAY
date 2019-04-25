@@ -11,12 +11,12 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * UserRatingDTO
+ * UserRating
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-04-25T12:48:52.149+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-04-25T12:28:19.615+05:30[Asia/Calcutta]")
 
-public class UserRatingDTO   {
+public class UserRating   {
   @JsonProperty("id")
   private Long id = null;
 
@@ -29,7 +29,7 @@ public class UserRatingDTO   {
   @JsonProperty("userName")
   private String userName = null;
 
-  public UserRatingDTO id(Long id) {
+  public UserRating id(Long id) {
     this.id = id;
     return this;
   }
@@ -49,7 +49,7 @@ public class UserRatingDTO   {
     this.id = id;
   }
 
-  public UserRatingDTO ratedOn(OffsetDateTime ratedOn) {
+  public UserRating ratedOn(OffsetDateTime ratedOn) {
     this.ratedOn = ratedOn;
     return this;
   }
@@ -70,7 +70,7 @@ public class UserRatingDTO   {
     this.ratedOn = ratedOn;
   }
 
-  public UserRatingDTO rating(Double rating) {
+  public UserRating rating(Double rating) {
     this.rating = rating;
     return this;
   }
@@ -90,7 +90,7 @@ public class UserRatingDTO   {
     this.rating = rating;
   }
 
-  public UserRatingDTO userName(String userName) {
+  public UserRating userName(String userName) {
     this.userName = userName;
     return this;
   }
@@ -119,11 +119,11 @@ public class UserRatingDTO   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UserRatingDTO userRatingDTO = (UserRatingDTO) o;
-    return Objects.equals(this.id, userRatingDTO.id) &&
-        Objects.equals(this.ratedOn, userRatingDTO.ratedOn) &&
-        Objects.equals(this.rating, userRatingDTO.rating) &&
-        Objects.equals(this.userName, userRatingDTO.userName);
+    UserRating userRating = (UserRating) o;
+    return Objects.equals(this.id, userRating.id) &&
+        Objects.equals(this.ratedOn, userRating.ratedOn) &&
+        Objects.equals(this.rating, userRating.rating) &&
+        Objects.equals(this.userName, userRating.userName);
   }
 
   @Override
@@ -134,7 +134,7 @@ public class UserRatingDTO   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UserRatingDTO {\n");
+    sb.append("class UserRating {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    ratedOn: ").append(toIndentedString(ratedOn)).append("\n");
