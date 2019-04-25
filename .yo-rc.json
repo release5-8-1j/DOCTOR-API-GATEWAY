@@ -1,0 +1,41 @@
+{
+    "generator-jhipster": {
+        "promptValues": {
+            "packageName": "com.bytatech.ayoos"
+        },
+        "jhipsterVersion": "5.8.1",
+        "applicationType": "gateway",
+        "baseName": "doctorgateway",
+        "packageName": "com.bytatech.ayoos",
+        "packageFolder": "com/bytatech/ayoos",
+        "serverPort": "7070",
+        "authenticationType": "oauth2",
+        "cacheProvider": "hazelcast",
+        "enableHibernateCache": false,
+        "websocket": false,
+        "databaseType": "sql",
+        "devDatabaseType": "mysql",
+        "prodDatabaseType": "mysql",
+        "searchEngine": "elasticsearch",
+        "messageBroker": false,
+        "serviceDiscoveryType": "eureka",
+        "buildTool": "maven",
+        "enableSwaggerCodegen": false,
+        "clientFramework": "angularX",
+        "useSass": false,
+        "clientPackageManager": "npm",
+        "testFrameworks": [],
+        "jhiPrefix": "jhi",
+        "entitySuffix": "",
+        "dtoSuffix": "DTO",
+        "otherModules": [],
+        "enableTranslation": false
+    },
+    "generator-jhipster-swagger-cli": {
+        "apis": {
+            "doctor": {
+                "spec": "http://35.231.213.38:8083/v2/api-docs"
+            }
+        }
+    }
+}
