@@ -15,9 +15,6 @@
  */
 package com.bytatech.ayoos.client.doctor.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import javax.persistence.*;
 
 import org.springframework.data.elasticsearch.annotations.Document;
 import java.io.Serializable;
