@@ -31,6 +31,9 @@ import java.util.Collection;
 @ComponentScan( excludeFilters = {
     @ComponentScan.Filter(com.bytatech.ayoos.client.ExcludeFromComponentScan.class)
 })
+@ComponentScan( excludeFilters = {
+    @ComponentScan.Filter(com.bytatech.ayoos.client.ExcludeFromComponentScan.class)
+})
 @SpringBootApplication
 @EnableConfigurationProperties({LiquibaseProperties.class, ApplicationProperties.class})
 @EnableDiscoveryClient

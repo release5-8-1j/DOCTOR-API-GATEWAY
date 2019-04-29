@@ -5,27 +5,55 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.time.LocalDate;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * ReviewDTO
+ * ReservedSlotDTO
  */
 @Validated
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-04-29T11:43:45.828+05:30[Asia/Calcutta]")
 
-public class ReviewDTO   {
+public class ReservedSlotDTO   {
+  @JsonProperty("date")
+  private LocalDate date = null;
+
   @JsonProperty("doctorId")
   private Long doctorId = null;
+
+  @JsonProperty("endTime")
+  private Double endTime = null;
 
   @JsonProperty("id")
   private Long id = null;
 
-  @JsonProperty("review")
-  private String review = null;
+  @JsonProperty("startTime")
+  private Double startTime = null;
 
-  public ReviewDTO doctorId(Long doctorId) {
+  public ReservedSlotDTO date(LocalDate date) {
+    this.date = date;
+    return this;
+  }
+
+  /**
+   * Get date
+   * @return date
+  **/
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public LocalDate getDate() {
+    return date;
+  }
+
+  public void setDate(LocalDate date) {
+    this.date = date;
+  }
+
+  public ReservedSlotDTO doctorId(Long doctorId) {
     this.doctorId = doctorId;
     return this;
   }
@@ -45,7 +73,27 @@ public class ReviewDTO   {
     this.doctorId = doctorId;
   }
 
-  public ReviewDTO id(Long id) {
+  public ReservedSlotDTO endTime(Double endTime) {
+    this.endTime = endTime;
+    return this;
+  }
+
+  /**
+   * Get endTime
+   * @return endTime
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public Double getEndTime() {
+    return endTime;
+  }
+
+  public void setEndTime(Double endTime) {
+    this.endTime = endTime;
+  }
+
+  public ReservedSlotDTO id(Long id) {
     this.id = id;
     return this;
   }
@@ -65,24 +113,24 @@ public class ReviewDTO   {
     this.id = id;
   }
 
-  public ReviewDTO review(String review) {
-    this.review = review;
+  public ReservedSlotDTO startTime(Double startTime) {
+    this.startTime = startTime;
     return this;
   }
 
   /**
-   * Get review
-   * @return review
+   * Get startTime
+   * @return startTime
   **/
   @ApiModelProperty(value = "")
 
 
-  public String getReview() {
-    return review;
+  public Double getStartTime() {
+    return startTime;
   }
 
-  public void setReview(String review) {
-    this.review = review;
+  public void setStartTime(Double startTime) {
+    this.startTime = startTime;
   }
 
 
@@ -94,25 +142,29 @@ public class ReviewDTO   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ReviewDTO reviewDTO = (ReviewDTO) o;
-    return Objects.equals(this.doctorId, reviewDTO.doctorId) &&
-        Objects.equals(this.id, reviewDTO.id) &&
-        Objects.equals(this.review, reviewDTO.review);
+    ReservedSlotDTO reservedSlotDTO = (ReservedSlotDTO) o;
+    return Objects.equals(this.date, reservedSlotDTO.date) &&
+        Objects.equals(this.doctorId, reservedSlotDTO.doctorId) &&
+        Objects.equals(this.endTime, reservedSlotDTO.endTime) &&
+        Objects.equals(this.id, reservedSlotDTO.id) &&
+        Objects.equals(this.startTime, reservedSlotDTO.startTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(doctorId, id, review);
+    return Objects.hash(date, doctorId, endTime, id, startTime);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ReviewDTO {\n");
+    sb.append("class ReservedSlotDTO {\n");
     
+    sb.append("    date: ").append(toIndentedString(date)).append("\n");
     sb.append("    doctorId: ").append(toIndentedString(doctorId)).append("\n");
+    sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    review: ").append(toIndentedString(review)).append("\n");
+    sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -17,6 +17,7 @@ package com.bytatech.ayoos.web.rest;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,10 +27,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bytatech.ayoos.client.doctor.api.*;
 import com.bytatech.ayoos.client.doctor.model.*;
+
 import com.bytatech.ayoos.web.rest.errors.BadRequestAlertException;
 import com.bytatech.ayoos.web.rest.util.HeaderUtil;
 
@@ -49,6 +52,19 @@ public class CommandResource {
 	 
 	  @Autowired
 	    DoctorResourceApi doctorApi;
+	  
+	  @Autowired
+	  QualificationResourceApi qualificationApi;
+	  
+	  @Autowired
+	  ContactInfoResourceApi contactInfoResourceApi;
+	  
+	  @Autowired
+	  SessionInfoResourceApi sessionInfoAPi;
+	  
+	  @Autowired
+	  WorkPlaceResourceApi workPlaceResourceApi;
+	  
 	  @PostMapping("/doctors")
 	    public ResponseEntity<DoctorDTO> createDoctor(@RequestBody DoctorDTO doctorDTO) throws URISyntaxException {
 		  
@@ -60,7 +76,55 @@ public class CommandResource {
 		  doctorApi.updateDoctorUsingPUT(doctorDTO);
 	  }    
 	  
+	  @PostMapping("/contact-infos")
+	  public ResponseEntity<ContactInfoDTO> createContactInfo(@RequestBody ContactInfoDTO contactInfoDTO){
+		 return  contactInfoResourceApi.createContactInfoUsingPOST(contactInfoDTO);
+	  }
+	  
+	  @PutMapping("/contact-infos")
+	  public ResponseEntity<ContactInfoDTO> updateContactInfo(@RequestBody ContactInfoDTO contactInfoDTO){
+		  return contactInfoResourceApi.updateContactInfoUsingPUT(contactInfoDTO);
+	  }
 	 
+	  @DeleteMapping("/contact-infos/{id}")
+	  public void deleteContactInfo(@PathVariable Long id){
+		  contactInfoResourceApi.deleteContactInfoUsingDELETE(id);
+	  }
+	  
+	  @PostMapping("/qualifications")
+	  public ResponseEntity<QualificationDTO> createQualification(@RequestBody QualificationDTO qualificationDTO){
+		 return qualificationApi.createQualificationUsingPOST(qualificationDTO);
+	  }
+	  @PutMapping("/qualifications")
+	  public ResponseEntity<QualificationDTO> updateQualification(@RequestBody QualificationDTO qualificationDTO){
+		 return qualificationApi.updateQualificationUsingPUT(qualificationDTO);
+	  }
+	  
+	  @DeleteMapping("/qualifications")
+	  public void deleteQualification(@PathVariable Long id){
+		  qualificationApi.deleteQualificationUsingDELETE(id);
+	  }
+	  
+	  @PostMapping("/work-places")
+	  public ResponseEntity<WorkPlaceDTO> createWorkPlace(@RequestBody WorkPlaceDTO workPlaceDTO){
+		 return  workPlaceResourceApi.createWorkPlaceUsingPOST(workPlaceDTO);
+	  }
+	  
+	  @PutMapping("/work-places")
+	  public ResponseEntity<WorkPlaceDTO> updateWorkPlace(@RequestBody WorkPlaceDTO workPlaceDTO){
+		  return workPlaceResourceApi.updateWorkPlaceUsingPUT(workPlaceDTO);
+	  }
+	  
+	  @DeleteMapping("/work-places")
+	  public void deleteWorkPlace(@PathVariable Long id){
+		  workPlaceResourceApi.deleteWorkPlaceUsingDELETE(id);
+	  }
+	  
+	  @PostMapping("/sessionInfo")
+	 public void createSessionInfo(@RequestBody List<SessionInfoDTO> sessionInfoDTO,
+				@RequestParam List<Integer> monthList){
+		sessionInfoAPi.setSessionToMonthUsingPOST(monthList, sessionInfoDTO);
+	 }
 	
 	
 }

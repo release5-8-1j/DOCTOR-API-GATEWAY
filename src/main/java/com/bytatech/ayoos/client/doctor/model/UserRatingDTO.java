@@ -14,9 +14,12 @@ import javax.validation.constraints.*;
  * UserRatingDTO
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-04-25T12:48:52.149+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-04-29T11:43:45.828+05:30[Asia/Calcutta]")
 
 public class UserRatingDTO   {
+  @JsonProperty("doctorId")
+  private Long doctorId = null;
+
   @JsonProperty("id")
   private Long id = null;
 
@@ -28,6 +31,26 @@ public class UserRatingDTO   {
 
   @JsonProperty("userName")
   private String userName = null;
+
+  public UserRatingDTO doctorId(Long doctorId) {
+    this.doctorId = doctorId;
+    return this;
+  }
+
+  /**
+   * Get doctorId
+   * @return doctorId
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public Long getDoctorId() {
+    return doctorId;
+  }
+
+  public void setDoctorId(Long doctorId) {
+    this.doctorId = doctorId;
+  }
 
   public UserRatingDTO id(Long id) {
     this.id = id;
@@ -120,7 +143,8 @@ public class UserRatingDTO   {
       return false;
     }
     UserRatingDTO userRatingDTO = (UserRatingDTO) o;
-    return Objects.equals(this.id, userRatingDTO.id) &&
+    return Objects.equals(this.doctorId, userRatingDTO.doctorId) &&
+        Objects.equals(this.id, userRatingDTO.id) &&
         Objects.equals(this.ratedOn, userRatingDTO.ratedOn) &&
         Objects.equals(this.rating, userRatingDTO.rating) &&
         Objects.equals(this.userName, userRatingDTO.userName);
@@ -128,7 +152,7 @@ public class UserRatingDTO   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, ratedOn, rating, userName);
+    return Objects.hash(doctorId, id, ratedOn, rating, userName);
   }
 
   @Override
@@ -136,6 +160,7 @@ public class UserRatingDTO   {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserRatingDTO {\n");
     
+    sb.append("    doctorId: ").append(toIndentedString(doctorId)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    ratedOn: ").append(toIndentedString(ratedOn)).append("\n");
     sb.append("    rating: ").append(toIndentedString(rating)).append("\n");

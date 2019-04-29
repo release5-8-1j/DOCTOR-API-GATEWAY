@@ -36,6 +36,10 @@
             "doctor": {
                 "spec": "http://35.231.213.38:8083/v2/api-docs"
             }
+        },
+        "promptValues": {
+            "inputSpec": "http://35.231.213.38:8083/v2/api-docs",
+            "cliName": "doctor"
         }
     }
 }

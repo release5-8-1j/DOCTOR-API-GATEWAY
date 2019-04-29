@@ -10,42 +10,22 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * ContactInfoDTO
+ * StatusDTO
  */
 @Validated
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-04-29T11:43:45.828+05:30[Asia/Calcutta]")
 
-public class ContactInfoDTO   {
-  @JsonProperty("facebookURL")
-  private String facebookURL = null;
-
+public class StatusDTO   {
   @JsonProperty("id")
   private Long id = null;
 
-  @JsonProperty("twitterURL")
-  private String twitterURL = null;
+  @JsonProperty("reservedSlotId")
+  private Long reservedSlotId = null;
 
-  public ContactInfoDTO facebookURL(String facebookURL) {
-    this.facebookURL = facebookURL;
-    return this;
-  }
+  @JsonProperty("status")
+  private String status = null;
 
-  /**
-   * Get facebookURL
-   * @return facebookURL
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getFacebookURL() {
-    return facebookURL;
-  }
-
-  public void setFacebookURL(String facebookURL) {
-    this.facebookURL = facebookURL;
-  }
-
-  public ContactInfoDTO id(Long id) {
+  public StatusDTO id(Long id) {
     this.id = id;
     return this;
   }
@@ -65,24 +45,44 @@ public class ContactInfoDTO   {
     this.id = id;
   }
 
-  public ContactInfoDTO twitterURL(String twitterURL) {
-    this.twitterURL = twitterURL;
+  public StatusDTO reservedSlotId(Long reservedSlotId) {
+    this.reservedSlotId = reservedSlotId;
     return this;
   }
 
   /**
-   * Get twitterURL
-   * @return twitterURL
+   * Get reservedSlotId
+   * @return reservedSlotId
   **/
   @ApiModelProperty(value = "")
 
 
-  public String getTwitterURL() {
-    return twitterURL;
+  public Long getReservedSlotId() {
+    return reservedSlotId;
   }
 
-  public void setTwitterURL(String twitterURL) {
-    this.twitterURL = twitterURL;
+  public void setReservedSlotId(Long reservedSlotId) {
+    this.reservedSlotId = reservedSlotId;
+  }
+
+  public StatusDTO status(String status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Get status
+   * @return status
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getStatus() {
+    return status;
+  }
+
+  public void setStatus(String status) {
+    this.status = status;
   }
 
 
@@ -94,25 +94,25 @@ public class ContactInfoDTO   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ContactInfoDTO contactInfoDTO = (ContactInfoDTO) o;
-    return Objects.equals(this.facebookURL, contactInfoDTO.facebookURL) &&
-        Objects.equals(this.id, contactInfoDTO.id) &&
-        Objects.equals(this.twitterURL, contactInfoDTO.twitterURL);
+    StatusDTO statusDTO = (StatusDTO) o;
+    return Objects.equals(this.id, statusDTO.id) &&
+        Objects.equals(this.reservedSlotId, statusDTO.reservedSlotId) &&
+        Objects.equals(this.status, statusDTO.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(facebookURL, id, twitterURL);
+    return Objects.hash(id, reservedSlotId, status);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ContactInfoDTO {\n");
+    sb.append("class StatusDTO {\n");
     
-    sb.append("    facebookURL: ").append(toIndentedString(facebookURL)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    twitterURL: ").append(toIndentedString(twitterURL)).append("\n");
+    sb.append("    reservedSlotId: ").append(toIndentedString(reservedSlotId)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }
