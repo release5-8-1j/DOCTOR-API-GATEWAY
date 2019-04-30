@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bytatech.ayoos.client.doctor.domain.*;
+import com.bytatech.ayoos.client.doctor.domain.WorkPlace;
 import com.bytatech.ayoos.service.QueryService;
 import com.bytatech.ayoos.web.rest.errors.BadRequestAlertException;
 import com.bytatech.ayoos.web.rest.util.HeaderUtil;
@@ -51,11 +52,14 @@ public class QueryResource {
 	}
 
 	
-	@GetMapping("/doctor/{searchTerm}")
+	@GetMapping("/contact-infos/{searchTerm}")
 	public ContactInfo findContactInfo(@PathVariable String searchTerm, Pageable pageable) {
 		return queryService.findContactInfo(searchTerm,pageable);
 	}
-
+	@GetMapping("/work-places/{searchTerm}")
+	public Page<WorkPlace> findWorkPlace(@PathVariable String searchTerm, Pageable pageable) {
+		return queryService.findWorkPlaces(searchTerm, pageable);
+	}
 
 	@GetMapping("/review")
 	public Page<Review> findAllReview(/*@PathVariable String searchTerm,*/ Pageable pageable) {

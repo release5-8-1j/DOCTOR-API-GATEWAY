@@ -20,5 +20,12 @@ public interface QueryService {
 	 */
 	ContactInfo findContactInfo(String searchTerm, Pageable pageable);
 
+	/**
+	 * @param searchTerm
+	 * @param pageable
+	 * @return
+	 */
+	Page<WorkPlace> findWorkPlaces(String searchTerm, Pageable pageable);
+
 
 }
