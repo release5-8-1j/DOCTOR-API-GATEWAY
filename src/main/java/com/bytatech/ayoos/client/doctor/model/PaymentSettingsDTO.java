@@ -10,42 +10,39 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * ContactInfoDTO
+ * PaymentSettingsDTO
  */
 @Validated
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-04-30T12:10:02.590+05:30[Asia/Calcutta]")
 
-public class ContactInfoDTO   {
-  @JsonProperty("facebookURL")
-  private String facebookURL = null;
+public class PaymentSettingsDTO   {
+  @JsonProperty("amount")
+  private Double amount = null;
 
   @JsonProperty("id")
   private Long id = null;
 
-  @JsonProperty("twitterURL")
-  private String twitterURL = null;
-
-  public ContactInfoDTO facebookURL(String facebookURL) {
-    this.facebookURL = facebookURL;
+  public PaymentSettingsDTO amount(Double amount) {
+    this.amount = amount;
     return this;
   }
 
   /**
-   * Get facebookURL
-   * @return facebookURL
+   * Get amount
+   * @return amount
   **/
   @ApiModelProperty(value = "")
 
 
-  public String getFacebookURL() {
-    return facebookURL;
+  public Double getAmount() {
+    return amount;
   }
 
-  public void setFacebookURL(String facebookURL) {
-    this.facebookURL = facebookURL;
+  public void setAmount(Double amount) {
+    this.amount = amount;
   }
 
-  public ContactInfoDTO id(Long id) {
+  public PaymentSettingsDTO id(Long id) {
     this.id = id;
     return this;
   }
@@ -65,26 +62,6 @@ public class ContactInfoDTO   {
     this.id = id;
   }
 
-  public ContactInfoDTO twitterURL(String twitterURL) {
-    this.twitterURL = twitterURL;
-    return this;
-  }
-
-  /**
-   * Get twitterURL
-   * @return twitterURL
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getTwitterURL() {
-    return twitterURL;
-  }
-
-  public void setTwitterURL(String twitterURL) {
-    this.twitterURL = twitterURL;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -94,25 +71,23 @@ public class ContactInfoDTO   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ContactInfoDTO contactInfoDTO = (ContactInfoDTO) o;
-    return Objects.equals(this.facebookURL, contactInfoDTO.facebookURL) &&
-        Objects.equals(this.id, contactInfoDTO.id) &&
-        Objects.equals(this.twitterURL, contactInfoDTO.twitterURL);
+    PaymentSettingsDTO paymentSettingsDTO = (PaymentSettingsDTO) o;
+    return Objects.equals(this.amount, paymentSettingsDTO.amount) &&
+        Objects.equals(this.id, paymentSettingsDTO.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(facebookURL, id, twitterURL);
+    return Objects.hash(amount, id);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ContactInfoDTO {\n");
+    sb.append("class PaymentSettingsDTO {\n");
     
-    sb.append("    facebookURL: ").append(toIndentedString(facebookURL)).append("\n");
+    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    twitterURL: ").append(toIndentedString(twitterURL)).append("\n");
     sb.append("}");
     return sb.toString();
   }

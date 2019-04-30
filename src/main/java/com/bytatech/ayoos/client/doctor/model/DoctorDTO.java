@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
  * DoctorDTO
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-04-29T11:43:45.828+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-04-30T12:10:02.590+05:30[Asia/Calcutta]")
 
 public class DoctorDTO   {
   @JsonProperty("contactInfoId")
@@ -31,6 +31,9 @@ public class DoctorDTO   {
 
   @JsonProperty("imageContentType")
   private String imageContentType = null;
+
+  @JsonProperty("paymentSettingsId")
+  private Long paymentSettingsId = null;
 
   @JsonProperty("practiceSince")
   private OffsetDateTime practiceSince = null;
@@ -144,6 +147,26 @@ public class DoctorDTO   {
     this.imageContentType = imageContentType;
   }
 
+  public DoctorDTO paymentSettingsId(Long paymentSettingsId) {
+    this.paymentSettingsId = paymentSettingsId;
+    return this;
+  }
+
+  /**
+   * Get paymentSettingsId
+   * @return paymentSettingsId
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public Long getPaymentSettingsId() {
+    return paymentSettingsId;
+  }
+
+  public void setPaymentSettingsId(Long paymentSettingsId) {
+    this.paymentSettingsId = paymentSettingsId;
+  }
+
   public DoctorDTO practiceSince(OffsetDateTime practiceSince) {
     this.practiceSince = practiceSince;
     return this;
@@ -240,6 +263,7 @@ public class DoctorDTO   {
         Objects.equals(this.id, doctorDTO.id) &&
         Objects.equals(this.image, doctorDTO.image) &&
         Objects.equals(this.imageContentType, doctorDTO.imageContentType) &&
+        Objects.equals(this.paymentSettingsId, doctorDTO.paymentSettingsId) &&
         Objects.equals(this.practiceSince, doctorDTO.practiceSince) &&
         Objects.equals(this.registerNumber, doctorDTO.registerNumber) &&
         Objects.equals(this.specialization, doctorDTO.specialization) &&
@@ -248,7 +272,7 @@ public class DoctorDTO   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(contactInfoId, doctorId, id, image, imageContentType, practiceSince, registerNumber, specialization, totalRating);
+    return Objects.hash(contactInfoId, doctorId, id, image, imageContentType, paymentSettingsId, practiceSince, registerNumber, specialization, totalRating);
   }
 
   @Override
@@ -261,6 +285,7 @@ public class DoctorDTO   {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    image: ").append(toIndentedString(image)).append("\n");
     sb.append("    imageContentType: ").append(toIndentedString(imageContentType)).append("\n");
+    sb.append("    paymentSettingsId: ").append(toIndentedString(paymentSettingsId)).append("\n");
     sb.append("    practiceSince: ").append(toIndentedString(practiceSince)).append("\n");
     sb.append("    registerNumber: ").append(toIndentedString(registerNumber)).append("\n");
     sb.append("    specialization: ").append(toIndentedString(specialization)).append("\n");

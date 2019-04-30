@@ -5,8 +5,11 @@
  */
 package com.bytatech.ayoos.client.doctor.api;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import com.bytatech.ayoos.client.doctor.model.SessionInfoDTO;
+import com.bytatech.ayoos.client.doctor.model.Slot;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -26,7 +29,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-04-29T11:43:45.828+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-04-30T12:10:02.590+05:30[Asia/Calcutta]")
 
 @Api(value = "SessionInfoResource", description = "the SessionInfoResource API")
 public interface SessionInfoResourceApi {
@@ -43,6 +46,18 @@ public interface SessionInfoResourceApi {
         consumes = "application/json",
         method = RequestMethod.POST)
     ResponseEntity<SessionInfoDTO> createSessionInfoUsingPOST(@ApiParam(value = "sessionInfoDTO" ,required=true )  @Valid @RequestBody SessionInfoDTO sessionInfoDTO);
+
+
+    @ApiOperation(value = "createSlots", nickname = "createSlotsUsingGET", notes = "", response = Slot.class, responseContainer = "List", tags={ "session-info-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = Slot.class, responseContainer = "List"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/slots/{date}",
+        produces = "*/*", 
+        method = RequestMethod.GET)
+    ResponseEntity<List<Slot>> createSlotsUsingGET(@ApiParam(value = "date",required=true) @PathVariable("date") LocalDate date);
 
 
     @ApiOperation(value = "deleteSessionInfo", nickname = "deleteSessionInfoUsingDELETE", notes = "", tags={ "session-info-resource", })
@@ -92,7 +107,7 @@ public interface SessionInfoResourceApi {
     ResponseEntity<List<SessionInfoDTO>> searchSessionInfosUsingGET(@NotNull @ApiParam(value = "query", required = true) @Valid @RequestParam(value = "query", required = true) String query,@ApiParam(value = "Page number of the requested page") @Valid @RequestParam(value = "page", required = false) Integer page,@ApiParam(value = "Size of a page") @Valid @RequestParam(value = "size", required = false) Integer size,@ApiParam(value = "Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.") @Valid @RequestParam(value = "sort", required = false) List<String> sort);
 
 
-    @ApiOperation(value = "createSessionInfo", nickname = "createSessionInfoUsingPOST", notes = "", tags={ "session-info-resource", })
+    @ApiOperation(value = "setSessionToMonth", nickname = "setSessionToMonthUsingPOST", notes = "", tags={ "session-info-resource", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK"),
         @ApiResponse(code = 201, message = "Created"),

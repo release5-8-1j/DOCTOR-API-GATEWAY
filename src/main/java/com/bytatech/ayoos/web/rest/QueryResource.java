@@ -51,7 +51,11 @@ public class QueryResource {
 	}
 
 	
-	
+	@GetMapping("/doctor/{searchTerm}")
+	public ContactInfo findContactInfo(@PathVariable String searchTerm, Pageable pageable) {
+		return queryService.findContactInfo(searchTerm,pageable);
+	}
+
 
 	@GetMapping("/review")
 	public Page<Review> findAllReview(/*@PathVariable String searchTerm,*/ Pageable pageable) {

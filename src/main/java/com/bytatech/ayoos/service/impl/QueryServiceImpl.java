@@ -58,9 +58,24 @@ public class QueryServiceImpl implements QueryService {
 	
 	}
 
+	/* (non-Javadoc)
+	 * @see com.bytatech.ayoos.service.QueryService#findContactInfo(java.lang.String, org.springframework.data.domain.Pageable)
+	 */
+	@Override
+	public ContactInfo findContactInfo(String searchTerm, Pageable pageable) {
+		StringQuery stringQuery = new StringQuery(termQuery("id", searchTerm).toString());
+		return elasticsearchOperations.queryForObject(stringQuery, ContactInfo.class);
+		
+	}
+
 	
 	
-	
+/*	@Override
+	public Page<WorkPlace> findWorkPlaces(String searchTerm, Pageable pageable) {
+		StringQuery stringQuery = new StringQuery(termQuery("id", searchTerm).toString());
+		return elasticsearchOperations.queryForObject(stringQuery, ContactInfo.class);
+		
+	}*/
 	
 	
 

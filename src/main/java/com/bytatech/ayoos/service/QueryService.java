@@ -13,5 +13,12 @@ public interface QueryService {
 
 	Page<Review> findAllReview(Pageable pageable);
 
+	/**
+	 * @param searchTerm
+	 * @param pageable
+	 * @return
+	 */
+	ContactInfo findContactInfo(String searchTerm, Pageable pageable);
+
 
 }
