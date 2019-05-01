@@ -74,7 +74,7 @@ public class QueryResource {
 	
 	@GetMapping("/work-places/{searchTerm}")
 	public Page<WorkPlace> findWorkPlace(@PathVariable String searchTerm, Pageable pageable) {
-		return queryService.findWorkPlaces(searchTerm, pageable);
+		workPlaceResourceApi.listToDtoUsingPOST1(queryService.findWorkPlaces(searchTerm, pageable));
 	}
 
 	@GetMapping("/review")

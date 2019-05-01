@@ -5,8 +5,6 @@
  */
 package com.bytatech.ayoos.client.doctor.api;
 
-import com.bytatech.ayoos.client.doctor.domain.Doctor;
-import com.bytatech.ayoos.client.doctor.model.DoctorDTO;
 import com.bytatech.ayoos.client.doctor.model.WorkPlaceDTO;
 import com.bytatech.ayoos.client.doctor.domain.WorkPlace;
 import io.swagger.annotations.*;
@@ -110,7 +108,7 @@ public interface WorkPlaceResourceApi {
     
     @ApiOperation(value = "listToDto", nickname = "listToDtoUsingPOST1", notes = "", response = WorkPlaceDTO.class, responseContainer = "List", tags={ "work-place-resource", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = DoctorDTO.class, responseContainer = "List"),
+        @ApiResponse(code = 200, message = "OK", response = WorkPlaceDTO.class, responseContainer = "List"),
         @ApiResponse(code = 201, message = "Created"),
         @ApiResponse(code = 401, message = "Unauthorized"),
         @ApiResponse(code = 403, message = "Forbidden"),
