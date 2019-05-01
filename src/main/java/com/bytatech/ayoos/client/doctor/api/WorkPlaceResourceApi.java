@@ -6,6 +6,7 @@
 package com.bytatech.ayoos.client.doctor.api;
 
 import com.bytatech.ayoos.client.doctor.model.WorkPlaceDTO;
+import com.bytatech.ayoos.client.doctor.domain.WorkPlace;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -104,4 +105,17 @@ public interface WorkPlaceResourceApi {
         method = RequestMethod.PUT)
     ResponseEntity<WorkPlaceDTO> updateWorkPlaceUsingPUT(@ApiParam(value = "workPlaceDTO" ,required=true )  @Valid @RequestBody WorkPlaceDTO workPlaceDTO);
 
+    
+    @ApiOperation(value = "listToDto", nickname = "listToDtoUsingPOST1", notes = "", response = WorkPlaceDTO.class, responseContainer = "List", tags={ "work-place-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = WorkPlaceDTO.class, responseContainer = "List"),
+        @ApiResponse(code = 201, message = "Created"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/work-places/toDto",
+        produces = "*/*", 
+        consumes = "application/json",
+        method = RequestMethod.POST)
+    ResponseEntity<List<WorkPlaceDTO>> listToDtoUsingPOST1(@ApiParam(value = "doctor" ,required=true )  @Valid @RequestBody List<WorkPlace> workPlace);
 }

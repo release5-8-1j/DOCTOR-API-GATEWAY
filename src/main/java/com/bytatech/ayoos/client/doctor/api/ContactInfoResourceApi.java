@@ -5,7 +5,7 @@
  */
 package com.bytatech.ayoos.client.doctor.api;
 
-import com.bytatech.ayoos.client.doctor.model.ContactInfo;
+import com.bytatech.ayoos.client.doctor.domain.*;
 import com.bytatech.ayoos.client.doctor.model.ContactInfoDTO;
 import java.util.List;
 import io.swagger.annotations.*;
