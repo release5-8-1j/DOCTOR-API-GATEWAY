@@ -4,8 +4,7 @@
  * Do not edit the class manually.
  */
 package com.bytatech.ayoos.client.doctor.api;
-
-import com.bytatech.ayoos.client.doctor.model.Doctor;
+ import com.bytatech.ayoos.client.doctor.domain.*;
 import com.bytatech.ayoos.client.doctor.model.DoctorDTO;
 import java.util.List;
 import io.swagger.annotations.*;
@@ -106,7 +105,7 @@ public interface DoctorResourceApi {
         produces = "*/*", 
         consumes = "application/json",
         method = RequestMethod.POST)
-    ResponseEntity<DoctorDTO> modelToDtoUsingPOST1(@ApiParam(value = "doctor" ,required=true )  @Valid @RequestBody Doctor doctor);
+    ResponseEntity<DoctorDTO> modelToDtoUsingPOST1(@ApiParam(value = "doctor" ,required=true )  @Valid @RequestBody com.bytatech.ayoos.client.doctor.domain.Doctor doctor);
 
 
     @ApiOperation(value = "searchDoctors", nickname = "searchDoctorsUsingGET", notes = "", response = DoctorDTO.class, responseContainer = "List", tags={ "doctor-resource", })

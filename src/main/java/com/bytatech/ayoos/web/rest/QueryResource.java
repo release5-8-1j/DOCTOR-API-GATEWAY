@@ -29,8 +29,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bytatech.ayoos.client.doctor.api.ContactInfoResourceApi;
+import com.bytatech.ayoos.client.doctor.api.DoctorResourceApi;
+import com.bytatech.ayoos.client.doctor.api.DoctorResourceApiClient;
+import com.bytatech.ayoos.client.doctor.api.WorkPlaceResourceApi;
 import com.bytatech.ayoos.client.doctor.domain.*;
+import com.bytatech.ayoos.client.doctor.domain.Doctor;
 import com.bytatech.ayoos.client.doctor.domain.WorkPlace;
+import com.bytatech.ayoos.client.doctor.model.ContactInfoDTO;
+import com.bytatech.ayoos.client.doctor.model.DoctorDTO;
 import com.bytatech.ayoos.service.QueryService;
 import com.bytatech.ayoos.web.rest.errors.BadRequestAlertException;
 import com.bytatech.ayoos.web.rest.util.HeaderUtil;
@@ -44,17 +51,25 @@ import com.bytatech.ayoos.web.rest.util.HeaderUtil;
 @RequestMapping("/api/queries")
 public class QueryResource {
 	@Autowired
+	DoctorResourceApi doctorResourceApi;
+	@Autowired
+	ContactInfoResourceApi contactInfoResourceApi;
+	@Autowired
 	QueryService queryService;
-
+	@Autowired
+	WorkPlaceResourceApi workPlaceResourceApi;
+//	productResourceApi.listToDtoUsingPOST(queryService.findAllProduct(page).getContent());
 	@GetMapping("/doctor/{searchTerm}")
-	public Doctor findDoctor(@PathVariable String searchTerm, Pageable pageable) {
-		return queryService.findDoctor(searchTerm);
+	public DoctorDTO findDoctor(@PathVariable String searchTerm) {
+		doctorResourceApi.modelToDtoUsingPOST1(queryService.findDoctor(searchTerm));
+		return null;
 	}
 
 	
 	@GetMapping("/contact-infos/{searchTerm}")
-	public ContactInfo findContactInfo(@PathVariable String searchTerm, Pageable pageable) {
-		return queryService.findContactInfo(searchTerm);
+	public ResponseEntity<ContactInfoDTO> findContactInfo(@PathVariable String searchTerm) {
+		
+		return contactInfoResourceApi.modelToDtoUsingPOST(queryService.findContactInfo(searchTerm));
 	}
 	
 	@GetMapping("/work-places/{searchTerm}")
