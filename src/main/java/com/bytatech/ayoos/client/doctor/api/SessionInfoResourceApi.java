@@ -7,6 +7,7 @@ package com.bytatech.ayoos.client.doctor.api;
 
 import java.util.Date;
 import java.util.List;
+import java.time.LocalDate;
 import com.bytatech.ayoos.client.doctor.model.SessionInfo;
 import com.bytatech.ayoos.client.doctor.model.SessionInfoDTO;
 import com.bytatech.ayoos.client.doctor.model.Slot;
