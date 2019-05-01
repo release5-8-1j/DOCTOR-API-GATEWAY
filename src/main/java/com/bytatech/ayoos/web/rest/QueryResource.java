@@ -17,6 +17,7 @@ package com.bytatech.ayoos.web.rest;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -32,12 +33,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bytatech.ayoos.client.doctor.api.ContactInfoResourceApi;
 import com.bytatech.ayoos.client.doctor.api.DoctorResourceApi;
 import com.bytatech.ayoos.client.doctor.api.DoctorResourceApiClient;
+import com.bytatech.ayoos.client.doctor.api.QualificationResourceApi;
 import com.bytatech.ayoos.client.doctor.api.WorkPlaceResourceApi;
 import com.bytatech.ayoos.client.doctor.domain.*;
 import com.bytatech.ayoos.client.doctor.domain.Doctor;
 import com.bytatech.ayoos.client.doctor.domain.WorkPlace;
 import com.bytatech.ayoos.client.doctor.model.ContactInfoDTO;
 import com.bytatech.ayoos.client.doctor.model.DoctorDTO;
+import com.bytatech.ayoos.client.doctor.model.QualificationDTO;
+import com.bytatech.ayoos.client.doctor.model.WorkPlaceDTO;
 import com.bytatech.ayoos.service.QueryService;
 import com.bytatech.ayoos.web.rest.errors.BadRequestAlertException;
 import com.bytatech.ayoos.web.rest.util.HeaderUtil;
@@ -58,6 +62,8 @@ public class QueryResource {
 	QueryService queryService;
 	@Autowired
 	WorkPlaceResourceApi workPlaceResourceApi;
+	@Autowired
+	QualificationResourceApi qualificationResourceApi;
 //	productResourceApi.listToDtoUsingPOST(queryService.findAllProduct(page).getContent());
 	@GetMapping("/doctor/{searchTerm}")
 	public DoctorDTO findDoctor(@PathVariable String searchTerm) {
@@ -73,8 +79,8 @@ public class QueryResource {
 	}
 	
 	@GetMapping("/work-places/{searchTerm}")
-	public Page<WorkPlace> findWorkPlace(@PathVariable String searchTerm, Pageable pageable) {
-		workPlaceResourceApi.listToDtoUsingPOST1(queryService.findWorkPlaces(searchTerm, pageable));
+	public ResponseEntity<List<WorkPlaceDTO>> findWorkPlace(@PathVariable String searchTerm, Pageable pageable) {
+		return  workPlaceResourceApi.listToDtoUsingPOST1(queryService.findWorkPlaces(searchTerm, pageable).getContent());
 	}
 
 	@GetMapping("/review")
@@ -83,8 +89,8 @@ public class QueryResource {
 	} 
 	
 	@GetMapping("/qualifications/{searchTerm}")
-	public Page<Qualification> findAllQualification(@PathVariable String searchTerm,Pageable pageable){
-		return queryService.findAllQualification(searchTerm,pageable);
+	public ResponseEntity<List<QualificationDTO>> findAllQualification(@PathVariable String searchTerm,Pageable pageable){
+	return	qualificationResourceApi.listToDtoUsingPOST3(queryService.findAllQualification(searchTerm,pageable).getContent());
 	}
 
 	public Page<SessionInfo> findAllSesionInfo(@PathVariable String searchTerm,Pageable pageable){

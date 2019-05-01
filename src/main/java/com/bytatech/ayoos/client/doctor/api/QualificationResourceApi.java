@@ -6,7 +6,7 @@
 package com.bytatech.ayoos.client.doctor.api;
 
 import java.util.List;
-import com.bytatech.ayoos.client.doctor.model.Qualification;
+import com.bytatech.ayoos.client.doctor.domain.Qualification;
 import com.bytatech.ayoos.client.doctor.model.QualificationDTO;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
