@@ -117,5 +117,5 @@ public interface WorkPlaceResourceApi {
         produces = "*/*", 
         consumes = "application/json",
         method = RequestMethod.POST)
-    ResponseEntity<List<WorkPlaceDTO>> listToDtoUsingPOST1(@ApiParam(value = "doctor" ,required=true )  @Valid @RequestBody List<WorkPlace> workPlace);
+    ResponseEntity<List<WorkPlaceDTO>> listToDtoUsingPOST1(@ApiParam(value = "workPlace" ,required=true )  @Valid @RequestBody List<WorkPlace> workPlace);
 }
