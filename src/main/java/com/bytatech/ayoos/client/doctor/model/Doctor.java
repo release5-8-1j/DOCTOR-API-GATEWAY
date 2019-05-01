@@ -2,8 +2,11 @@ package com.bytatech.ayoos.client.doctor.model;
 
 import java.util.Objects;
 import com.bytatech.ayoos.client.doctor.model.ContactInfo;
+import com.bytatech.ayoos.client.doctor.model.PaymentSettings;
 import com.bytatech.ayoos.client.doctor.model.Qualification;
+import com.bytatech.ayoos.client.doctor.model.ReservedSlot;
 import com.bytatech.ayoos.client.doctor.model.Review;
+import com.bytatech.ayoos.client.doctor.model.SessionInfo;
 import com.bytatech.ayoos.client.doctor.model.UserRating;
 import com.bytatech.ayoos.client.doctor.model.WorkPlace;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -21,7 +24,7 @@ import javax.validation.constraints.*;
  * Doctor
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-04-25T12:28:19.615+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-01T13:55:45.717+05:30[Asia/Calcutta]")
 
 public class Doctor   {
   @JsonProperty("contactInfo")
@@ -39,6 +42,9 @@ public class Doctor   {
   @JsonProperty("imageContentType")
   private String imageContentType = null;
 
+  @JsonProperty("paymentSettings")
+  private PaymentSettings paymentSettings = null;
+
   @JsonProperty("practiceSince")
   private OffsetDateTime practiceSince = null;
 
@@ -49,8 +55,17 @@ public class Doctor   {
   @JsonProperty("registerNumber")
   private String registerNumber = null;
 
-  @JsonProperty("review")
-  private Review review = null;
+  @JsonProperty("reservedSlots")
+  @Valid
+  private List<ReservedSlot> reservedSlots = null;
+
+  @JsonProperty("reviews")
+  @Valid
+  private List<Review> reviews = null;
+
+  @JsonProperty("sessionInfos")
+  @Valid
+  private List<SessionInfo> sessionInfos = null;
 
   @JsonProperty("specialization")
   private String specialization = null;
@@ -58,8 +73,9 @@ public class Doctor   {
   @JsonProperty("totalRating")
   private Double totalRating = null;
 
-  @JsonProperty("userRating")
-  private UserRating userRating = null;
+  @JsonProperty("userRatings")
+  @Valid
+  private List<UserRating> userRatings = null;
 
   @JsonProperty("workPlaces")
   @Valid
@@ -166,6 +182,27 @@ public class Doctor   {
     this.imageContentType = imageContentType;
   }
 
+  public Doctor paymentSettings(PaymentSettings paymentSettings) {
+    this.paymentSettings = paymentSettings;
+    return this;
+  }
+
+  /**
+   * Get paymentSettings
+   * @return paymentSettings
+  **/
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public PaymentSettings getPaymentSettings() {
+    return paymentSettings;
+  }
+
+  public void setPaymentSettings(PaymentSettings paymentSettings) {
+    this.paymentSettings = paymentSettings;
+  }
+
   public Doctor practiceSince(OffsetDateTime practiceSince) {
     this.practiceSince = practiceSince;
     return this;
@@ -236,25 +273,91 @@ public class Doctor   {
     this.registerNumber = registerNumber;
   }
 
-  public Doctor review(Review review) {
-    this.review = review;
+  public Doctor reservedSlots(List<ReservedSlot> reservedSlots) {
+    this.reservedSlots = reservedSlots;
+    return this;
+  }
+
+  public Doctor addReservedSlotsItem(ReservedSlot reservedSlotsItem) {
+    if (this.reservedSlots == null) {
+      this.reservedSlots = new ArrayList<ReservedSlot>();
+    }
+    this.reservedSlots.add(reservedSlotsItem);
     return this;
   }
 
   /**
-   * Get review
-   * @return review
+   * Get reservedSlots
+   * @return reservedSlots
   **/
   @ApiModelProperty(value = "")
 
   @Valid
 
-  public Review getReview() {
-    return review;
+  public List<ReservedSlot> getReservedSlots() {
+    return reservedSlots;
   }
 
-  public void setReview(Review review) {
-    this.review = review;
+  public void setReservedSlots(List<ReservedSlot> reservedSlots) {
+    this.reservedSlots = reservedSlots;
+  }
+
+  public Doctor reviews(List<Review> reviews) {
+    this.reviews = reviews;
+    return this;
+  }
+
+  public Doctor addReviewsItem(Review reviewsItem) {
+    if (this.reviews == null) {
+      this.reviews = new ArrayList<Review>();
+    }
+    this.reviews.add(reviewsItem);
+    return this;
+  }
+
+  /**
+   * Get reviews
+   * @return reviews
+  **/
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public List<Review> getReviews() {
+    return reviews;
+  }
+
+  public void setReviews(List<Review> reviews) {
+    this.reviews = reviews;
+  }
+
+  public Doctor sessionInfos(List<SessionInfo> sessionInfos) {
+    this.sessionInfos = sessionInfos;
+    return this;
+  }
+
+  public Doctor addSessionInfosItem(SessionInfo sessionInfosItem) {
+    if (this.sessionInfos == null) {
+      this.sessionInfos = new ArrayList<SessionInfo>();
+    }
+    this.sessionInfos.add(sessionInfosItem);
+    return this;
+  }
+
+  /**
+   * Get sessionInfos
+   * @return sessionInfos
+  **/
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public List<SessionInfo> getSessionInfos() {
+    return sessionInfos;
+  }
+
+  public void setSessionInfos(List<SessionInfo> sessionInfos) {
+    this.sessionInfos = sessionInfos;
   }
 
   public Doctor specialization(String specialization) {
@@ -297,25 +400,33 @@ public class Doctor   {
     this.totalRating = totalRating;
   }
 
-  public Doctor userRating(UserRating userRating) {
-    this.userRating = userRating;
+  public Doctor userRatings(List<UserRating> userRatings) {
+    this.userRatings = userRatings;
+    return this;
+  }
+
+  public Doctor addUserRatingsItem(UserRating userRatingsItem) {
+    if (this.userRatings == null) {
+      this.userRatings = new ArrayList<UserRating>();
+    }
+    this.userRatings.add(userRatingsItem);
     return this;
   }
 
   /**
-   * Get userRating
-   * @return userRating
+   * Get userRatings
+   * @return userRatings
   **/
   @ApiModelProperty(value = "")
 
   @Valid
 
-  public UserRating getUserRating() {
-    return userRating;
+  public List<UserRating> getUserRatings() {
+    return userRatings;
   }
 
-  public void setUserRating(UserRating userRating) {
-    this.userRating = userRating;
+  public void setUserRatings(List<UserRating> userRatings) {
+    this.userRatings = userRatings;
   }
 
   public Doctor workPlaces(List<WorkPlace> workPlaces) {
@@ -362,19 +473,22 @@ public class Doctor   {
         Objects.equals(this.id, doctor.id) &&
         Objects.equals(this.image, doctor.image) &&
         Objects.equals(this.imageContentType, doctor.imageContentType) &&
+        Objects.equals(this.paymentSettings, doctor.paymentSettings) &&
         Objects.equals(this.practiceSince, doctor.practiceSince) &&
         Objects.equals(this.qualifications, doctor.qualifications) &&
         Objects.equals(this.registerNumber, doctor.registerNumber) &&
-        Objects.equals(this.review, doctor.review) &&
+        Objects.equals(this.reservedSlots, doctor.reservedSlots) &&
+        Objects.equals(this.reviews, doctor.reviews) &&
+        Objects.equals(this.sessionInfos, doctor.sessionInfos) &&
         Objects.equals(this.specialization, doctor.specialization) &&
         Objects.equals(this.totalRating, doctor.totalRating) &&
-        Objects.equals(this.userRating, doctor.userRating) &&
+        Objects.equals(this.userRatings, doctor.userRatings) &&
         Objects.equals(this.workPlaces, doctor.workPlaces);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(contactInfo, doctorId, id, image, imageContentType, practiceSince, qualifications, registerNumber, review, specialization, totalRating, userRating, workPlaces);
+    return Objects.hash(contactInfo, doctorId, id, image, imageContentType, paymentSettings, practiceSince, qualifications, registerNumber, reservedSlots, reviews, sessionInfos, specialization, totalRating, userRatings, workPlaces);
   }
 
   @Override
@@ -387,13 +501,16 @@ public class Doctor   {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    image: ").append(toIndentedString(image)).append("\n");
     sb.append("    imageContentType: ").append(toIndentedString(imageContentType)).append("\n");
+    sb.append("    paymentSettings: ").append(toIndentedString(paymentSettings)).append("\n");
     sb.append("    practiceSince: ").append(toIndentedString(practiceSince)).append("\n");
     sb.append("    qualifications: ").append(toIndentedString(qualifications)).append("\n");
     sb.append("    registerNumber: ").append(toIndentedString(registerNumber)).append("\n");
-    sb.append("    review: ").append(toIndentedString(review)).append("\n");
+    sb.append("    reservedSlots: ").append(toIndentedString(reservedSlots)).append("\n");
+    sb.append("    reviews: ").append(toIndentedString(reviews)).append("\n");
+    sb.append("    sessionInfos: ").append(toIndentedString(sessionInfos)).append("\n");
     sb.append("    specialization: ").append(toIndentedString(specialization)).append("\n");
     sb.append("    totalRating: ").append(toIndentedString(totalRating)).append("\n");
-    sb.append("    userRating: ").append(toIndentedString(userRating)).append("\n");
+    sb.append("    userRatings: ").append(toIndentedString(userRatings)).append("\n");
     sb.append("    workPlaces: ").append(toIndentedString(workPlaces)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -1,6 +1,7 @@
 package com.bytatech.ayoos.client.doctor.model;
 
 import java.util.Objects;
+import com.bytatech.ayoos.client.doctor.model.Doctor;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
@@ -14,9 +15,12 @@ import javax.validation.constraints.*;
  * UserRating
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-04-25T12:28:19.615+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-01T13:55:45.717+05:30[Asia/Calcutta]")
 
 public class UserRating   {
+  @JsonProperty("doctor")
+  private Doctor doctor = null;
+
   @JsonProperty("id")
   private Long id = null;
 
@@ -28,6 +32,27 @@ public class UserRating   {
 
   @JsonProperty("userName")
   private String userName = null;
+
+  public UserRating doctor(Doctor doctor) {
+    this.doctor = doctor;
+    return this;
+  }
+
+  /**
+   * Get doctor
+   * @return doctor
+  **/
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public Doctor getDoctor() {
+    return doctor;
+  }
+
+  public void setDoctor(Doctor doctor) {
+    this.doctor = doctor;
+  }
 
   public UserRating id(Long id) {
     this.id = id;
@@ -120,7 +145,8 @@ public class UserRating   {
       return false;
     }
     UserRating userRating = (UserRating) o;
-    return Objects.equals(this.id, userRating.id) &&
+    return Objects.equals(this.doctor, userRating.doctor) &&
+        Objects.equals(this.id, userRating.id) &&
         Objects.equals(this.ratedOn, userRating.ratedOn) &&
         Objects.equals(this.rating, userRating.rating) &&
         Objects.equals(this.userName, userRating.userName);
@@ -128,7 +154,7 @@ public class UserRating   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, ratedOn, rating, userName);
+    return Objects.hash(doctor, id, ratedOn, rating, userName);
   }
 
   @Override
@@ -136,6 +162,7 @@ public class UserRating   {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserRating {\n");
     
+    sb.append("    doctor: ").append(toIndentedString(doctor)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    ratedOn: ").append(toIndentedString(ratedOn)).append("\n");
     sb.append("    rating: ").append(toIndentedString(rating)).append("\n");

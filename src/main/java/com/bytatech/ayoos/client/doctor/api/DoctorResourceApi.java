@@ -5,7 +5,9 @@
  */
 package com.bytatech.ayoos.client.doctor.api;
 
+import com.bytatech.ayoos.client.doctor.model.Doctor;
 import com.bytatech.ayoos.client.doctor.model.DoctorDTO;
+import java.util.List;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-04-30T12:10:02.590+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-01T13:55:45.717+05:30[Asia/Calcutta]")
 
 @Api(value = "DoctorResource", description = "the DoctorResource API")
 public interface DoctorResourceApi {
@@ -77,6 +79,34 @@ public interface DoctorResourceApi {
         produces = "*/*", 
         method = RequestMethod.GET)
     ResponseEntity<DoctorDTO> getDoctorUsingGET(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
+
+
+    @ApiOperation(value = "listToDto", nickname = "listToDtoUsingPOST1", notes = "", response = DoctorDTO.class, responseContainer = "List", tags={ "doctor-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = DoctorDTO.class, responseContainer = "List"),
+        @ApiResponse(code = 201, message = "Created"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/doctors/toDto",
+        produces = "*/*", 
+        consumes = "application/json",
+        method = RequestMethod.POST)
+    ResponseEntity<List<DoctorDTO>> listToDtoUsingPOST1(@ApiParam(value = "doctor" ,required=true )  @Valid @RequestBody List<Doctor> doctor);
+
+
+    @ApiOperation(value = "modelToDto", nickname = "modelToDtoUsingPOST1", notes = "", response = DoctorDTO.class, tags={ "doctor-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = DoctorDTO.class),
+        @ApiResponse(code = 201, message = "Created"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/doctor/modelToDto",
+        produces = "*/*", 
+        consumes = "application/json",
+        method = RequestMethod.POST)
+    ResponseEntity<DoctorDTO> modelToDtoUsingPOST1(@ApiParam(value = "doctor" ,required=true )  @Valid @RequestBody Doctor doctor);
 
 
     @ApiOperation(value = "searchDoctors", nickname = "searchDoctorsUsingGET", notes = "", response = DoctorDTO.class, responseContainer = "List", tags={ "doctor-resource", })

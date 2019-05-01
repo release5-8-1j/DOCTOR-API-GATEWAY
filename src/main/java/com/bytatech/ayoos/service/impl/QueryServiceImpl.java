@@ -41,7 +41,7 @@ public class QueryServiceImpl implements QueryService {
 	ElasticsearchOperations elasticsearchOperations;
 
 	@Override
-	public Doctor findDoctor(String searchTerm,Pageable pageable) {
+	public Doctor findDoctor(String searchTerm) {
 		
 		StringQuery stringQuery = new StringQuery(termQuery("doctorId", searchTerm).toString());
 		return elasticsearchOperations.queryForObject(stringQuery, Doctor.class);
@@ -62,7 +62,7 @@ public class QueryServiceImpl implements QueryService {
 	 * @see com.bytatech.ayoos.service.QueryService#findContactInfo(java.lang.String, org.springframework.data.domain.Pageable)
 	 */
 	@Override
-	public ContactInfo findContactInfo(String searchTerm, Pageable pageable) {
+	public ContactInfo findContactInfo(String searchTerm) {
 		StringQuery stringQuery = new StringQuery(termQuery("id", searchTerm).toString());
 		return elasticsearchOperations.queryForObject(stringQuery, ContactInfo.class);
 		
@@ -72,9 +72,27 @@ public class QueryServiceImpl implements QueryService {
 	
 	@Override
 	public Page<WorkPlace> findWorkPlaces(String searchTerm, Pageable pageable) {
-		StringQuery stringQuery = new StringQuery(termQuery("id", searchTerm).toString());
+		StringQuery stringQuery = new StringQuery(termQuery("doctorId", searchTerm).toString());
 		return elasticsearchOperations.queryForPage(stringQuery, WorkPlace.class);
 		
+	}
+
+	/* (non-Javadoc)
+	 * @see com.bytatech.ayoos.service.QueryService#findAllQualification(org.springframework.data.domain.Pageable)
+	 */
+	@Override
+	public Page<Qualification> findAllQualification(String searchTerm,Pageable pageable) {
+		StringQuery stringQuery = new StringQuery(termQuery("doctorId", searchTerm).toString());
+		return elasticsearchOperations.queryForPage(stringQuery, Qualification.class);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.bytatech.ayoos.service.QueryService#findAllSessionInfo(java.lang.String, org.springframework.data.domain.Pageable)
+	 */
+	@Override
+	public Page<SessionInfo> findAllSessionInfo(String searchTerm, Pageable pageable) {
+		StringQuery stringQuery = new StringQuery(termQuery("doctorId", searchTerm).toString());
+		return elasticsearchOperations.queryForPage(stringQuery, SessionInfo.class);
 	}
 	
 	

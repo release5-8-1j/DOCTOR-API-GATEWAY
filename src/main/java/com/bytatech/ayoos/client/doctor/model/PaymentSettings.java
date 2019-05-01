@@ -10,42 +10,39 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * QualificationDTO
+ * PaymentSettings
  */
 @Validated
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-01T13:55:45.717+05:30[Asia/Calcutta]")
 
-public class QualificationDTO   {
-  @JsonProperty("doctorId")
-  private Long doctorId = null;
+public class PaymentSettings   {
+  @JsonProperty("amount")
+  private Double amount = null;
 
   @JsonProperty("id")
   private Long id = null;
 
-  @JsonProperty("qualification")
-  private String qualification = null;
-
-  public QualificationDTO doctorId(Long doctorId) {
-    this.doctorId = doctorId;
+  public PaymentSettings amount(Double amount) {
+    this.amount = amount;
     return this;
   }
 
   /**
-   * Get doctorId
-   * @return doctorId
+   * Get amount
+   * @return amount
   **/
   @ApiModelProperty(value = "")
 
 
-  public Long getDoctorId() {
-    return doctorId;
+  public Double getAmount() {
+    return amount;
   }
 
-  public void setDoctorId(Long doctorId) {
-    this.doctorId = doctorId;
+  public void setAmount(Double amount) {
+    this.amount = amount;
   }
 
-  public QualificationDTO id(Long id) {
+  public PaymentSettings id(Long id) {
     this.id = id;
     return this;
   }
@@ -65,26 +62,6 @@ public class QualificationDTO   {
     this.id = id;
   }
 
-  public QualificationDTO qualification(String qualification) {
-    this.qualification = qualification;
-    return this;
-  }
-
-  /**
-   * Get qualification
-   * @return qualification
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getQualification() {
-    return qualification;
-  }
-
-  public void setQualification(String qualification) {
-    this.qualification = qualification;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -94,25 +71,23 @@ public class QualificationDTO   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    QualificationDTO qualificationDTO = (QualificationDTO) o;
-    return Objects.equals(this.doctorId, qualificationDTO.doctorId) &&
-        Objects.equals(this.id, qualificationDTO.id) &&
-        Objects.equals(this.qualification, qualificationDTO.qualification);
+    PaymentSettings paymentSettings = (PaymentSettings) o;
+    return Objects.equals(this.amount, paymentSettings.amount) &&
+        Objects.equals(this.id, paymentSettings.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(doctorId, id, qualification);
+    return Objects.hash(amount, id);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class QualificationDTO {\n");
+    sb.append("class PaymentSettings {\n");
     
-    sb.append("    doctorId: ").append(toIndentedString(doctorId)).append("\n");
+    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    qualification: ").append(toIndentedString(qualification)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,6 +1,7 @@
 package com.bytatech.ayoos.client.doctor.model;
 
 import java.util.Objects;
+import com.bytatech.ayoos.client.doctor.model.ReservedSlot;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
@@ -10,42 +11,22 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * QualificationDTO
+ * Status
  */
 @Validated
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-01T13:55:45.717+05:30[Asia/Calcutta]")
 
-public class QualificationDTO   {
-  @JsonProperty("doctorId")
-  private Long doctorId = null;
-
+public class Status   {
   @JsonProperty("id")
   private Long id = null;
 
-  @JsonProperty("qualification")
-  private String qualification = null;
+  @JsonProperty("reservedSlot")
+  private ReservedSlot reservedSlot = null;
 
-  public QualificationDTO doctorId(Long doctorId) {
-    this.doctorId = doctorId;
-    return this;
-  }
+  @JsonProperty("status")
+  private String status = null;
 
-  /**
-   * Get doctorId
-   * @return doctorId
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public Long getDoctorId() {
-    return doctorId;
-  }
-
-  public void setDoctorId(Long doctorId) {
-    this.doctorId = doctorId;
-  }
-
-  public QualificationDTO id(Long id) {
+  public Status id(Long id) {
     this.id = id;
     return this;
   }
@@ -65,24 +46,45 @@ public class QualificationDTO   {
     this.id = id;
   }
 
-  public QualificationDTO qualification(String qualification) {
-    this.qualification = qualification;
+  public Status reservedSlot(ReservedSlot reservedSlot) {
+    this.reservedSlot = reservedSlot;
     return this;
   }
 
   /**
-   * Get qualification
-   * @return qualification
+   * Get reservedSlot
+   * @return reservedSlot
+  **/
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public ReservedSlot getReservedSlot() {
+    return reservedSlot;
+  }
+
+  public void setReservedSlot(ReservedSlot reservedSlot) {
+    this.reservedSlot = reservedSlot;
+  }
+
+  public Status status(String status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Get status
+   * @return status
   **/
   @ApiModelProperty(value = "")
 
 
-  public String getQualification() {
-    return qualification;
+  public String getStatus() {
+    return status;
   }
 
-  public void setQualification(String qualification) {
-    this.qualification = qualification;
+  public void setStatus(String status) {
+    this.status = status;
   }
 
 
@@ -94,25 +96,25 @@ public class QualificationDTO   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    QualificationDTO qualificationDTO = (QualificationDTO) o;
-    return Objects.equals(this.doctorId, qualificationDTO.doctorId) &&
-        Objects.equals(this.id, qualificationDTO.id) &&
-        Objects.equals(this.qualification, qualificationDTO.qualification);
+    Status status = (Status) o;
+    return Objects.equals(this.id, status.id) &&
+        Objects.equals(this.reservedSlot, status.reservedSlot) &&
+        Objects.equals(this.status, status.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(doctorId, id, qualification);
+    return Objects.hash(id, reservedSlot, status);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class QualificationDTO {\n");
+    sb.append("class Status {\n");
     
-    sb.append("    doctorId: ").append(toIndentedString(doctorId)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    qualification: ").append(toIndentedString(qualification)).append("\n");
+    sb.append("    reservedSlot: ").append(toIndentedString(reservedSlot)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

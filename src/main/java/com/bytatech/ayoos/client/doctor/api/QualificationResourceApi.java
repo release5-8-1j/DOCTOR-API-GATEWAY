@@ -5,6 +5,8 @@
  */
 package com.bytatech.ayoos.client.doctor.api;
 
+import java.util.List;
+import com.bytatech.ayoos.client.doctor.model.Qualification;
 import com.bytatech.ayoos.client.doctor.model.QualificationDTO;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
@@ -25,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-04-30T12:10:02.590+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-01T13:55:45.717+05:30[Asia/Calcutta]")
 
 @Api(value = "QualificationResource", description = "the QualificationResource API")
 public interface QualificationResourceApi {
@@ -77,6 +79,20 @@ public interface QualificationResourceApi {
         produces = "*/*", 
         method = RequestMethod.GET)
     ResponseEntity<QualificationDTO> getQualificationUsingGET(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
+
+
+    @ApiOperation(value = "listToDto", nickname = "listToDtoUsingPOST3", notes = "", response = QualificationDTO.class, responseContainer = "List", tags={ "qualification-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = QualificationDTO.class, responseContainer = "List"),
+        @ApiResponse(code = 201, message = "Created"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/qualifications/toDto",
+        produces = "*/*", 
+        consumes = "application/json",
+        method = RequestMethod.POST)
+    ResponseEntity<List<QualificationDTO>> listToDtoUsingPOST3(@ApiParam(value = "qualification" ,required=true )  @Valid @RequestBody List<Qualification> qualification);
 
 
     @ApiOperation(value = "searchQualifications", nickname = "searchQualificationsUsingGET", notes = "", response = QualificationDTO.class, responseContainer = "List", tags={ "qualification-resource", })

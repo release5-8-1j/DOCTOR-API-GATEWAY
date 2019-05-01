@@ -1,6 +1,7 @@
 package com.bytatech.ayoos.client.doctor.model;
 
 import java.util.Objects;
+import com.bytatech.ayoos.client.doctor.model.Doctor;
 import com.bytatech.ayoos.client.doctor.model.Reply;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -16,9 +17,12 @@ import javax.validation.constraints.*;
  * Review
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-04-25T12:28:19.615+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-01T13:55:45.717+05:30[Asia/Calcutta]")
 
 public class Review   {
+  @JsonProperty("doctor")
+  private Doctor doctor = null;
+
   @JsonProperty("id")
   private Long id = null;
 
@@ -28,6 +32,27 @@ public class Review   {
 
   @JsonProperty("review")
   private String review = null;
+
+  public Review doctor(Doctor doctor) {
+    this.doctor = doctor;
+    return this;
+  }
+
+  /**
+   * Get doctor
+   * @return doctor
+  **/
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public Doctor getDoctor() {
+    return doctor;
+  }
+
+  public void setDoctor(Doctor doctor) {
+    this.doctor = doctor;
+  }
 
   public Review id(Long id) {
     this.id = id;
@@ -108,14 +133,15 @@ public class Review   {
       return false;
     }
     Review review = (Review) o;
-    return Objects.equals(this.id, review.id) &&
+    return Objects.equals(this.doctor, review.doctor) &&
+        Objects.equals(this.id, review.id) &&
         Objects.equals(this.replies, review.replies) &&
         Objects.equals(this.review, review.review);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, replies, review);
+    return Objects.hash(doctor, id, replies, review);
   }
 
   @Override
@@ -123,6 +149,7 @@ public class Review   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Review {\n");
     
+    sb.append("    doctor: ").append(toIndentedString(doctor)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    replies: ").append(toIndentedString(replies)).append("\n");
     sb.append("    review: ").append(toIndentedString(review)).append("\n");

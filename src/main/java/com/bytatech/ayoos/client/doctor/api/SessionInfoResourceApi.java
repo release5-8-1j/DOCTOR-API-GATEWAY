@@ -5,9 +5,9 @@
  */
 package com.bytatech.ayoos.client.doctor.api;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import com.bytatech.ayoos.client.doctor.model.SessionInfo;
 import com.bytatech.ayoos.client.doctor.model.SessionInfoDTO;
 import com.bytatech.ayoos.client.doctor.model.Slot;
 import io.swagger.annotations.*;
@@ -29,7 +29,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-04-30T12:10:02.590+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-01T13:55:45.717+05:30[Asia/Calcutta]")
 
 @Api(value = "SessionInfoResource", description = "the SessionInfoResource API")
 public interface SessionInfoResourceApi {
@@ -93,6 +93,20 @@ public interface SessionInfoResourceApi {
         produces = "*/*", 
         method = RequestMethod.GET)
     ResponseEntity<SessionInfoDTO> getSessionInfoUsingGET(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
+
+
+    @ApiOperation(value = "listToDto", nickname = "listToDtoUsingPOST5", notes = "", response = SessionInfoDTO.class, responseContainer = "List", tags={ "session-info-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = SessionInfoDTO.class, responseContainer = "List"),
+        @ApiResponse(code = 201, message = "Created"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/session-infos/toDto",
+        produces = "*/*", 
+        consumes = "application/json",
+        method = RequestMethod.POST)
+    ResponseEntity<List<SessionInfoDTO>> listToDtoUsingPOST5(@ApiParam(value = "sessionInfo" ,required=true )  @Valid @RequestBody List<SessionInfo> sessionInfo);
 
 
     @ApiOperation(value = "searchSessionInfos", nickname = "searchSessionInfosUsingGET", notes = "", response = SessionInfoDTO.class, responseContainer = "List", tags={ "session-info-resource", })

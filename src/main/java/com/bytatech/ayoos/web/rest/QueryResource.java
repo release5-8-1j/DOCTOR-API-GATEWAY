@@ -48,14 +48,15 @@ public class QueryResource {
 
 	@GetMapping("/doctor/{searchTerm}")
 	public Doctor findDoctor(@PathVariable String searchTerm, Pageable pageable) {
-		return queryService.findDoctor(searchTerm, pageable);
+		return queryService.findDoctor(searchTerm);
 	}
 
 	
 	@GetMapping("/contact-infos/{searchTerm}")
 	public ContactInfo findContactInfo(@PathVariable String searchTerm, Pageable pageable) {
-		return queryService.findContactInfo(searchTerm,pageable);
+		return queryService.findContactInfo(searchTerm);
 	}
+	
 	@GetMapping("/work-places/{searchTerm}")
 	public Page<WorkPlace> findWorkPlace(@PathVariable String searchTerm, Pageable pageable) {
 		return queryService.findWorkPlaces(searchTerm, pageable);
@@ -65,5 +66,13 @@ public class QueryResource {
 	public Page<Review> findAllReview(/*@PathVariable String searchTerm,*/ Pageable pageable) {
 		return queryService.findAllReview( pageable);
 	} 
+	
+	@GetMapping("/qualifications/{searchTerm}")
+	public Page<Qualification> findAllQualification(@PathVariable String searchTerm,Pageable pageable){
+		return queryService.findAllQualification(searchTerm,pageable);
+	}
 
+	public Page<SessionInfo> findAllSesionInfo(@PathVariable String searchTerm,Pageable pageable){
+		return queryService.findAllSessionInfo(searchTerm,pageable);
+	}
 }

@@ -1,27 +1,31 @@
 package com.bytatech.ayoos.client.doctor.model;
 
 import java.util.Objects;
+import com.bytatech.ayoos.client.doctor.model.Doctor;
+import com.bytatech.ayoos.client.doctor.model.Status;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * ReservedSlotDTO
+ * ReservedSlot
  */
 @Validated
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-01T13:55:45.717+05:30[Asia/Calcutta]")
 
-public class ReservedSlotDTO   {
+public class ReservedSlot   {
   @JsonProperty("date")
   private LocalDate date = null;
 
-  @JsonProperty("doctorId")
-  private Long doctorId = null;
+  @JsonProperty("doctor")
+  private Doctor doctor = null;
 
   @JsonProperty("endTime")
   private Double endTime = null;
@@ -32,7 +36,11 @@ public class ReservedSlotDTO   {
   @JsonProperty("startTime")
   private Double startTime = null;
 
-  public ReservedSlotDTO date(LocalDate date) {
+  @JsonProperty("statuses")
+  @Valid
+  private List<Status> statuses = null;
+
+  public ReservedSlot date(LocalDate date) {
     this.date = date;
     return this;
   }
@@ -53,27 +61,28 @@ public class ReservedSlotDTO   {
     this.date = date;
   }
 
-  public ReservedSlotDTO doctorId(Long doctorId) {
-    this.doctorId = doctorId;
+  public ReservedSlot doctor(Doctor doctor) {
+    this.doctor = doctor;
     return this;
   }
 
   /**
-   * Get doctorId
-   * @return doctorId
+   * Get doctor
+   * @return doctor
   **/
   @ApiModelProperty(value = "")
 
+  @Valid
 
-  public Long getDoctorId() {
-    return doctorId;
+  public Doctor getDoctor() {
+    return doctor;
   }
 
-  public void setDoctorId(Long doctorId) {
-    this.doctorId = doctorId;
+  public void setDoctor(Doctor doctor) {
+    this.doctor = doctor;
   }
 
-  public ReservedSlotDTO endTime(Double endTime) {
+  public ReservedSlot endTime(Double endTime) {
     this.endTime = endTime;
     return this;
   }
@@ -93,7 +102,7 @@ public class ReservedSlotDTO   {
     this.endTime = endTime;
   }
 
-  public ReservedSlotDTO id(Long id) {
+  public ReservedSlot id(Long id) {
     this.id = id;
     return this;
   }
@@ -113,7 +122,7 @@ public class ReservedSlotDTO   {
     this.id = id;
   }
 
-  public ReservedSlotDTO startTime(Double startTime) {
+  public ReservedSlot startTime(Double startTime) {
     this.startTime = startTime;
     return this;
   }
@@ -133,6 +142,35 @@ public class ReservedSlotDTO   {
     this.startTime = startTime;
   }
 
+  public ReservedSlot statuses(List<Status> statuses) {
+    this.statuses = statuses;
+    return this;
+  }
+
+  public ReservedSlot addStatusesItem(Status statusesItem) {
+    if (this.statuses == null) {
+      this.statuses = new ArrayList<Status>();
+    }
+    this.statuses.add(statusesItem);
+    return this;
+  }
+
+  /**
+   * Get statuses
+   * @return statuses
+  **/
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public List<Status> getStatuses() {
+    return statuses;
+  }
+
+  public void setStatuses(List<Status> statuses) {
+    this.statuses = statuses;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -142,29 +180,31 @@ public class ReservedSlotDTO   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ReservedSlotDTO reservedSlotDTO = (ReservedSlotDTO) o;
-    return Objects.equals(this.date, reservedSlotDTO.date) &&
-        Objects.equals(this.doctorId, reservedSlotDTO.doctorId) &&
-        Objects.equals(this.endTime, reservedSlotDTO.endTime) &&
-        Objects.equals(this.id, reservedSlotDTO.id) &&
-        Objects.equals(this.startTime, reservedSlotDTO.startTime);
+    ReservedSlot reservedSlot = (ReservedSlot) o;
+    return Objects.equals(this.date, reservedSlot.date) &&
+        Objects.equals(this.doctor, reservedSlot.doctor) &&
+        Objects.equals(this.endTime, reservedSlot.endTime) &&
+        Objects.equals(this.id, reservedSlot.id) &&
+        Objects.equals(this.startTime, reservedSlot.startTime) &&
+        Objects.equals(this.statuses, reservedSlot.statuses);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, doctorId, endTime, id, startTime);
+    return Objects.hash(date, doctor, endTime, id, startTime, statuses);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ReservedSlotDTO {\n");
+    sb.append("class ReservedSlot {\n");
     
     sb.append("    date: ").append(toIndentedString(date)).append("\n");
-    sb.append("    doctorId: ").append(toIndentedString(doctorId)).append("\n");
+    sb.append("    doctor: ").append(toIndentedString(doctor)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
+    sb.append("    statuses: ").append(toIndentedString(statuses)).append("\n");
     sb.append("}");
     return sb.toString();
   }

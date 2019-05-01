@@ -9,7 +9,7 @@ import com.bytatech.ayoos.client.doctor.domain.*;
 
 public interface QueryService {
 
-	Doctor findDoctor(String searchTerm, Pageable pageable);
+	Doctor findDoctor(String searchTerm);
 
 	Page<Review> findAllReview(Pageable pageable);
 
@@ -18,7 +18,7 @@ public interface QueryService {
 	 * @param pageable
 	 * @return
 	 */
-	ContactInfo findContactInfo(String searchTerm, Pageable pageable);
+	ContactInfo findContactInfo(String searchTerm);
 
 	/**
 	 * @param searchTerm
@@ -26,6 +26,22 @@ public interface QueryService {
 	 * @return
 	 */
 	Page<WorkPlace> findWorkPlaces(String searchTerm, Pageable pageable);
+
+	/**
+	 * @param searchTerm 
+	 * @param pageable
+	 * @return
+	 */
+	Page<Qualification> findAllQualification(String searchTerm, Pageable pageable);
+
+	/**
+	 * @param searchTerm
+	 * @param pageable
+	 * @return
+	 */
+	Page<SessionInfo> findAllSessionInfo(String searchTerm, Pageable pageable);
+
+
 
 
 }

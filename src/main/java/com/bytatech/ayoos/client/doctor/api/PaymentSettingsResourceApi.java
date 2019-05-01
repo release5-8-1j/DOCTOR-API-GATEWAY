@@ -5,6 +5,8 @@
  */
 package com.bytatech.ayoos.client.doctor.api;
 
+import java.util.List;
+import com.bytatech.ayoos.client.doctor.model.PaymentSettings;
 import com.bytatech.ayoos.client.doctor.model.PaymentSettingsDTO;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
@@ -25,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-04-30T12:10:02.590+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-01T13:55:45.717+05:30[Asia/Calcutta]")
 
 @Api(value = "PaymentSettingsResource", description = "the PaymentSettingsResource API")
 public interface PaymentSettingsResourceApi {
@@ -77,6 +79,34 @@ public interface PaymentSettingsResourceApi {
         produces = "*/*", 
         method = RequestMethod.GET)
     ResponseEntity<PaymentSettingsDTO> getPaymentSettingsUsingGET(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
+
+
+    @ApiOperation(value = "listToDto", nickname = "listToDtoUsingPOST2", notes = "", response = PaymentSettingsDTO.class, responseContainer = "List", tags={ "payment-settings-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = PaymentSettingsDTO.class, responseContainer = "List"),
+        @ApiResponse(code = 201, message = "Created"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/payment-settings/toDto",
+        produces = "*/*", 
+        consumes = "application/json",
+        method = RequestMethod.POST)
+    ResponseEntity<List<PaymentSettingsDTO>> listToDtoUsingPOST2(@ApiParam(value = "paymentSettings" ,required=true )  @Valid @RequestBody List<PaymentSettings> paymentSettings);
+
+
+    @ApiOperation(value = "modelToDto", nickname = "modelToDtoUsingPOST2", notes = "", response = PaymentSettingsDTO.class, tags={ "payment-settings-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = PaymentSettingsDTO.class),
+        @ApiResponse(code = 201, message = "Created"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/payment-settings/modelToDto",
+        produces = "*/*", 
+        consumes = "application/json",
+        method = RequestMethod.POST)
+    ResponseEntity<PaymentSettingsDTO> modelToDtoUsingPOST2(@ApiParam(value = "paymentSettings" ,required=true )  @Valid @RequestBody PaymentSettings paymentSettings);
 
 
     @ApiOperation(value = "searchPaymentSettings", nickname = "searchPaymentSettingsUsingGET", notes = "", response = PaymentSettingsDTO.class, responseContainer = "List", tags={ "payment-settings-resource", })
