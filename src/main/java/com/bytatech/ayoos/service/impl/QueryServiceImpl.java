@@ -43,7 +43,7 @@ public class QueryServiceImpl implements QueryService {
 	@Override
 	public Doctor findDoctor(String searchTerm) {
 		
-		StringQuery stringQuery = new StringQuery(termQuery("doctorId", searchTerm).toString());
+		StringQuery stringQuery = new StringQuery(matchQuery("doctorId", searchTerm).toString());
 		return elasticsearchOperations.queryForObject(stringQuery, Doctor.class);
 	}
 

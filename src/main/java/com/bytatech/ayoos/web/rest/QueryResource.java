@@ -66,9 +66,9 @@ public class QueryResource {
 	QualificationResourceApi qualificationResourceApi;
 //	productResourceApi.listToDtoUsingPOST(queryService.findAllProduct(page).getContent());
 	@GetMapping("/doctor/{searchTerm}")
-	public DoctorDTO findDoctor(@PathVariable String searchTerm) {
-		doctorResourceApi.modelToDtoUsingPOST1(queryService.findDoctor(searchTerm));
-		return null;
+	public ResponseEntity<DoctorDTO> findDoctor(@PathVariable String searchTerm) {
+		return 	doctorResourceApi.modelToDtoUsingPOST1(queryService.findDoctor(searchTerm));
+		
 	}
 
 	
