@@ -27,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-01T13:55:45.717+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-02T14:21:41.979+05:30[Asia/Calcutta]")
 
 @Api(value = "QualificationResource", description = "the QualificationResource API")
 public interface QualificationResourceApi {
@@ -55,6 +55,18 @@ public interface QualificationResourceApi {
     @RequestMapping(value = "/api/qualifications/{id}",
         method = RequestMethod.DELETE)
     ResponseEntity<Void> deleteQualificationUsingDELETE(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
+
+
+    @ApiOperation(value = "findAllQualificationByDoctorId", nickname = "findAllQualificationByDoctorIdUsingGET", notes = "", response = QualificationDTO.class, responseContainer = "List", tags={ "qualification-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = QualificationDTO.class, responseContainer = "List"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/findAllQualificationByDoctorId/{doctorId}",
+        produces = "*/*", 
+        method = RequestMethod.GET)
+    ResponseEntity<List<QualificationDTO>> findAllQualificationByDoctorIdUsingGET(@ApiParam(value = "doctorId",required=true) @PathVariable("doctorId") Long doctorId);
 
 
     @ApiOperation(value = "getAllQualifications", nickname = "getAllQualificationsUsingGET", notes = "", response = QualificationDTO.class, responseContainer = "List", tags={ "qualification-resource", })

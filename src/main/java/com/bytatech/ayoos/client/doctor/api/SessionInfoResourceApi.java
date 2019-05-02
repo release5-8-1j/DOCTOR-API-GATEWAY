@@ -7,7 +7,6 @@ package com.bytatech.ayoos.client.doctor.api;
 
 import java.util.Date;
 import java.util.List;
-import java.time.LocalDate;
 import com.bytatech.ayoos.client.doctor.model.SessionInfo;
 import com.bytatech.ayoos.client.doctor.model.SessionInfoDTO;
 import com.bytatech.ayoos.client.doctor.model.Slot;
@@ -30,7 +29,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-01T13:55:45.717+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-02T14:21:41.979+05:30[Asia/Calcutta]")
 
 @Api(value = "SessionInfoResource", description = "the SessionInfoResource API")
 public interface SessionInfoResourceApi {

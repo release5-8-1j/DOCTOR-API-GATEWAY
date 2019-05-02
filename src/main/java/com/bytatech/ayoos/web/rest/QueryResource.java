@@ -80,9 +80,14 @@ public class QueryResource {
 	
 	@GetMapping("/work-places/{searchTerm}")
 	public ResponseEntity<List<WorkPlaceDTO>> findWorkPlace(@PathVariable String searchTerm, Pageable pageable) {
-		return  workPlaceResourceApi.listToDtoUsingPOST1(queryService.findWorkPlaces(searchTerm, pageable).getContent());
+		return  workPlaceResourceApi.listToDtoUsingPOST6(queryService.findWorkPlaces(searchTerm, pageable).getContent());
 	}
-
+	@GetMapping("/findworkplacesBydoctorId/{doctorId}")
+	public ResponseEntity<List<WorkPlaceDTO>> findAllWorkPlacesByDoctorId(@PathVariable Long doctorId){
+		return workPlaceResourceApi.findAllWorkPlacesByDoctorIdUsingGET(doctorId);
+	}
+	
+	
 	@GetMapping("/review")
 	public Page<Review> findAllReview(/*@PathVariable String searchTerm,*/ Pageable pageable) {
 		return queryService.findAllReview( pageable);
@@ -92,8 +97,16 @@ public class QueryResource {
 	public ResponseEntity<List<QualificationDTO>> findAllQualification(@PathVariable String searchTerm,Pageable pageable){
 	return	qualificationResourceApi.listToDtoUsingPOST3(queryService.findAllQualification(searchTerm,pageable).getContent());
 	}
+	
+	@GetMapping("/qualifications/{doctorId}")
+	public ResponseEntity<List<QualificationDTO>> findAllQualificationByDoctorId(@PathVariable Long doctorId){
+		return qualificationResourceApi.findAllQualificationByDoctorIdUsingGET(doctorId);
+	}
 
+	@GetMapping("/session-infos")
 	public Page<SessionInfo> findAllSesionInfo(@PathVariable String searchTerm,Pageable pageable){
 		return queryService.findAllSessionInfo(searchTerm,pageable);
 	}
+	
+	
 }

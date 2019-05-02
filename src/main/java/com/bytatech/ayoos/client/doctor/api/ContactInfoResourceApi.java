@@ -5,7 +5,7 @@
  */
 package com.bytatech.ayoos.client.doctor.api;
 
-import com.bytatech.ayoos.client.doctor.domain.*;
+import com.bytatech.ayoos.client.doctor.domain.ContactInfo;
 import com.bytatech.ayoos.client.doctor.model.ContactInfoDTO;
 import java.util.List;
 import io.swagger.annotations.*;
@@ -27,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-01T13:55:45.717+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-02T14:21:41.979+05:30[Asia/Calcutta]")
 
 @Api(value = "ContactInfoResource", description = "the ContactInfoResource API")
 public interface ContactInfoResourceApi {

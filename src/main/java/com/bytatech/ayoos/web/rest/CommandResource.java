@@ -65,6 +65,8 @@ public class CommandResource {
 	  @Autowired
 	  WorkPlaceResourceApi workPlaceResourceApi;
 	  
+	  
+	  
 	  @PostMapping("/doctors")
 	    public ResponseEntity<DoctorDTO> createDoctor(@RequestBody DoctorDTO doctorDTO) throws URISyntaxException {
 		  
@@ -72,13 +74,16 @@ public class CommandResource {
 	  }
 	  
 	  @PutMapping("/doctors")
-	    public void updateDoctor(@RequestBody DoctorDTO doctorDTO)  {
-		  doctorApi.updateDoctorUsingPUT(doctorDTO);
+	    public ResponseEntity<DoctorDTO> updateDoctor(@RequestBody DoctorDTO doctorDTO)  {
+		  return doctorApi.updateDoctorUsingPUT(doctorDTO);
 	  }    
 	  
 	  @PostMapping("/contact-infos")
 	  public ResponseEntity<ContactInfoDTO> createContactInfo(@RequestBody ContactInfoDTO contactInfoDTO){
-		 return  contactInfoResourceApi.createContactInfoUsingPOST(contactInfoDTO);
+		  
+		  ResponseEntity<ContactInfoDTO> contactInfo =contactInfoResourceApi.createContactInfoUsingPOST(contactInfoDTO);
+		  
+		  return contactInfo;
 	  }
 	  
 	  @PutMapping("/contact-infos")
@@ -107,12 +112,16 @@ public class CommandResource {
 	  
 	  @PostMapping("/work-places")
 	  public ResponseEntity<WorkPlaceDTO> createWorkPlace(@RequestBody WorkPlaceDTO workPlaceDTO){
-		 return  workPlaceResourceApi.createWorkPlaceUsingPOST(workPlaceDTO);
+		  ResponseEntity<WorkPlaceDTO> workPlace=  workPlaceResourceApi.createWorkPlaceUsingPOST(workPlaceDTO);
+		
+		  return workPlace;
 	  }
 	  
 	  @PutMapping("/work-places")
 	  public ResponseEntity<WorkPlaceDTO> updateWorkPlace(@RequestBody WorkPlaceDTO workPlaceDTO){
+		  
 		  return workPlaceResourceApi.updateWorkPlaceUsingPUT(workPlaceDTO);
+		  
 	  }
 	  
 	  @DeleteMapping("/work-places")
@@ -123,7 +132,7 @@ public class CommandResource {
 	  @PostMapping("/sessionInfo")
 	 public void createSessionInfo(@RequestBody List<SessionInfoDTO> sessionInfoDTO,
 				@RequestParam List<Integer> monthList){
-		sessionInfoAPi.setSessionToMonthUsingPOST(monthList, sessionInfoDTO);
+		 sessionInfoAPi.setSessionToMonthUsingPOST(monthList, sessionInfoDTO);
 	 }
 	
 	

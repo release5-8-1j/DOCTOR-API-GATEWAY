@@ -4,7 +4,8 @@
  * Do not edit the class manually.
  */
 package com.bytatech.ayoos.client.doctor.api;
- import com.bytatech.ayoos.client.doctor.domain.*;
+
+import com.bytatech.ayoos.client.doctor.domain.Doctor;
 import com.bytatech.ayoos.client.doctor.model.DoctorDTO;
 import java.util.List;
 import io.swagger.annotations.*;
@@ -26,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-01T13:55:45.717+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-02T14:21:41.979+05:30[Asia/Calcutta]")
 
 @Api(value = "DoctorResource", description = "the DoctorResource API")
 public interface DoctorResourceApi {
@@ -105,7 +106,7 @@ public interface DoctorResourceApi {
         produces = "*/*", 
         consumes = "application/json",
         method = RequestMethod.POST)
-    ResponseEntity<DoctorDTO> modelToDtoUsingPOST1(@ApiParam(value = "doctor" ,required=true )  @Valid @RequestBody com.bytatech.ayoos.client.doctor.domain.Doctor doctor);
+    ResponseEntity<DoctorDTO> modelToDtoUsingPOST1(@ApiParam(value = "doctor" ,required=true )  @Valid @RequestBody Doctor doctor);
 
 
     @ApiOperation(value = "searchDoctors", nickname = "searchDoctorsUsingGET", notes = "", response = DoctorDTO.class, responseContainer = "List", tags={ "doctor-resource", })
