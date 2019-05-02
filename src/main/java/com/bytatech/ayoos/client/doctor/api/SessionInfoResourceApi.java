@@ -5,6 +5,7 @@
  */
 package com.bytatech.ayoos.client.doctor.api;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import com.bytatech.ayoos.client.doctor.model.SessionInfo;
@@ -54,7 +55,7 @@ public interface SessionInfoResourceApi {
         @ApiResponse(code = 401, message = "Unauthorized"),
         @ApiResponse(code = 403, message = "Forbidden"),
         @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/api/slots/{date}",
+    @RequestMapping(value = "/api/slots/{date}",gi
         produces = "*/*", 
         method = RequestMethod.GET)
     ResponseEntity<List<Slot>> createSlotsUsingGET(@ApiParam(value = "date",required=true) @PathVariable("date") LocalDate date);
