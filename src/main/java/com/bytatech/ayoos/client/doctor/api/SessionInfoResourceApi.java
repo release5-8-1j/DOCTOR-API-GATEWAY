@@ -55,7 +55,7 @@ public interface SessionInfoResourceApi {
         @ApiResponse(code = 401, message = "Unauthorized"),
         @ApiResponse(code = 403, message = "Forbidden"),
         @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/api/slots/{date}",gi
+    @RequestMapping(value = "/api/slots/{date}",
         produces = "*/*", 
         method = RequestMethod.GET)
     ResponseEntity<List<Slot>> createSlotsUsingGET(@ApiParam(value = "date",required=true) @PathVariable("date") LocalDate date);
