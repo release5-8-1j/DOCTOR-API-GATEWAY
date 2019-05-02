@@ -98,7 +98,7 @@ public class QueryResource {
 	return	qualificationResourceApi.listToDtoUsingPOST3(queryService.findAllQualification(searchTerm,pageable).getContent());
 	}
 	
-	@GetMapping("/qualifications/{doctorId}")
+	@GetMapping("/qualification/{doctorId}")
 	public ResponseEntity<List<QualificationDTO>> findAllQualificationByDoctorId(@PathVariable Long doctorId){
 		return qualificationResourceApi.findAllQualificationByDoctorIdUsingGET(doctorId);
 	}
