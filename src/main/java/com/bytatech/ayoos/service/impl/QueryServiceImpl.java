@@ -72,7 +72,7 @@ public class QueryServiceImpl implements QueryService {
 	
 	@Override
 	public Page<WorkPlace> findWorkPlaces(String searchTerm, Pageable pageable) {
-		StringQuery stringQuery = new StringQuery(termQuery("doctorId", searchTerm).toString());
+		StringQuery stringQuery = new StringQuery(termQuery("doctor.doctorId", searchTerm).toString());
 		return elasticsearchOperations.queryForPage(stringQuery, WorkPlace.class);
 		
 	}
@@ -82,7 +82,7 @@ public class QueryServiceImpl implements QueryService {
 	 */
 	@Override
 	public Page<Qualification> findAllQualification(String searchTerm,Pageable pageable) {
-		StringQuery stringQuery = new StringQuery(termQuery("doctorId", searchTerm).toString());
+		StringQuery stringQuery = new StringQuery(termQuery("doctor.doctorId", searchTerm).toString());
 		return elasticsearchOperations.queryForPage(stringQuery, Qualification.class);
 	}
 
@@ -91,7 +91,7 @@ public class QueryServiceImpl implements QueryService {
 	 */
 	@Override
 	public Page<SessionInfo> findAllSessionInfo(String searchTerm, Pageable pageable) {
-		StringQuery stringQuery = new StringQuery(termQuery("doctorId", searchTerm).toString());
+		StringQuery stringQuery = new StringQuery(termQuery("doctor.doctorId", searchTerm).toString());
 		return elasticsearchOperations.queryForPage(stringQuery, SessionInfo.class);
 	}
 	
