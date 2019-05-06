@@ -27,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-02T14:21:41.979+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-06T13:39:53.534+05:30[Asia/Calcutta]")
 
 @Api(value = "WorkPlaceResource", description = "the WorkPlaceResource API")
 public interface WorkPlaceResourceApi {
@@ -93,7 +93,7 @@ public interface WorkPlaceResourceApi {
     ResponseEntity<WorkPlaceDTO> getWorkPlaceUsingGET(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
 
 
-    @ApiOperation(value = "listToDto", nickname = "listToDtoUsingPOST6", notes = "", response = WorkPlaceDTO.class, responseContainer = "List", tags={ "work-place-resource", })
+    @ApiOperation(value = "listToDto", nickname = "listToDtoUsingPOST5", notes = "", response = WorkPlaceDTO.class, responseContainer = "List", tags={ "work-place-resource", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = WorkPlaceDTO.class, responseContainer = "List"),
         @ApiResponse(code = 201, message = "Created"),
@@ -104,7 +104,7 @@ public interface WorkPlaceResourceApi {
         produces = "*/*", 
         consumes = "application/json",
         method = RequestMethod.POST)
-    ResponseEntity<List<WorkPlaceDTO>> listToDtoUsingPOST6(@ApiParam(value = "workPlace" ,required=true )  @Valid @RequestBody List<WorkPlace> workPlace);
+    ResponseEntity<List<WorkPlaceDTO>> listToDtoUsingPOST5(@ApiParam(value = "workPlace" ,required=true )  @Valid @RequestBody List<WorkPlace> workPlace);
 
 
     @ApiOperation(value = "searchWorkPlaces", nickname = "searchWorkPlacesUsingGET", notes = "", response = WorkPlaceDTO.class, responseContainer = "List", tags={ "work-place-resource", })

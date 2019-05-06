@@ -5,6 +5,8 @@
  */
 package com.bytatech.ayoos.client.doctor.api;
 
+import java.time.LocalDate;
+import java.util.Date;
 import com.bytatech.ayoos.client.doctor.model.ReservedSlotDTO;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
@@ -25,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-02T14:21:41.979+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-06T13:39:53.534+05:30[Asia/Calcutta]")
 
 @Api(value = "ReservedSlotResource", description = "the ReservedSlotResource API")
 public interface ReservedSlotResourceApi {
@@ -42,6 +44,18 @@ public interface ReservedSlotResourceApi {
         consumes = "application/json",
         method = RequestMethod.POST)
     ResponseEntity<ReservedSlotDTO> createReservedSlotUsingPOST(@ApiParam(value = "reservedSlotDTO" ,required=true )  @Valid @RequestBody ReservedSlotDTO reservedSlotDTO);
+
+
+    @ApiOperation(value = "createSlot", nickname = "createSlotUsingGET", notes = "", response = ReservedSlotDTO.class, responseContainer = "List", tags={ "reserved-slot-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = ReservedSlotDTO.class, responseContainer = "List"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/slot/{date}",
+        produces = "*/*", 
+        method = RequestMethod.GET)
+    ResponseEntity<List<ReservedSlotDTO>> createSlotUsingGET(@ApiParam(value = "date",required=true) @PathVariable("date") LocalDate date);
 
 
     @ApiOperation(value = "deleteReservedSlot", nickname = "deleteReservedSlotUsingDELETE", notes = "", tags={ "reserved-slot-resource", })
@@ -65,6 +79,18 @@ public interface ReservedSlotResourceApi {
         produces = "*/*", 
         method = RequestMethod.GET)
     ResponseEntity<List<ReservedSlotDTO>> getAllReservedSlotsUsingGET(@ApiParam(value = "Page number of the requested page") @Valid @RequestParam(value = "page", required = false) Integer page,@ApiParam(value = "Size of a page") @Valid @RequestParam(value = "size", required = false) Integer size,@ApiParam(value = "Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.") @Valid @RequestParam(value = "sort", required = false) List<String> sort);
+
+
+    @ApiOperation(value = "getAllUnReservedSlots", nickname = "getAllUnReservedSlotsUsingGET", notes = "", response = ReservedSlotDTO.class, responseContainer = "List", tags={ "reserved-slot-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = ReservedSlotDTO.class, responseContainer = "List"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/unReserved-slots",
+        produces = "*/*", 
+        method = RequestMethod.GET)
+    ResponseEntity<List<ReservedSlotDTO>> getAllUnReservedSlotsUsingGET(@ApiParam(value = "Page number of the requested page") @Valid @RequestParam(value = "page", required = false) Integer page,@ApiParam(value = "Size of a page") @Valid @RequestParam(value = "size", required = false) Integer size,@ApiParam(value = "Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.") @Valid @RequestParam(value = "sort", required = false) List<String> sort);
 
 
     @ApiOperation(value = "getReservedSlot", nickname = "getReservedSlotUsingGET", notes = "", response = ReservedSlotDTO.class, tags={ "reserved-slot-resource", })

@@ -80,7 +80,7 @@ public class QueryResource {
 	
 	@GetMapping("/work-places/{searchTerm}")
 	public ResponseEntity<List<WorkPlaceDTO>> findWorkPlace(@PathVariable String searchTerm, Pageable pageable) {
-		return  workPlaceResourceApi.listToDtoUsingPOST6(queryService.findWorkPlaces(searchTerm, pageable).getContent());
+		return  workPlaceResourceApi.listToDtoUsingPOST5(queryService.findWorkPlaces(searchTerm, pageable).getContent());
 	}
 	@GetMapping("/findworkplacesBydoctorId/{doctorId}")
 	public ResponseEntity<List<WorkPlaceDTO>> findAllWorkPlacesByDoctorId(@PathVariable Long doctorId){
