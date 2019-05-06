@@ -72,8 +72,11 @@ public class QueryServiceImpl implements QueryService {
 	
 	@Override
 	public Page<WorkPlace> findWorkPlaces(String searchTerm, Pageable pageable) {
-		StringQuery stringQuery = new StringQuery(termQuery("doctor.doctorId.keyword", searchTerm).toString());
-		return elasticsearchOperations.queryForPage(stringQuery, WorkPlace.class);
+	//	StringQuery stringQuery = new StringQuery(termQuery("doctor.doctorId.keyword", searchTerm).toString());
+		SearchQuery searchQuery = new NativeSearchQueryBuilder()
+				  .withQuery(termQuery("doctor.doctorId.keyword", searchTerm))
+				  .build();
+		return elasticsearchOperations.queryForPage(searchQuery, WorkPlace.class);
 		
 	}
 
