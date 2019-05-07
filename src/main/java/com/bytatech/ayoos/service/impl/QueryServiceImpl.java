@@ -4,6 +4,7 @@ import static org.elasticsearch.index.query.QueryBuilders.matchAllQuery;
 import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
 import static org.elasticsearch.index.query.QueryBuilders.termQuery;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -85,8 +86,10 @@ public class QueryServiceImpl implements QueryService {
 	 */
 	@Override
 	public Page<Qualification> findAllQualification(String searchTerm,Pageable pageable) {
-		StringQuery stringQuery = new StringQuery(termQuery("doctor.doctorId", searchTerm).toString());
-		return elasticsearchOperations.queryForPage(stringQuery, Qualification.class);
+		SearchQuery searchQuery = new NativeSearchQueryBuilder()
+				  .withQuery(termQuery("doctor.doctorId.keyword", searchTerm))
+				  .build();
+		return elasticsearchOperations.queryForPage(searchQuery, Qualification.class);
 	}
 
 	/* (non-Javadoc)
@@ -94,9 +97,26 @@ public class QueryServiceImpl implements QueryService {
 	 */
 	@Override
 	public Page<SessionInfo> findAllSessionInfo(String searchTerm, Pageable pageable) {
-		StringQuery stringQuery = new StringQuery(termQuery("doctor.doctorId", searchTerm).toString());
-		return elasticsearchOperations.queryForPage(stringQuery, SessionInfo.class);
+		SearchQuery searchQuery = new NativeSearchQueryBuilder()
+				  .withQuery(termQuery("doctor.doctorId.keyword", searchTerm))
+				  .build();
+		return elasticsearchOperations.queryForPage(searchQuery, SessionInfo.class);
 	}
+
+	/* (non-Javadoc)
+	 * @see com.bytatech.ayoos.service.QueryService#findAllReservedSlot(java.lang.String, org.springframework.data.domain.Pageable)
+	 */
+	@Override
+	public Page<ReservedSlot> findAllReservedSlot(String searchTerm, Pageable pageable) {
+		SearchQuery searchQuery = new NativeSearchQueryBuilder()
+				  .withQuery(termQuery("doctor.doctorId.keyword", searchTerm))
+				  .build();
+		return elasticsearchOperations.queryForPage(searchQuery, ReservedSlot.class);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.bytatech.ayoos.service.QueryService#findAllUnReservedSlots(java.lang.String, org.springframework.data.domain.Pageable)
+	 */
 	
 	
 

@@ -7,6 +7,8 @@ package com.bytatech.ayoos.client.doctor.api;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
+import com.bytatech.ayoos.client.doctor.domain.ReservedSlot;
 import com.bytatech.ayoos.client.doctor.model.ReservedSlotDTO;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
@@ -27,7 +29,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-06T13:39:53.534+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-06T16:36:02.760+05:30[Asia/Calcutta]")
 
 @Api(value = "ReservedSlotResource", description = "the ReservedSlotResource API")
 public interface ReservedSlotResourceApi {
@@ -46,16 +48,17 @@ public interface ReservedSlotResourceApi {
     ResponseEntity<ReservedSlotDTO> createReservedSlotUsingPOST(@ApiParam(value = "reservedSlotDTO" ,required=true )  @Valid @RequestBody ReservedSlotDTO reservedSlotDTO);
 
 
-    @ApiOperation(value = "createSlot", nickname = "createSlotUsingGET", notes = "", response = ReservedSlotDTO.class, responseContainer = "List", tags={ "reserved-slot-resource", })
+    @ApiOperation(value = "createSlot", nickname = "createSlotUsingPOST", notes = "", response = ReservedSlotDTO.class, responseContainer = "List", tags={ "reserved-slot-resource", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = ReservedSlotDTO.class, responseContainer = "List"),
+        @ApiResponse(code = 201, message = "Created"),
         @ApiResponse(code = 401, message = "Unauthorized"),
         @ApiResponse(code = 403, message = "Forbidden"),
         @ApiResponse(code = 404, message = "Not Found") })
     @RequestMapping(value = "/api/slot/{date}",
         produces = "*/*", 
-        method = RequestMethod.GET)
-    ResponseEntity<List<ReservedSlotDTO>> createSlotUsingGET(@ApiParam(value = "date",required=true) @PathVariable("date") LocalDate date);
+        method = RequestMethod.POST)
+    ResponseEntity<List<ReservedSlotDTO>> createSlotUsingPOST(@ApiParam(value = "date",required=true) @PathVariable("date") LocalDate date);
 
 
     @ApiOperation(value = "deleteReservedSlot", nickname = "deleteReservedSlotUsingDELETE", notes = "", tags={ "reserved-slot-resource", })
@@ -103,6 +106,20 @@ public interface ReservedSlotResourceApi {
         produces = "*/*", 
         method = RequestMethod.GET)
     ResponseEntity<ReservedSlotDTO> getReservedSlotUsingGET(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
+
+
+    @ApiOperation(value = "listToDto", nickname = "listToDtoUsingPOST4", notes = "", response = ReservedSlotDTO.class, responseContainer = "List", tags={ "reserved-slot-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = ReservedSlotDTO.class, responseContainer = "List"),
+        @ApiResponse(code = 201, message = "Created"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/reserved-slot/toDto",
+        produces = "*/*", 
+        consumes = "application/json",
+        method = RequestMethod.POST)
+    ResponseEntity<List<ReservedSlotDTO>> listToDtoUsingPOST4(@ApiParam(value = "reservedSlot" ,required=true )  @Valid @RequestBody List<ReservedSlot> reservedSlot);
 
 
     @ApiOperation(value = "searchReservedSlots", nickname = "searchReservedSlotsUsingGET", notes = "", response = ReservedSlotDTO.class, responseContainer = "List", tags={ "reserved-slot-resource", })

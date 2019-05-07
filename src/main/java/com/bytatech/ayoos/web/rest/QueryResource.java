@@ -17,6 +17,8 @@ package com.bytatech.ayoos.web.rest;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +30,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bytatech.ayoos.client.doctor.api.ContactInfoResourceApi;
 import com.bytatech.ayoos.client.doctor.api.DoctorResourceApi;
 import com.bytatech.ayoos.client.doctor.api.DoctorResourceApiClient;
 import com.bytatech.ayoos.client.doctor.api.QualificationResourceApi;
+import com.bytatech.ayoos.client.doctor.api.ReservedSlotResourceApi;
+import com.bytatech.ayoos.client.doctor.api.SessionInfoResourceApi;
 import com.bytatech.ayoos.client.doctor.api.WorkPlaceResourceApi;
 import com.bytatech.ayoos.client.doctor.domain.*;
 import com.bytatech.ayoos.client.doctor.domain.Doctor;
@@ -41,6 +46,8 @@ import com.bytatech.ayoos.client.doctor.domain.WorkPlace;
 import com.bytatech.ayoos.client.doctor.model.ContactInfoDTO;
 import com.bytatech.ayoos.client.doctor.model.DoctorDTO;
 import com.bytatech.ayoos.client.doctor.model.QualificationDTO;
+import com.bytatech.ayoos.client.doctor.model.ReservedSlotDTO;
+import com.bytatech.ayoos.client.doctor.model.SessionInfoDTO;
 import com.bytatech.ayoos.client.doctor.model.WorkPlaceDTO;
 import com.bytatech.ayoos.service.QueryService;
 import com.bytatech.ayoos.web.rest.errors.BadRequestAlertException;
@@ -64,49 +71,62 @@ public class QueryResource {
 	WorkPlaceResourceApi workPlaceResourceApi;
 	@Autowired
 	QualificationResourceApi qualificationResourceApi;
-//	productResourceApi.listToDtoUsingPOST(queryService.findAllProduct(page).getContent());
+	@Autowired
+	SessionInfoResourceApi sessionInfoResourceApi;
+	@Autowired
+	ReservedSlotResourceApi reservedSlotResourceApi;
+
+	// productResourceApi.listToDtoUsingPOST(queryService.findAllProduct(page).getContent());
 	@GetMapping("/doctor/{searchTerm}")
 	public ResponseEntity<DoctorDTO> findDoctor(@PathVariable String searchTerm) {
-		return 	doctorResourceApi.modelToDtoUsingPOST1(queryService.findDoctor(searchTerm));
-		
+		return doctorResourceApi.modelToDtoUsingPOST1(queryService.findDoctor(searchTerm));
+
 	}
 
-	
 	@GetMapping("/contact-infos/{searchTerm}")
 	public ResponseEntity<ContactInfoDTO> findContactInfo(@PathVariable String searchTerm) {
-		
+
 		return contactInfoResourceApi.modelToDtoUsingPOST(queryService.findContactInfo(searchTerm));
 	}
-	
+
 	@GetMapping("/work-places/{searchTerm}")
 	public ResponseEntity<List<WorkPlaceDTO>> findWorkPlace(@PathVariable String searchTerm, Pageable pageable) {
-		return  workPlaceResourceApi.listToDtoUsingPOST5(queryService.findWorkPlaces(searchTerm, pageable).getContent());
+		return workPlaceResourceApi.listToDtoUsingPOST6(queryService.findWorkPlaces(searchTerm, pageable).getContent());
 	}
+
 	@GetMapping("/findworkplacesBydoctorId/{doctorId}")
-	public ResponseEntity<List<WorkPlaceDTO>> findAllWorkPlacesByDoctorId(@PathVariable Long doctorId){
+	public ResponseEntity<List<WorkPlaceDTO>> findAllWorkPlacesByDoctorId(@PathVariable Long doctorId) {
 		return workPlaceResourceApi.findAllWorkPlacesByDoctorIdUsingGET(doctorId);
 	}
-	
-	
+
 	@GetMapping("/review")
-	public Page<Review> findAllReview(/*@PathVariable String searchTerm,*/ Pageable pageable) {
-		return queryService.findAllReview( pageable);
-	} 
-	
-	@GetMapping("/qualifications/{searchTerm}")
-	public ResponseEntity<List<QualificationDTO>> findAllQualification(@PathVariable String searchTerm,Pageable pageable){
-	return	qualificationResourceApi.listToDtoUsingPOST3(queryService.findAllQualification(searchTerm,pageable).getContent());
+	public Page<Review> findAllReview(/* @PathVariable String searchTerm, */ Pageable pageable) {
+		return queryService.findAllReview(pageable);
 	}
-	
+
+	@GetMapping("/qualifications/{searchTerm}")
+	public ResponseEntity<List<QualificationDTO>> findAllQualification(@PathVariable String searchTerm,
+			Pageable pageable) {
+		return qualificationResourceApi
+				.listToDtoUsingPOST3(queryService.findAllQualification(searchTerm, pageable).getContent());
+	}
+
 	@GetMapping("/qualification/{doctorId}")
-	public ResponseEntity<List<QualificationDTO>> findAllQualificationByDoctorId(@PathVariable Long doctorId){
+	public ResponseEntity<List<QualificationDTO>> findAllQualificationByDoctorId(@PathVariable Long doctorId) {
 		return qualificationResourceApi.findAllQualificationByDoctorIdUsingGET(doctorId);
 	}
 
 	@GetMapping("/session-infos")
-	public Page<SessionInfo> findAllSesionInfo(@PathVariable String searchTerm,Pageable pageable){
-		return queryService.findAllSessionInfo(searchTerm,pageable);
+	public ResponseEntity<List<SessionInfoDTO>> findAllSesionInfo(@PathVariable String searchTerm, Pageable pageable) {
+		return sessionInfoResourceApi.listToDtoUsingPOST6(queryService.findAllSessionInfo(searchTerm, pageable).getContent());
 	}
-	
-	
+	@GetMapping("/slots")
+	public ResponseEntity<List<ReservedSlotDTO>> findAllSlots(@PathVariable String searchTerm, Pageable pageable){
+	return reservedSlotResourceApi.listToDtoUsingPOST4(queryService.findAllReservedSlot(searchTerm,pageable).getContent());
+	}
+
+	@GetMapping("/unreserved-slots")
+	public ResponseEntity<List<ReservedSlotDTO>> findAllUnReservedSlots(@RequestParam Integer page,@RequestParam Integer size,@RequestParam ArrayList<String> sort){
+	return	reservedSlotResourceApi.getAllUnReservedSlotsUsingGET(page, size, sort);
+	}
 }

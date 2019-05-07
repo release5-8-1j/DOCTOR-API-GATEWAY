@@ -15,11 +15,18 @@
  */
 package com.bytatech.ayoos.web.rest;
 
+import static org.elasticsearch.index.query.QueryBuilders.termQuery;
+
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
+import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,6 +38,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bytatech.ayoos.client.doctor.api.*;
+import com.bytatech.ayoos.client.doctor.domain.ReservedSlot;
 import com.bytatech.ayoos.client.doctor.model.*;
 
 import com.bytatech.ayoos.web.rest.errors.BadRequestAlertException;
@@ -65,7 +73,8 @@ public class CommandResource {
 	  @Autowired
 	  WorkPlaceResourceApi workPlaceResourceApi;
 	  
-	  
+	  @Autowired
+	  ReservedSlotResourceApi reservedSlotResourceApi;
 	  
 	  @PostMapping("/doctors")
 	    public ResponseEntity<DoctorDTO> createDoctor(@RequestBody DoctorDTO doctorDTO) throws URISyntaxException {
@@ -130,10 +139,14 @@ public class CommandResource {
 	  }
 	  
 	  @PostMapping("/sessionInfo")
-	 public void createSessionInfo(@RequestBody List<SessionInfoDTO> sessionInfoDTO,
+	 public ResponseEntity<List<SessionInfoDTO>> createSessionInfo(@RequestBody List<SessionInfoDTO> sessionInfoDTO,
 				@RequestParam List<Integer> monthList){
-		 sessionInfoAPi.setSessionToMonthUsingPOST(monthList, sessionInfoDTO);
+		return  sessionInfoAPi.setSessionToMonthUsingPOST(monthList, sessionInfoDTO);
 	 }
-	
+	 
+	  @PostMapping("/slot/{date}")
+	  public ResponseEntity<List<ReservedSlotDTO>> createSlot(@PathVariable LocalDate date){
+		 return  reservedSlotResourceApi.createSlotUsingPOST(date);
+	  }
 	
 }

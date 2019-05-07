@@ -41,6 +41,15 @@ public interface QueryService {
 	 */
 	Page<SessionInfo> findAllSessionInfo(String searchTerm, Pageable pageable);
 
+	/**
+	 * @param searchTerm
+	 * @param pageable
+	 * @return 
+	 */
+	Page<ReservedSlot> findAllReservedSlot(String searchTerm, Pageable pageable);
+
+
+
 
 
 
