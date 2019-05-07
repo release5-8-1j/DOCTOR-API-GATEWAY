@@ -35,11 +35,14 @@
         "apis": {
             "doctor": {
                 "spec": "http://34.73.191.107:8083/v2/api-docs"
+            },
+            "consultation": {
+                "spec": "http://35.243.137.225:8001/v2/api-docs"
             }
         },
         "promptValues": {
-            "inputSpec": "http://35.231.213.38:8083/v2/api-docs",
-            "cliName": "doctor"
+            "inputSpec": "http://35.243.137.225:8001/v2/api-docs",
+            "cliName": "consultation"
         }
     }
 }
