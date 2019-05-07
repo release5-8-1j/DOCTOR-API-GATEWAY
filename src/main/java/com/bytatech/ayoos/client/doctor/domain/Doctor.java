@@ -17,10 +17,21 @@ package com.bytatech.ayoos.client.doctor.domain;
 
 
 import org.springframework.data.elasticsearch.annotations.Document;
+
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
 import java.util.Objects;
 
 /**
@@ -31,9 +42,10 @@ public class Doctor implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
+   
     private Long id;
 
-   
+    
     private byte[] image;
 
    
@@ -42,30 +54,34 @@ public class Doctor implements Serializable {
    
     private String doctorId;
 
-  
+
     private String specialization;
 
+    
     private String registerNumber;
 
- 
     private ZonedDateTime practiceSince;
 
-    
     private Double totalRating;
 
-
+    
     private ContactInfo contactInfo;
 
- 
-    private Review review;
-
-  
-    private UserRating userRating;
-
    
+    private PaymentSettings paymentSettings;
+
+
     private Set<WorkPlace> workPlaces = new HashSet<>();
-   
+  
     private Set<Qualification> qualifications = new HashSet<>();
+    
+    private Set<SessionInfo> sessionInfos = new HashSet<>();
+
+    private Set<Review> reviews = new HashSet<>();
+ 
+    private Set<UserRating> userRatings = new HashSet<>();
+  
+    private Set<ReservedSlot> reservedSlots = new HashSet<>();
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -179,30 +195,17 @@ public class Doctor implements Serializable {
         this.contactInfo = contactInfo;
     }
 
-    public Review getReview() {
-        return review;
+    public PaymentSettings getPaymentSettings() {
+        return paymentSettings;
     }
 
-    public Doctor review(Review review) {
-        this.review = review;
+    public Doctor paymentSettings(PaymentSettings paymentSettings) {
+        this.paymentSettings = paymentSettings;
         return this;
     }
 
-    public void setReview(Review review) {
-        this.review = review;
-    }
-
-    public UserRating getUserRating() {
-        return userRating;
-    }
-
-    public Doctor userRating(UserRating userRating) {
-        this.userRating = userRating;
-        return this;
-    }
-
-    public void setUserRating(UserRating userRating) {
-        this.userRating = userRating;
+    public void setPaymentSettings(PaymentSettings paymentSettings) {
+        this.paymentSettings = paymentSettings;
     }
 
     public Set<WorkPlace> getWorkPlaces() {
@@ -253,6 +256,83 @@ public class Doctor implements Serializable {
 
     public void setQualifications(Set<Qualification> qualifications) {
         this.qualifications = qualifications;
+    }
+
+    public Set<SessionInfo> getSessionInfos() {
+        return sessionInfos;
+    }
+
+    public Doctor sessionInfos(Set<SessionInfo> sessionInfos) {
+        this.sessionInfos = sessionInfos;
+        return this;
+    }
+
+    public Doctor addSessionInfo(SessionInfo sessionInfo) {
+        this.sessionInfos.add(sessionInfo);
+        sessionInfo.setDoctor(this);
+        return this;
+    }
+
+    public Doctor removeSessionInfo(SessionInfo sessionInfo) {
+        this.sessionInfos.remove(sessionInfo);
+        sessionInfo.setDoctor(null);
+        return this;
+    }
+
+    public void setSessionInfos(Set<SessionInfo> sessionInfos) {
+        this.sessionInfos = sessionInfos;
+    }
+
+    public Set<Review> getReviews() {
+        return reviews;
+    }
+
+    public Doctor reviews(Set<Review> reviews) {
+        this.reviews = reviews;
+        return this;
+    }
+
+
+    public void setReviews(Set<Review> reviews) {
+        this.reviews = reviews;
+    }
+
+    public Set<UserRating> getUserRatings() {
+        return userRatings;
+    }
+
+    public Doctor userRatings(Set<UserRating> userRatings) {
+        this.userRatings = userRatings;
+        return this;
+    }
+
+    public void setUserRatings(Set<UserRating> userRatings) {
+        this.userRatings = userRatings;
+    }
+
+    public Set<ReservedSlot> getReservedSlots() {
+        return reservedSlots;
+    }
+
+    public Doctor reservedSlots(Set<ReservedSlot> reservedSlots) {
+        this.reservedSlots = reservedSlots;
+        return this;
+    }
+
+    public Doctor addReservedSlot(ReservedSlot reservedSlot) {
+        this.reservedSlots.add(reservedSlot);
+        reservedSlot.setDoctor(this);
+        return this;
+    }
+
+    public Doctor removeReservedSlot(ReservedSlot reservedSlot) {
+        this.reservedSlots.remove(reservedSlot);
+        reservedSlot.setDoctor(null);
+        return this;
+    }
+
+    public void setReservedSlots(Set<ReservedSlot> reservedSlots) {
+        this.reservedSlots = reservedSlots;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
