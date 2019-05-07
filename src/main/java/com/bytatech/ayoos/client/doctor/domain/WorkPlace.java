@@ -1,6 +1,8 @@
 
 package com.bytatech.ayoos.client.doctor.domain;
 
+
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -14,21 +16,20 @@ import java.util.Objects;
 /**
  * A WorkPlace.
  */
-
 @Document(indexName = "workplace")
 public class WorkPlace implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
+    
     private Long id;
 
+   
     private String name;
 
     @GeoPointField
-   
     private String location;
 
-
+  
     private Doctor doctor;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

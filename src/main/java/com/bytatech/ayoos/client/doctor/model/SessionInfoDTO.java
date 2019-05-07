@@ -16,7 +16,7 @@ import javax.validation.constraints.*;
  * SessionInfoDTO
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-06T16:36:02.760+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-07T12:42:08.814+05:30[Asia/Calcutta]")
 
 public class SessionInfoDTO   {
   @JsonProperty("date")
@@ -42,6 +42,9 @@ public class SessionInfoDTO   {
 
   @JsonProperty("weekDay")
   private Integer weekDay = null;
+
+  @JsonProperty("workPlaceId")
+  private Long workPlaceId = null;
 
   public SessionInfoDTO date(LocalDate date) {
     this.date = date;
@@ -206,6 +209,26 @@ public class SessionInfoDTO   {
     this.weekDay = weekDay;
   }
 
+  public SessionInfoDTO workPlaceId(Long workPlaceId) {
+    this.workPlaceId = workPlaceId;
+    return this;
+  }
+
+  /**
+   * Get workPlaceId
+   * @return workPlaceId
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public Long getWorkPlaceId() {
+    return workPlaceId;
+  }
+
+  public void setWorkPlaceId(Long workPlaceId) {
+    this.workPlaceId = workPlaceId;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -223,12 +246,13 @@ public class SessionInfoDTO   {
         Objects.equals(this.interval, sessionInfoDTO.interval) &&
         Objects.equals(this.sessionName, sessionInfoDTO.sessionName) &&
         Objects.equals(this.toTime, sessionInfoDTO.toTime) &&
-        Objects.equals(this.weekDay, sessionInfoDTO.weekDay);
+        Objects.equals(this.weekDay, sessionInfoDTO.weekDay) &&
+        Objects.equals(this.workPlaceId, sessionInfoDTO.workPlaceId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, doctorId, fromTime, id, interval, sessionName, toTime, weekDay);
+    return Objects.hash(date, doctorId, fromTime, id, interval, sessionName, toTime, weekDay, workPlaceId);
   }
 
   @Override
@@ -244,6 +268,7 @@ public class SessionInfoDTO   {
     sb.append("    sessionName: ").append(toIndentedString(sessionName)).append("\n");
     sb.append("    toTime: ").append(toIndentedString(toTime)).append("\n");
     sb.append("    weekDay: ").append(toIndentedString(weekDay)).append("\n");
+    sb.append("    workPlaceId: ").append(toIndentedString(workPlaceId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

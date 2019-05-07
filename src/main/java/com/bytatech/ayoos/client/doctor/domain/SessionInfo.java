@@ -19,9 +19,19 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
 
 import org.springframework.data.elasticsearch.annotations.Document;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * TODO Provide a detailed description here 
@@ -32,27 +42,30 @@ import org.springframework.data.elasticsearch.annotations.Document;
 public class SessionInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
-   
+    
+  
     private Long id;
 
     private String sessionName;
 
- 
     private LocalDate date;
 
 
     private Integer weekDay;
 
-   // @DecimalMin(value = "0")
+    @DecimalMin(value = "0")
     private Double fromTime;
 
-  //  @DecimalMax(value = "23")
+    @DecimalMax(value = "23")
     private Double toTime;
 
     private Double interval;
 
-  
+
     private Doctor doctor;
+
+
+    private WorkPlace workPlace;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -152,6 +165,19 @@ public class SessionInfo implements Serializable {
 
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
+    }
+
+    public WorkPlace getWorkPlace() {
+        return workPlace;
+    }
+
+    public SessionInfo workPlace(WorkPlace workPlace) {
+        this.workPlace = workPlace;
+        return this;
+    }
+
+    public void setWorkPlace(WorkPlace workPlace) {
+        this.workPlace = workPlace;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
