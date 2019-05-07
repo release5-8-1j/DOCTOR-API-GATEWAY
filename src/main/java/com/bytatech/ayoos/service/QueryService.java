@@ -28,7 +28,7 @@ public interface QueryService {
 	Page<WorkPlace> findWorkPlaces(String searchTerm, Pageable pageable);
 
 	/**
-	 * @param searchTerm 
+	 * @param searchTerm
 	 * @param pageable
 	 * @return
 	 */
@@ -44,13 +44,17 @@ public interface QueryService {
 	/**
 	 * @param searchTerm
 	 * @param pageable
-	 * @return 
+	 * @return
 	 */
 	Page<ReservedSlot> findAllReservedSlot(String searchTerm, Pageable pageable);
 
+	/**
+	 * @param searchTerm
+	 * @param pageable
+	 * @return
+	 */
+	Page<SessionInfo> findSessionInfos(String searchTerm, Pageable pageable);
 
-
-
-
+	Page<SessionInfo> findSessionInfoByDoctorsWorkPlace(String doctorId, Long workPlaceId, Pageable pageable);
 
 }

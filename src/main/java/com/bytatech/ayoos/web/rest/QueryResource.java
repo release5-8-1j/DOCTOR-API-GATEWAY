@@ -91,7 +91,7 @@ public class QueryResource {
 
 	@GetMapping("/work-places/{searchTerm}")
 	public ResponseEntity<List<WorkPlaceDTO>> findWorkPlace(@PathVariable String searchTerm, Pageable pageable) {
-		return workPlaceResourceApi.listToDtoUsingPOST6(queryService.findWorkPlaces(searchTerm, pageable).getContent());
+		return workPlaceResourceApi.listToDtoUsingPOST7(queryService.findWorkPlaces(searchTerm, pageable).getContent());
 	}
 
 	@GetMapping("/findworkplacesBydoctorId/{doctorId}")
@@ -120,6 +120,8 @@ public class QueryResource {
 	public ResponseEntity<List<SessionInfoDTO>> findAllSesionInfo(@PathVariable String searchTerm, Pageable pageable) {
 		return sessionInfoResourceApi.listToDtoUsingPOST6(queryService.findAllSessionInfo(searchTerm, pageable).getContent());
 	}
+	//add findsessionInfoHavingWorkPlaceIdAndDoctorId
+	
 	@GetMapping("/slots")
 	public ResponseEntity<List<ReservedSlotDTO>> findAllSlots(@PathVariable String searchTerm, Pageable pageable){
 	return reservedSlotResourceApi.listToDtoUsingPOST4(queryService.findAllReservedSlot(searchTerm,pageable).getContent());

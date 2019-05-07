@@ -2,6 +2,7 @@ package com.bytatech.ayoos.client.doctor.model;
 
 import java.util.Objects;
 import com.bytatech.ayoos.client.doctor.model.Doctor;
+import com.bytatech.ayoos.client.doctor.model.WorkPlace;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
@@ -17,7 +18,7 @@ import javax.validation.constraints.*;
  * SessionInfo
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-06T16:36:02.760+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-07T12:42:08.814+05:30[Asia/Calcutta]")
 
 public class SessionInfo   {
   @JsonProperty("date")
@@ -43,6 +44,9 @@ public class SessionInfo   {
 
   @JsonProperty("weekDay")
   private Integer weekDay = null;
+
+  @JsonProperty("workPlace")
+  private WorkPlace workPlace = null;
 
   public SessionInfo date(LocalDate date) {
     this.date = date;
@@ -208,6 +212,27 @@ public class SessionInfo   {
     this.weekDay = weekDay;
   }
 
+  public SessionInfo workPlace(WorkPlace workPlace) {
+    this.workPlace = workPlace;
+    return this;
+  }
+
+  /**
+   * Get workPlace
+   * @return workPlace
+  **/
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public WorkPlace getWorkPlace() {
+    return workPlace;
+  }
+
+  public void setWorkPlace(WorkPlace workPlace) {
+    this.workPlace = workPlace;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -225,12 +250,13 @@ public class SessionInfo   {
         Objects.equals(this.interval, sessionInfo.interval) &&
         Objects.equals(this.sessionName, sessionInfo.sessionName) &&
         Objects.equals(this.toTime, sessionInfo.toTime) &&
-        Objects.equals(this.weekDay, sessionInfo.weekDay);
+        Objects.equals(this.weekDay, sessionInfo.weekDay) &&
+        Objects.equals(this.workPlace, sessionInfo.workPlace);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, doctor, fromTime, id, interval, sessionName, toTime, weekDay);
+    return Objects.hash(date, doctor, fromTime, id, interval, sessionName, toTime, weekDay, workPlace);
   }
 
   @Override
@@ -246,6 +272,7 @@ public class SessionInfo   {
     sb.append("    sessionName: ").append(toIndentedString(sessionName)).append("\n");
     sb.append("    toTime: ").append(toIndentedString(toTime)).append("\n");
     sb.append("    weekDay: ").append(toIndentedString(weekDay)).append("\n");
+    sb.append("    workPlace: ").append(toIndentedString(workPlace)).append("\n");
     sb.append("}");
     return sb.toString();
   }

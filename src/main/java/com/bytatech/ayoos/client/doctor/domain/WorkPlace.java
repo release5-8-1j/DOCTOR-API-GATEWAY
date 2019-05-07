@@ -25,7 +25,6 @@ public class WorkPlace implements Serializable {
     private String name;
 
     @GeoPointField
-   
     private String location;
 
 
