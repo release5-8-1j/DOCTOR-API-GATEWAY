@@ -121,7 +121,7 @@ public class QueryResource {
 		return sessionInfoResourceApi.listToDtoUsingPOST6(queryService.findAllSessionInfo(searchTerm, pageable).getContent());
 	}
 	//add findsessionInfoHavingWorkPlaceIdAndDoctorId
-	@GetMapping("/session-infos-doctorsworkplace{doctorId}/{workPlaceId}")
+	@GetMapping("/session-infos-doctorsworkplace/{doctorId}/{workPlaceId}")
 	public ResponseEntity<List<SessionInfoDTO>> findAllSesionInfoByDoctorsWorkPlace(@PathVariable String doctorId,@PathVariable Long workPlaceId, Pageable pageable) {
 		return sessionInfoResourceApi.listToDtoUsingPOST6(queryService.findSessionInfoByDoctorsWorkPlace(doctorId, workPlaceId, pageable).getContent());
 	}
