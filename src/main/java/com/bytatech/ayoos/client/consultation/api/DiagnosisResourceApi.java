@@ -25,7 +25,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-07T11:51:39.998+05:30[Asia/Kolkata]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-08T15:10:06.040+05:30[Asia/Kolkata]")
 
 @Api(value = "DiagnosisResource", description = "the DiagnosisResource API")
 public interface DiagnosisResourceApi {

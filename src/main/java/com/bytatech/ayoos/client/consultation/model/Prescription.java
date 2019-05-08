@@ -10,12 +10,12 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * PrescriptionDTO
+ * Prescription
  */
 @Validated
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-08T15:10:06.040+05:30[Asia/Kolkata]")
 
-public class PrescriptionDTO   {
+public class Prescription   {
   @JsonProperty("dose")
   private String dose = null;
 
@@ -34,7 +34,7 @@ public class PrescriptionDTO   {
   @JsonProperty("prescriptionDMSURL")
   private String prescriptionDMSURL = null;
 
-  public PrescriptionDTO dose(String dose) {
+  public Prescription dose(String dose) {
     this.dose = dose;
     return this;
   }
@@ -54,7 +54,7 @@ public class PrescriptionDTO   {
     this.dose = dose;
   }
 
-  public PrescriptionDTO drug(String drug) {
+  public Prescription drug(String drug) {
     this.drug = drug;
     return this;
   }
@@ -74,7 +74,7 @@ public class PrescriptionDTO   {
     this.drug = drug;
   }
 
-  public PrescriptionDTO frequency(String frequency) {
+  public Prescription frequency(String frequency) {
     this.frequency = frequency;
     return this;
   }
@@ -94,7 +94,7 @@ public class PrescriptionDTO   {
     this.frequency = frequency;
   }
 
-  public PrescriptionDTO id(Long id) {
+  public Prescription id(Long id) {
     this.id = id;
     return this;
   }
@@ -114,7 +114,7 @@ public class PrescriptionDTO   {
     this.id = id;
   }
 
-  public PrescriptionDTO period(String period) {
+  public Prescription period(String period) {
     this.period = period;
     return this;
   }
@@ -134,7 +134,7 @@ public class PrescriptionDTO   {
     this.period = period;
   }
 
-  public PrescriptionDTO prescriptionDMSURL(String prescriptionDMSURL) {
+  public Prescription prescriptionDMSURL(String prescriptionDMSURL) {
     this.prescriptionDMSURL = prescriptionDMSURL;
     return this;
   }
@@ -163,13 +163,13 @@ public class PrescriptionDTO   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PrescriptionDTO prescriptionDTO = (PrescriptionDTO) o;
-    return Objects.equals(this.dose, prescriptionDTO.dose) &&
-        Objects.equals(this.drug, prescriptionDTO.drug) &&
-        Objects.equals(this.frequency, prescriptionDTO.frequency) &&
-        Objects.equals(this.id, prescriptionDTO.id) &&
-        Objects.equals(this.period, prescriptionDTO.period) &&
-        Objects.equals(this.prescriptionDMSURL, prescriptionDTO.prescriptionDMSURL);
+    Prescription prescription = (Prescription) o;
+    return Objects.equals(this.dose, prescription.dose) &&
+        Objects.equals(this.drug, prescription.drug) &&
+        Objects.equals(this.frequency, prescription.frequency) &&
+        Objects.equals(this.id, prescription.id) &&
+        Objects.equals(this.period, prescription.period) &&
+        Objects.equals(this.prescriptionDMSURL, prescription.prescriptionDMSURL);
   }
 
   @Override
@@ -180,7 +180,7 @@ public class PrescriptionDTO   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PrescriptionDTO {\n");
+    sb.append("class Prescription {\n");
     
     sb.append("    dose: ").append(toIndentedString(dose)).append("\n");
     sb.append("    drug: ").append(toIndentedString(drug)).append("\n");

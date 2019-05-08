@@ -42,6 +42,7 @@ import com.bytatech.ayoos.client.consultation.model.ConsultationRequest;
 import com.bytatech.ayoos.client.consultation.model.DefaultInfoRequest;
 import com.bytatech.ayoos.client.consultation.model.InitiateMedicalSummaryRequest;
 import com.bytatech.ayoos.client.consultation.model.ParamedicalExaminationRequest;
+import com.bytatech.ayoos.client.consultation.model.Prescription;
 import com.bytatech.ayoos.client.consultation.model.PrescriptionRequest;
 import com.bytatech.ayoos.client.doctor.api.*;
 import com.bytatech.ayoos.client.doctor.domain.ReservedSlot;
@@ -189,7 +190,7 @@ public class CommandResource {
 	}
 
 	@PostMapping("/collect-Prescription-Info/{taskId}")
-	public void collectPrescriptionInformations(@PathVariable String taskId, PrescriptionRequest prescriptionRequest) {
+	public void collectPrescriptionInformations(@PathVariable String taskId, Prescription prescriptionRequest) {
 
 		consultationApi.collectPrescriptionInformationsUsingPOST(taskId, prescriptionRequest);
 	}
