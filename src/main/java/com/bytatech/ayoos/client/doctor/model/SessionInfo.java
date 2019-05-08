@@ -1,15 +1,12 @@
 package com.bytatech.ayoos.client.doctor.model;
 
 import java.util.Objects;
-import com.bytatech.ayoos.client.doctor.model.Doctor;
 import com.bytatech.ayoos.client.doctor.model.WorkPlace;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
 import java.time.LocalDate;
-import java.util.Date;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -18,14 +15,11 @@ import javax.validation.constraints.*;
  * SessionInfo
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-07T12:42:08.814+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-08T13:00:17.619+05:30[Asia/Calcutta]")
 
 public class SessionInfo   {
   @JsonProperty("date")
   private LocalDate date = null;
-
-  @JsonProperty("doctor")
-  private Doctor doctor = null;
 
   @JsonProperty("fromTime")
   private Double fromTime = null;
@@ -67,27 +61,6 @@ public class SessionInfo   {
 
   public void setDate(LocalDate date) {
     this.date = date;
-  }
-
-  public SessionInfo doctor(Doctor doctor) {
-    this.doctor = doctor;
-    return this;
-  }
-
-  /**
-   * Get doctor
-   * @return doctor
-  **/
-  @ApiModelProperty(value = "")
-
-  @Valid
-
-  public Doctor getDoctor() {
-    return doctor;
-  }
-
-  public void setDoctor(Doctor doctor) {
-    this.doctor = doctor;
   }
 
   public SessionInfo fromTime(Double fromTime) {
@@ -244,7 +217,6 @@ public class SessionInfo   {
     }
     SessionInfo sessionInfo = (SessionInfo) o;
     return Objects.equals(this.date, sessionInfo.date) &&
-        Objects.equals(this.doctor, sessionInfo.doctor) &&
         Objects.equals(this.fromTime, sessionInfo.fromTime) &&
         Objects.equals(this.id, sessionInfo.id) &&
         Objects.equals(this.interval, sessionInfo.interval) &&
@@ -256,7 +228,7 @@ public class SessionInfo   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, doctor, fromTime, id, interval, sessionName, toTime, weekDay, workPlace);
+    return Objects.hash(date, fromTime, id, interval, sessionName, toTime, weekDay, workPlace);
   }
 
   @Override
@@ -265,7 +237,6 @@ public class SessionInfo   {
     sb.append("class SessionInfo {\n");
     
     sb.append("    date: ").append(toIndentedString(date)).append("\n");
-    sb.append("    doctor: ").append(toIndentedString(doctor)).append("\n");
     sb.append("    fromTime: ").append(toIndentedString(fromTime)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    interval: ").append(toIndentedString(interval)).append("\n");

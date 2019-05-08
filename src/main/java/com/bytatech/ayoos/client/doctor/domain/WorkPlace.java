@@ -3,15 +3,15 @@ package com.bytatech.ayoos.client.doctor.domain;
 
 
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.GeoPointField;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A WorkPlace.
@@ -21,17 +21,19 @@ public class WorkPlace implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
+
     private Long id;
 
-   
+    
+    
     private String name;
 
     @GeoPointField
     private String location;
 
-  
     private Doctor doctor;
 
+    private Set<SessionInfo> sessionInfos = new HashSet<>();
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -78,6 +80,31 @@ public class WorkPlace implements Serializable {
 
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
+    }
+
+    public Set<SessionInfo> getSessionInfos() {
+        return sessionInfos;
+    }
+
+    public WorkPlace sessionInfos(Set<SessionInfo> sessionInfos) {
+        this.sessionInfos = sessionInfos;
+        return this;
+    }
+
+    public WorkPlace addSessionInfo(SessionInfo sessionInfo) {
+        this.sessionInfos.add(sessionInfo);
+        sessionInfo.setWorkPlace(this);
+        return this;
+    }
+
+    public WorkPlace removeSessionInfo(SessionInfo sessionInfo) {
+        this.sessionInfos.remove(sessionInfo);
+        sessionInfo.setWorkPlace(null);
+        return this;
+    }
+
+    public void setSessionInfos(Set<SessionInfo> sessionInfos) {
+        this.sessionInfos = sessionInfos;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

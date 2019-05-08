@@ -41,46 +41,43 @@ import java.util.Objects;
 public class Doctor implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
-   
+  
     private Long id;
 
-    
+    @Lob
     private byte[] image;
 
    
     private String imageContentType;
 
-   
+
     private String doctorId;
 
-
+   
     private String specialization;
 
-    
     private String registerNumber;
+
 
     private ZonedDateTime practiceSince;
 
+
     private Double totalRating;
 
-    
     private ContactInfo contactInfo;
 
-   
+    
     private PaymentSettings paymentSettings;
 
 
     private Set<WorkPlace> workPlaces = new HashSet<>();
-  
+
     private Set<Qualification> qualifications = new HashSet<>();
-    
-    private Set<SessionInfo> sessionInfos = new HashSet<>();
 
     private Set<Review> reviews = new HashSet<>();
  
     private Set<UserRating> userRatings = new HashSet<>();
-  
+
     private Set<ReservedSlot> reservedSlots = new HashSet<>();
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -258,31 +255,6 @@ public class Doctor implements Serializable {
         this.qualifications = qualifications;
     }
 
-    public Set<SessionInfo> getSessionInfos() {
-        return sessionInfos;
-    }
-
-    public Doctor sessionInfos(Set<SessionInfo> sessionInfos) {
-        this.sessionInfos = sessionInfos;
-        return this;
-    }
-
-    public Doctor addSessionInfo(SessionInfo sessionInfo) {
-        this.sessionInfos.add(sessionInfo);
-        sessionInfo.setDoctor(this);
-        return this;
-    }
-
-    public Doctor removeSessionInfo(SessionInfo sessionInfo) {
-        this.sessionInfos.remove(sessionInfo);
-        sessionInfo.setDoctor(null);
-        return this;
-    }
-
-    public void setSessionInfos(Set<SessionInfo> sessionInfos) {
-        this.sessionInfos = sessionInfos;
-    }
-
     public Set<Review> getReviews() {
         return reviews;
     }
@@ -292,6 +264,7 @@ public class Doctor implements Serializable {
         return this;
     }
 
+    
 
     public void setReviews(Set<Review> reviews) {
         this.reviews = reviews;
@@ -306,6 +279,7 @@ public class Doctor implements Serializable {
         return this;
     }
 
+   
     public void setUserRatings(Set<UserRating> userRatings) {
         this.userRatings = userRatings;
     }

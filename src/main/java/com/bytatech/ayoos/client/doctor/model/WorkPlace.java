@@ -2,10 +2,13 @@ package com.bytatech.ayoos.client.doctor.model;
 
 import java.util.Objects;
 import com.bytatech.ayoos.client.doctor.model.Doctor;
+import com.bytatech.ayoos.client.doctor.model.SessionInfo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -14,7 +17,7 @@ import javax.validation.constraints.*;
  * WorkPlace
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-07T12:42:08.814+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-08T13:00:17.619+05:30[Asia/Calcutta]")
 
 public class WorkPlace   {
   @JsonProperty("doctor")
@@ -28,6 +31,10 @@ public class WorkPlace   {
 
   @JsonProperty("name")
   private String name = null;
+
+  @JsonProperty("sessionInfos")
+  @Valid
+  private List<SessionInfo> sessionInfos = null;
 
   public WorkPlace doctor(Doctor doctor) {
     this.doctor = doctor;
@@ -110,6 +117,35 @@ public class WorkPlace   {
     this.name = name;
   }
 
+  public WorkPlace sessionInfos(List<SessionInfo> sessionInfos) {
+    this.sessionInfos = sessionInfos;
+    return this;
+  }
+
+  public WorkPlace addSessionInfosItem(SessionInfo sessionInfosItem) {
+    if (this.sessionInfos == null) {
+      this.sessionInfos = new ArrayList<SessionInfo>();
+    }
+    this.sessionInfos.add(sessionInfosItem);
+    return this;
+  }
+
+  /**
+   * Get sessionInfos
+   * @return sessionInfos
+  **/
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public List<SessionInfo> getSessionInfos() {
+    return sessionInfos;
+  }
+
+  public void setSessionInfos(List<SessionInfo> sessionInfos) {
+    this.sessionInfos = sessionInfos;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -123,12 +159,13 @@ public class WorkPlace   {
     return Objects.equals(this.doctor, workPlace.doctor) &&
         Objects.equals(this.id, workPlace.id) &&
         Objects.equals(this.location, workPlace.location) &&
-        Objects.equals(this.name, workPlace.name);
+        Objects.equals(this.name, workPlace.name) &&
+        Objects.equals(this.sessionInfos, workPlace.sessionInfos);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(doctor, id, location, name);
+    return Objects.hash(doctor, id, location, name, sessionInfos);
   }
 
   @Override
@@ -140,6 +177,7 @@ public class WorkPlace   {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    sessionInfos: ").append(toIndentedString(sessionInfos)).append("\n");
     sb.append("}");
     return sb.toString();
   }

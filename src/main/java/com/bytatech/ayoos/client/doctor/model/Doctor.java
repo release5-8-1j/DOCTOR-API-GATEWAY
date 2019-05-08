@@ -6,7 +6,6 @@ import com.bytatech.ayoos.client.doctor.model.PaymentSettings;
 import com.bytatech.ayoos.client.doctor.model.Qualification;
 import com.bytatech.ayoos.client.doctor.model.ReservedSlot;
 import com.bytatech.ayoos.client.doctor.model.Review;
-import com.bytatech.ayoos.client.doctor.model.SessionInfo;
 import com.bytatech.ayoos.client.doctor.model.UserRating;
 import com.bytatech.ayoos.client.doctor.model.WorkPlace;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -24,7 +23,7 @@ import javax.validation.constraints.*;
  * Doctor
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-07T12:42:08.814+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-08T13:00:17.619+05:30[Asia/Calcutta]")
 
 public class Doctor   {
   @JsonProperty("contactInfo")
@@ -62,10 +61,6 @@ public class Doctor   {
   @JsonProperty("reviews")
   @Valid
   private List<Review> reviews = null;
-
-  @JsonProperty("sessionInfos")
-  @Valid
-  private List<SessionInfo> sessionInfos = null;
 
   @JsonProperty("specialization")
   private String specialization = null;
@@ -331,35 +326,6 @@ public class Doctor   {
     this.reviews = reviews;
   }
 
-  public Doctor sessionInfos(List<SessionInfo> sessionInfos) {
-    this.sessionInfos = sessionInfos;
-    return this;
-  }
-
-  public Doctor addSessionInfosItem(SessionInfo sessionInfosItem) {
-    if (this.sessionInfos == null) {
-      this.sessionInfos = new ArrayList<SessionInfo>();
-    }
-    this.sessionInfos.add(sessionInfosItem);
-    return this;
-  }
-
-  /**
-   * Get sessionInfos
-   * @return sessionInfos
-  **/
-  @ApiModelProperty(value = "")
-
-  @Valid
-
-  public List<SessionInfo> getSessionInfos() {
-    return sessionInfos;
-  }
-
-  public void setSessionInfos(List<SessionInfo> sessionInfos) {
-    this.sessionInfos = sessionInfos;
-  }
-
   public Doctor specialization(String specialization) {
     this.specialization = specialization;
     return this;
@@ -479,7 +445,6 @@ public class Doctor   {
         Objects.equals(this.registerNumber, doctor.registerNumber) &&
         Objects.equals(this.reservedSlots, doctor.reservedSlots) &&
         Objects.equals(this.reviews, doctor.reviews) &&
-        Objects.equals(this.sessionInfos, doctor.sessionInfos) &&
         Objects.equals(this.specialization, doctor.specialization) &&
         Objects.equals(this.totalRating, doctor.totalRating) &&
         Objects.equals(this.userRatings, doctor.userRatings) &&
@@ -488,7 +453,7 @@ public class Doctor   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(contactInfo, doctorId, id, image, imageContentType, paymentSettings, practiceSince, qualifications, registerNumber, reservedSlots, reviews, sessionInfos, specialization, totalRating, userRatings, workPlaces);
+    return Objects.hash(contactInfo, doctorId, id, image, imageContentType, paymentSettings, practiceSince, qualifications, registerNumber, reservedSlots, reviews, specialization, totalRating, userRatings, workPlaces);
   }
 
   @Override
@@ -507,7 +472,6 @@ public class Doctor   {
     sb.append("    registerNumber: ").append(toIndentedString(registerNumber)).append("\n");
     sb.append("    reservedSlots: ").append(toIndentedString(reservedSlots)).append("\n");
     sb.append("    reviews: ").append(toIndentedString(reviews)).append("\n");
-    sb.append("    sessionInfos: ").append(toIndentedString(sessionInfos)).append("\n");
     sb.append("    specialization: ").append(toIndentedString(specialization)).append("\n");
     sb.append("    totalRating: ").append(toIndentedString(totalRating)).append("\n");
     sb.append("    userRatings: ").append(toIndentedString(userRatings)).append("\n");

@@ -16,14 +16,11 @@ import javax.validation.constraints.*;
  * SessionInfoDTO
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-07T12:42:08.814+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-08T13:00:17.619+05:30[Asia/Calcutta]")
 
 public class SessionInfoDTO   {
   @JsonProperty("date")
   private LocalDate date = null;
-
-  @JsonProperty("doctorId")
-  private Long doctorId = null;
 
   @JsonProperty("fromTime")
   private Double fromTime = null;
@@ -65,26 +62,6 @@ public class SessionInfoDTO   {
 
   public void setDate(LocalDate date) {
     this.date = date;
-  }
-
-  public SessionInfoDTO doctorId(Long doctorId) {
-    this.doctorId = doctorId;
-    return this;
-  }
-
-  /**
-   * Get doctorId
-   * @return doctorId
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public Long getDoctorId() {
-    return doctorId;
-  }
-
-  public void setDoctorId(Long doctorId) {
-    this.doctorId = doctorId;
   }
 
   public SessionInfoDTO fromTime(Double fromTime) {
@@ -240,7 +217,6 @@ public class SessionInfoDTO   {
     }
     SessionInfoDTO sessionInfoDTO = (SessionInfoDTO) o;
     return Objects.equals(this.date, sessionInfoDTO.date) &&
-        Objects.equals(this.doctorId, sessionInfoDTO.doctorId) &&
         Objects.equals(this.fromTime, sessionInfoDTO.fromTime) &&
         Objects.equals(this.id, sessionInfoDTO.id) &&
         Objects.equals(this.interval, sessionInfoDTO.interval) &&
@@ -252,7 +228,7 @@ public class SessionInfoDTO   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, doctorId, fromTime, id, interval, sessionName, toTime, weekDay, workPlaceId);
+    return Objects.hash(date, fromTime, id, interval, sessionName, toTime, weekDay, workPlaceId);
   }
 
   @Override
@@ -261,7 +237,6 @@ public class SessionInfoDTO   {
     sb.append("class SessionInfoDTO {\n");
     
     sb.append("    date: ").append(toIndentedString(date)).append("\n");
-    sb.append("    doctorId: ").append(toIndentedString(doctorId)).append("\n");
     sb.append("    fromTime: ").append(toIndentedString(fromTime)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    interval: ").append(toIndentedString(interval)).append("\n");
