@@ -142,7 +142,7 @@ public class QueryServiceImpl implements QueryService {
 
 	
 		SearchQuery searchQuery = new NativeSearchQueryBuilder()
-				.withQuery(QueryBuilders.boolQuery().must(QueryBuilders.matchQuery("doctor.doctorId", doctorId))
+				.withQuery(QueryBuilders.boolQuery().must(QueryBuilders.matchQuery("workPlace.doctor.doctorId", doctorId))
 						.must(QueryBuilders.matchQuery("workPlace.workPlaceId", workPlaceId)))
 				.build();
 		return elasticsearchOperations.queryForPage(searchQuery, SessionInfo.class);
