@@ -7,6 +7,9 @@ import feign.RequestTemplate;
 
 import java.util.Optional;
 
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
 public class TokenRelayRequestInterceptor implements RequestInterceptor {
 
     public static final String AUTHORIZATION = "Authorization";

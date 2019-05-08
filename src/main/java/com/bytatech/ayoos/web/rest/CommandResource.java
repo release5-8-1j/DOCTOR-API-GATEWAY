@@ -37,6 +37,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bytatech.ayoos.client.consultation.api.ConsultationCommandResourceApi;
+import com.bytatech.ayoos.client.consultation.model.ConsultationRequest;
+import com.bytatech.ayoos.client.consultation.model.DefaultInfoRequest;
+import com.bytatech.ayoos.client.consultation.model.InitiateMedicalSummaryRequest;
+import com.bytatech.ayoos.client.consultation.model.ParamedicalExaminationRequest;
+import com.bytatech.ayoos.client.consultation.model.PrescriptionRequest;
 import com.bytatech.ayoos.client.doctor.api.*;
 import com.bytatech.ayoos.client.doctor.domain.ReservedSlot;
 import com.bytatech.ayoos.client.doctor.model.*;
@@ -75,6 +81,9 @@ public class CommandResource {
 	  
 	  @Autowired
 	  ReservedSlotResourceApi reservedSlotResourceApi;
+	  
+	  @Autowired
+	  ConsultationCommandResourceApi consultationApi;
 	  
 	  @PostMapping("/doctors")
 	    public ResponseEntity<DoctorDTO> createDoctor(@RequestBody DoctorDTO doctorDTO) throws URISyntaxException {
@@ -149,4 +158,40 @@ public class CommandResource {
 		 return  reservedSlotResourceApi.createSlotUsingPOST(date);
 	  }
 	
+	  
+ ///////////--------------CONSULTATION----------------\\\\\\\\\\\\\\\\\\
+	  
+	  
+	@PostMapping("/initiate-Consultation")
+	public void initiate(@RequestBody InitiateMedicalSummaryRequest medicalSummaryRequest) {
+
+		consultationApi.initiateConsultationSummaryUsingPOST(medicalSummaryRequest);
+	}
+
+	@PostMapping("/collect-Default-info/{taskId}")
+	public void collectInformations(@PathVariable String taskId, @RequestBody DefaultInfoRequest defaultInfoRequest) {
+
+		consultationApi.collectInformationsUsingPOST(taskId, defaultInfoRequest);
+	}
+
+	@PostMapping("/collect-Consultation-Info/{taskId}")
+	public void collectConsultationInformations(@PathVariable String taskId,
+			@RequestBody ConsultationRequest consultationRequest) {
+
+		consultationApi.collectConsultationInformationsUsingPOST(taskId, consultationRequest);
+	}
+
+	@PostMapping("/collect-ParamedicalExamination-Info/{taskId}")
+	public void collectParamedicalExaminationInformations(@PathVariable String taskId,
+			@RequestBody ParamedicalExaminationRequest paramedicalExaminationRequest) {
+
+		consultationApi.collectParamedicalExaminationInformationsUsingPOST(taskId, paramedicalExaminationRequest);
+	}
+
+	@PostMapping("/collect-Prescription-Info/{taskId}")
+	public void collectPrescriptionInformations(@PathVariable String taskId, PrescriptionRequest prescriptionRequest) {
+
+		consultationApi.collectPrescriptionInformationsUsingPOST(taskId, prescriptionRequest);
+	}
+
 }
