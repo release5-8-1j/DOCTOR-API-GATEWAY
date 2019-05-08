@@ -6,7 +6,6 @@
 package com.bytatech.ayoos.client.doctor.api;
 
 import java.util.List;
-
 import com.bytatech.ayoos.client.doctor.domain.WorkPlace;
 import com.bytatech.ayoos.client.doctor.model.WorkPlaceDTO;
 import io.swagger.annotations.*;
@@ -28,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-07T12:42:08.814+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-08T13:00:17.619+05:30[Asia/Calcutta]")
 
 @Api(value = "WorkPlaceResource", description = "the WorkPlaceResource API")
 public interface WorkPlaceResourceApi {
@@ -94,7 +93,7 @@ public interface WorkPlaceResourceApi {
     ResponseEntity<WorkPlaceDTO> getWorkPlaceUsingGET(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
 
 
-    @ApiOperation(value = "listToDto", nickname = "listToDtoUsingPOST7", notes = "", response = WorkPlaceDTO.class, responseContainer = "List", tags={ "work-place-resource", })
+    @ApiOperation(value = "listToDto", nickname = "listToDtoUsingPOST6", notes = "", response = WorkPlaceDTO.class, responseContainer = "List", tags={ "work-place-resource", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = WorkPlaceDTO.class, responseContainer = "List"),
         @ApiResponse(code = 201, message = "Created"),
@@ -105,7 +104,7 @@ public interface WorkPlaceResourceApi {
         produces = "*/*", 
         consumes = "application/json",
         method = RequestMethod.POST)
-    ResponseEntity<List<WorkPlaceDTO>> listToDtoUsingPOST7(@ApiParam(value = "workPlace" ,required=true )  @Valid @RequestBody List<WorkPlace> workPlace);
+    ResponseEntity<List<WorkPlaceDTO>> listToDtoUsingPOST6(@ApiParam(value = "workPlace" ,required=true )  @Valid @RequestBody List<WorkPlace> workPlace);
 
 
     @ApiOperation(value = "searchWorkPlaces", nickname = "searchWorkPlacesUsingGET", notes = "", response = WorkPlaceDTO.class, responseContainer = "List", tags={ "work-place-resource", })

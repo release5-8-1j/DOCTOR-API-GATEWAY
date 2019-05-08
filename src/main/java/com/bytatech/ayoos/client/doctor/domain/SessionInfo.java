@@ -43,9 +43,10 @@ public class SessionInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
-  
+    
     private Long id;
 
+   
     private String sessionName;
 
     private LocalDate date;
@@ -60,9 +61,6 @@ public class SessionInfo implements Serializable {
     private Double toTime;
 
     private Double interval;
-
-
-    private Doctor doctor;
 
 
     private WorkPlace workPlace;
@@ -152,19 +150,6 @@ public class SessionInfo implements Serializable {
 
     public void setInterval(Double interval) {
         this.interval = interval;
-    }
-
-    public Doctor getDoctor() {
-        return doctor;
-    }
-
-    public SessionInfo doctor(Doctor doctor) {
-        this.doctor = doctor;
-        return this;
-    }
-
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
     }
 
     public WorkPlace getWorkPlace() {

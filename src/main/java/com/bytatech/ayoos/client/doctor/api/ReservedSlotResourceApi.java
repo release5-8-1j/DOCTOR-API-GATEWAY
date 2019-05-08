@@ -6,7 +6,6 @@
 package com.bytatech.ayoos.client.doctor.api;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import com.bytatech.ayoos.client.doctor.domain.ReservedSlot;
 import com.bytatech.ayoos.client.doctor.model.ReservedSlotDTO;
@@ -29,7 +28,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-07T12:42:08.814+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-08T13:00:17.619+05:30[Asia/Calcutta]")
 
 @Api(value = "ReservedSlotResource", description = "the ReservedSlotResource API")
 public interface ReservedSlotResourceApi {
@@ -108,7 +107,7 @@ public interface ReservedSlotResourceApi {
     ResponseEntity<ReservedSlotDTO> getReservedSlotUsingGET(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
 
 
-    @ApiOperation(value = "listToDto", nickname = "listToDtoUsingPOST4", notes = "", response = ReservedSlotDTO.class, responseContainer = "List", tags={ "reserved-slot-resource", })
+    @ApiOperation(value = "listToDto", nickname = "listToDtoUsingPOST3", notes = "", response = ReservedSlotDTO.class, responseContainer = "List", tags={ "reserved-slot-resource", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = ReservedSlotDTO.class, responseContainer = "List"),
         @ApiResponse(code = 201, message = "Created"),
@@ -119,7 +118,7 @@ public interface ReservedSlotResourceApi {
         produces = "*/*", 
         consumes = "application/json",
         method = RequestMethod.POST)
-    ResponseEntity<List<ReservedSlotDTO>> listToDtoUsingPOST4(@ApiParam(value = "reservedSlot" ,required=true )  @Valid @RequestBody List<ReservedSlot> reservedSlot);
+    ResponseEntity<List<ReservedSlotDTO>> listToDtoUsingPOST3(@ApiParam(value = "reservedSlot" ,required=true )  @Valid @RequestBody List<ReservedSlot> reservedSlot);
 
 
     @ApiOperation(value = "searchReservedSlots", nickname = "searchReservedSlotsUsingGET", notes = "", response = ReservedSlotDTO.class, responseContainer = "List", tags={ "reserved-slot-resource", })

@@ -27,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-07T12:42:08.814+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-08T13:00:17.619+05:30[Asia/Calcutta]")
 
 @Api(value = "SessionInfoResource", description = "the SessionInfoResource API")
 public interface SessionInfoResourceApi {
@@ -81,7 +81,7 @@ public interface SessionInfoResourceApi {
     ResponseEntity<SessionInfoDTO> getSessionInfoUsingGET(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
 
 
-    @ApiOperation(value = "listToDto", nickname = "listToDtoUsingPOST6", notes = "", response = SessionInfoDTO.class, responseContainer = "List", tags={ "session-info-resource", })
+    @ApiOperation(value = "listToDto", nickname = "listToDtoUsingPOST5", notes = "", response = SessionInfoDTO.class, responseContainer = "List", tags={ "session-info-resource", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = SessionInfoDTO.class, responseContainer = "List"),
         @ApiResponse(code = 201, message = "Created"),
@@ -92,7 +92,7 @@ public interface SessionInfoResourceApi {
         produces = "*/*", 
         consumes = "application/json",
         method = RequestMethod.POST)
-    ResponseEntity<List<SessionInfoDTO>> listToDtoUsingPOST6(@ApiParam(value = "sessionInfo" ,required=true )  @Valid @RequestBody List<SessionInfo> sessionInfo);
+    ResponseEntity<List<SessionInfoDTO>> listToDtoUsingPOST5(@ApiParam(value = "sessionInfo" ,required=true )  @Valid @RequestBody List<SessionInfo> sessionInfo);
 
 
     @ApiOperation(value = "searchSessionInfos", nickname = "searchSessionInfosUsingGET", notes = "", response = SessionInfoDTO.class, responseContainer = "List", tags={ "session-info-resource", })
