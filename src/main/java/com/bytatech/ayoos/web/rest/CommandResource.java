@@ -164,9 +164,9 @@ public class CommandResource {
 	  
 	  
 	@PostMapping("/initiate-Consultation")
-	public void initiate(@RequestBody InitiateMedicalSummaryRequest medicalSummaryRequest) {
+	public ResponseEntity<String> initiate(@RequestBody InitiateMedicalSummaryRequest medicalSummaryRequest) {
 
-		consultationApi.initiateConsultationSummaryUsingPOST(medicalSummaryRequest);
+		return consultationApi.initiateConsultationSummaryUsingPOST(medicalSummaryRequest);
 	}
 
 	@PostMapping("/collect-Default-info/{taskId}")
