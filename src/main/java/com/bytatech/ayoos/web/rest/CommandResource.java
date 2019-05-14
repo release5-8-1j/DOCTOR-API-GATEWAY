@@ -191,7 +191,7 @@ public class CommandResource {
 	}
 
 	@PostMapping("/collect-Prescription-Info/{taskId}")
-	public void collectPrescriptionInformations(@PathVariable String taskId, Prescription prescriptionRequest) {
+	public void collectPrescriptionInformations(@PathVariable String taskId, PrescriptionRequest prescriptionRequest) {
 
 		consultationApi.collectPrescriptionInformationsUsingPOST(taskId, prescriptionRequest);
 	}
