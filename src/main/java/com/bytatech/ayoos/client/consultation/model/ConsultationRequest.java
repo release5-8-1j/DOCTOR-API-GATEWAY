@@ -1,5 +1,6 @@
 package com.bytatech.ayoos.client.consultation.model;
 
+import java.util.Date;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -18,7 +19,7 @@ import javax.validation.constraints.*;
 
 public class ConsultationRequest   {
   @JsonProperty("date")
-  private OffsetDateTime date = null;
+  private Date date = null;
 
   @JsonProperty("evaluation")
   private String evaluation = null;
@@ -32,7 +33,7 @@ public class ConsultationRequest   {
   @JsonProperty("symptom")
   private String symptom = null;
 
-  public ConsultationRequest date(OffsetDateTime date) {
+  public ConsultationRequest date(Date date) {
     this.date = date;
     return this;
   }
@@ -45,11 +46,11 @@ public class ConsultationRequest   {
 
   @Valid
 
-  public OffsetDateTime getDate() {
+  public Date getDate() {
     return date;
   }
 
-  public void setDate(OffsetDateTime date) {
+  public void setDate(Date date) {
     this.date = date;
   }
 
