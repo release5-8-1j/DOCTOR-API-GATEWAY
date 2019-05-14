@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
  * Prescription
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-08T15:10:06.040+05:30[Asia/Kolkata]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-14T12:52:47.202+05:30[Asia/Calcutta]")
 
 public class Prescription   {
   @JsonProperty("dose")

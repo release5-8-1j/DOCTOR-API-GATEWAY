@@ -193,5 +193,8 @@ public class QueryResource {
 		
 	}
 
-	
+	@GetMapping("/prescription-as-pdf")
+	public ResponseEntity<byte[]> getPrescriptionAsPDF(){
+		return consultationQueryResource.getPrescriptionAsPdfUsingGET();
+	}
 }

@@ -31,7 +31,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-08T15:10:06.040+05:30[Asia/Kolkata]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-14T13:01:51.492+05:30[Asia/Calcutta]")
 
 @Api(value = "ConsultationQueryResource", description = "the ConsultationQueryResource API")
 public interface ConsultationQueryResourceApi {
@@ -72,6 +72,18 @@ public interface ConsultationQueryResourceApi {
         consumes = "application/json",
         method = RequestMethod.POST)
     ResponseEntity<DataResponse> getHistoricTaskUsingPOST(@ApiParam(value = "request" ,required=true )  @Valid @RequestBody HistoricTaskInstanceQueryRequest historicTaskInstanceQueryRequest);
+
+
+    @ApiOperation(value = "getPrescriptionAsPdf", nickname = "getPrescriptionAsPdfUsingGET", notes = "", response = byte[].class, tags={ "consultation-query-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = byte[].class),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/query/pdf/prescriptionReport",
+        produces = "*/*", 
+        method = RequestMethod.GET)
+    ResponseEntity<byte[]> getPrescriptionAsPdfUsingGET();
 
 
     @ApiOperation(value = "getPrescriptionDetails", nickname = "getPrescriptionDetailsUsingGET", notes = "", response = PrescriptionRequest.class, tags={ "consultation-query-resource", })
