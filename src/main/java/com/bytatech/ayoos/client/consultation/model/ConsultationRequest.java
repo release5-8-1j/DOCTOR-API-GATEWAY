@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.OffsetDateTime;
@@ -19,6 +21,7 @@ import javax.validation.constraints.*;
 
 public class ConsultationRequest   {
   @JsonProperty("date")
+  @JsonFormat(pattern = "MM-dd-yyyy hh:mm")
   private Date date = null;
 
   @JsonProperty("evaluation")
