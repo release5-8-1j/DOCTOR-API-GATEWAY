@@ -18,6 +18,7 @@ package com.bytatech.ayoos.client.doctor.domain;
 
 import org.springframework.data.elasticsearch.annotations.Document;
 
+
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.HashSet;
@@ -41,20 +42,22 @@ import java.util.Objects;
 public class Doctor implements Serializable {
 
     private static final long serialVersionUID = 1L;
-  
+    
+   
     private Long id;
 
     @Lob
     private byte[] image;
 
-   
+  
     private String imageContentType;
 
 
     private String doctorId;
 
-   
+
     private String specialization;
+
 
     private String registerNumber;
 
@@ -64,20 +67,33 @@ public class Doctor implements Serializable {
 
     private Double totalRating;
 
+
+    private String firstName;
+
+   
+    private String email;
+
+
+    private Long phoneNumber;
+
+
     private ContactInfo contactInfo;
 
     
     private PaymentSettings paymentSettings;
 
 
+    private DoctorSettings doctorSettings;
+
+   
     private Set<WorkPlace> workPlaces = new HashSet<>();
-
+  
     private Set<Qualification> qualifications = new HashSet<>();
-
+   
     private Set<Review> reviews = new HashSet<>();
- 
+   
     private Set<UserRating> userRatings = new HashSet<>();
-
+  
     private Set<ReservedSlot> reservedSlots = new HashSet<>();
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -179,6 +195,45 @@ public class Doctor implements Serializable {
         this.totalRating = totalRating;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public Doctor firstName(String firstName) {
+        this.firstName = firstName;
+        return this;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public Doctor email(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Long getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public Doctor phoneNumber(Long phoneNumber) {
+        this.phoneNumber = phoneNumber;
+        return this;
+    }
+
+    public void setPhoneNumber(Long phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
     public ContactInfo getContactInfo() {
         return contactInfo;
     }
@@ -203,6 +258,19 @@ public class Doctor implements Serializable {
 
     public void setPaymentSettings(PaymentSettings paymentSettings) {
         this.paymentSettings = paymentSettings;
+    }
+
+    public DoctorSettings getDoctorSettings() {
+        return doctorSettings;
+    }
+
+    public Doctor doctorSettings(DoctorSettings doctorSettings) {
+        this.doctorSettings = doctorSettings;
+        return this;
+    }
+
+    public void setDoctorSettings(DoctorSettings doctorSettings) {
+        this.doctorSettings = doctorSettings;
     }
 
     public Set<WorkPlace> getWorkPlaces() {
@@ -279,7 +347,7 @@ public class Doctor implements Serializable {
         return this;
     }
 
-   
+
     public void setUserRatings(Set<UserRating> userRatings) {
         this.userRatings = userRatings;
     }
@@ -341,6 +409,9 @@ public class Doctor implements Serializable {
             ", registerNumber='" + getRegisterNumber() + "'" +
             ", practiceSince='" + getPracticeSince() + "'" +
             ", totalRating=" + getTotalRating() +
+            ", firstName='" + getFirstName() + "'" +
+            ", email='" + getEmail() + "'" +
+            ", phoneNumber=" + getPhoneNumber() +
             "}";
     }
 }

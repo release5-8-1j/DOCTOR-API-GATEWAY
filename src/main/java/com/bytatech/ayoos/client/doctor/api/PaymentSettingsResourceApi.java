@@ -6,7 +6,7 @@
 package com.bytatech.ayoos.client.doctor.api;
 
 import java.util.List;
-import com.bytatech.ayoos.client.doctor.model.PaymentSettings;
+import com.bytatech.ayoos.client.doctor.domain.PaymentSettings;
 import com.bytatech.ayoos.client.doctor.model.PaymentSettingsDTO;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
@@ -27,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-08T13:00:17.619+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-15T12:17:04.753+05:30[Asia/Calcutta]")
 
 @Api(value = "PaymentSettingsResource", description = "the PaymentSettingsResource API")
 public interface PaymentSettingsResourceApi {
@@ -81,7 +81,7 @@ public interface PaymentSettingsResourceApi {
     ResponseEntity<PaymentSettingsDTO> getPaymentSettingsUsingGET(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
 
 
-    @ApiOperation(value = "listToDto", nickname = "listToDtoUsingPOST1", notes = "", response = PaymentSettingsDTO.class, responseContainer = "List", tags={ "payment-settings-resource", })
+    @ApiOperation(value = "listToDto", nickname = "listToDtoUsingPOST2", notes = "", response = PaymentSettingsDTO.class, responseContainer = "List", tags={ "payment-settings-resource", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = PaymentSettingsDTO.class, responseContainer = "List"),
         @ApiResponse(code = 201, message = "Created"),
@@ -92,10 +92,10 @@ public interface PaymentSettingsResourceApi {
         produces = "*/*", 
         consumes = "application/json",
         method = RequestMethod.POST)
-    ResponseEntity<List<PaymentSettingsDTO>> listToDtoUsingPOST1(@ApiParam(value = "paymentSettings" ,required=true )  @Valid @RequestBody List<PaymentSettings> paymentSettings);
+    ResponseEntity<List<PaymentSettingsDTO>> listToDtoUsingPOST2(@ApiParam(value = "paymentSettings" ,required=true )  @Valid @RequestBody List<PaymentSettings> paymentSettings);
 
 
-    @ApiOperation(value = "modelToDto", nickname = "modelToDtoUsingPOST1", notes = "", response = PaymentSettingsDTO.class, tags={ "payment-settings-resource", })
+    @ApiOperation(value = "modelToDto", nickname = "modelToDtoUsingPOST2", notes = "", response = PaymentSettingsDTO.class, tags={ "payment-settings-resource", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = PaymentSettingsDTO.class),
         @ApiResponse(code = 201, message = "Created"),
@@ -106,7 +106,7 @@ public interface PaymentSettingsResourceApi {
         produces = "*/*", 
         consumes = "application/json",
         method = RequestMethod.POST)
-    ResponseEntity<PaymentSettingsDTO> modelToDtoUsingPOST1(@ApiParam(value = "paymentSettings" ,required=true )  @Valid @RequestBody PaymentSettings paymentSettings);
+    ResponseEntity<PaymentSettingsDTO> modelToDtoUsingPOST2(@ApiParam(value = "paymentSettings" ,required=true )  @Valid @RequestBody PaymentSettings paymentSettings);
 
 
     @ApiOperation(value = "searchPaymentSettings", nickname = "searchPaymentSettingsUsingGET", notes = "", response = PaymentSettingsDTO.class, responseContainer = "List", tags={ "payment-settings-resource", })

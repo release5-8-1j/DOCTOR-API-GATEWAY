@@ -27,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-08T13:00:17.619+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-15T12:17:04.753+05:30[Asia/Calcutta]")
 
 @Api(value = "QualificationResource", description = "the QualificationResource API")
 public interface QualificationResourceApi {
@@ -93,7 +93,7 @@ public interface QualificationResourceApi {
     ResponseEntity<QualificationDTO> getQualificationUsingGET(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
 
 
-    @ApiOperation(value = "listToDto", nickname = "listToDtoUsingPOST2", notes = "", response = QualificationDTO.class, responseContainer = "List", tags={ "qualification-resource", })
+    @ApiOperation(value = "listToDto", nickname = "listToDtoUsingPOST3", notes = "", response = QualificationDTO.class, responseContainer = "List", tags={ "qualification-resource", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = QualificationDTO.class, responseContainer = "List"),
         @ApiResponse(code = 201, message = "Created"),
@@ -104,7 +104,7 @@ public interface QualificationResourceApi {
         produces = "*/*", 
         consumes = "application/json",
         method = RequestMethod.POST)
-    ResponseEntity<List<QualificationDTO>> listToDtoUsingPOST2(@ApiParam(value = "qualification" ,required=true )  @Valid @RequestBody List<Qualification> qualification);
+    ResponseEntity<List<QualificationDTO>> listToDtoUsingPOST3(@ApiParam(value = "qualification" ,required=true )  @Valid @RequestBody List<Qualification> qualification);
 
 
     @ApiOperation(value = "searchQualifications", nickname = "searchQualificationsUsingGET", notes = "", response = QualificationDTO.class, responseContainer = "List", tags={ "qualification-resource", })

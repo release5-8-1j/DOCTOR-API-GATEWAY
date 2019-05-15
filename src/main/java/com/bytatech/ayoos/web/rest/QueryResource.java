@@ -116,7 +116,7 @@ public class QueryResource {
 	public ResponseEntity<List<QualificationDTO>> findAllQualification(@PathVariable String searchTerm,
 			Pageable pageable) {
 		return qualificationResourceApi
-				.listToDtoUsingPOST2(queryService.findAllQualification(searchTerm, pageable).getContent());
+				.listToDtoUsingPOST3(queryService.findAllQualification(searchTerm, pageable).getContent());
 	}
 
 	@GetMapping("/qualification/{doctorId}")
@@ -126,16 +126,16 @@ public class QueryResource {
 
 	@GetMapping("/session-infos/{searchTerm}")
 	public ResponseEntity<List<SessionInfoDTO>> findAllSesionInfo(@PathVariable String searchTerm, Pageable pageable) {
-		return sessionInfoResourceApi.listToDtoUsingPOST5(queryService.findAllSessionInfo(searchTerm, pageable).getContent());
+		return sessionInfoResourceApi.listToDtoUsingPOST6(queryService.findAllSessionInfo(searchTerm, pageable).getContent());
 	} 
 	//add findsessionInfoHavingWorkPlaceIdAndDoctorId
 	@GetMapping("/session-infos-doctorsworkplace/{doctorId}/{workPlaceId}")
 	public ResponseEntity<List<SessionInfoDTO>> findAllSesionInfoByDoctorsWorkPlace(@PathVariable String doctorId,@PathVariable Long workPlaceId, Pageable pageable) {
-		return sessionInfoResourceApi.listToDtoUsingPOST5(queryService.findSessionInfoByDoctorsWorkPlace(doctorId, workPlaceId, pageable).getContent());
+		return sessionInfoResourceApi.listToDtoUsingPOST6(queryService.findSessionInfoByDoctorsWorkPlace(doctorId, workPlaceId, pageable).getContent());
 	}
 	@GetMapping("/slots/{searchTerm}")
 	public ResponseEntity<List<ReservedSlotDTO>> findAllSlots(@PathVariable String searchTerm, Pageable pageable){
-	return reservedSlotResourceApi.listToDtoUsingPOST3(queryService.findAllReservedSlot(searchTerm,pageable).getContent());
+	return reservedSlotResourceApi.listToDtoUsingPOST4(queryService.findAllReservedSlot(searchTerm,pageable).getContent());
 	}
 
 	@GetMapping("/unreserved-slots")

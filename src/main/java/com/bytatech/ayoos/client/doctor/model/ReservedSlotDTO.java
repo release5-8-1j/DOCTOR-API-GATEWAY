@@ -16,7 +16,7 @@ import javax.validation.constraints.*;
  * ReservedSlotDTO
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-08T13:00:17.619+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-15T12:17:04.753+05:30[Asia/Calcutta]")
 
 public class ReservedSlotDTO   {
   @JsonProperty("date")
@@ -33,6 +33,9 @@ public class ReservedSlotDTO   {
 
   @JsonProperty("startTime")
   private Double startTime = null;
+
+  @JsonProperty("tokenNumber")
+  private Integer tokenNumber = null;
 
   public ReservedSlotDTO date(LocalDate date) {
     this.date = date;
@@ -135,6 +138,26 @@ public class ReservedSlotDTO   {
     this.startTime = startTime;
   }
 
+  public ReservedSlotDTO tokenNumber(Integer tokenNumber) {
+    this.tokenNumber = tokenNumber;
+    return this;
+  }
+
+  /**
+   * Get tokenNumber
+   * @return tokenNumber
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public Integer getTokenNumber() {
+    return tokenNumber;
+  }
+
+  public void setTokenNumber(Integer tokenNumber) {
+    this.tokenNumber = tokenNumber;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -149,12 +172,13 @@ public class ReservedSlotDTO   {
         Objects.equals(this.doctorId, reservedSlotDTO.doctorId) &&
         Objects.equals(this.endTime, reservedSlotDTO.endTime) &&
         Objects.equals(this.id, reservedSlotDTO.id) &&
-        Objects.equals(this.startTime, reservedSlotDTO.startTime);
+        Objects.equals(this.startTime, reservedSlotDTO.startTime) &&
+        Objects.equals(this.tokenNumber, reservedSlotDTO.tokenNumber);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, doctorId, endTime, id, startTime);
+    return Objects.hash(date, doctorId, endTime, id, startTime, tokenNumber);
   }
 
   @Override
@@ -167,6 +191,7 @@ public class ReservedSlotDTO   {
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
+    sb.append("    tokenNumber: ").append(toIndentedString(tokenNumber)).append("\n");
     sb.append("}");
     return sb.toString();
   }

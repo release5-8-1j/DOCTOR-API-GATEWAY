@@ -27,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-08T13:00:17.619+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-15T12:17:04.753+05:30[Asia/Calcutta]")
 
 @Api(value = "WorkPlaceResource", description = "the WorkPlaceResource API")
 public interface WorkPlaceResourceApi {
@@ -93,7 +93,7 @@ public interface WorkPlaceResourceApi {
     ResponseEntity<WorkPlaceDTO> getWorkPlaceUsingGET(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
 
 
-    @ApiOperation(value = "listToDto", nickname = "listToDtoUsingPOST6", notes = "", response = WorkPlaceDTO.class, responseContainer = "List", tags={ "work-place-resource", })
+    @ApiOperation(value = "listToDto", nickname = "listToDtoUsingPOST7", notes = "", response = WorkPlaceDTO.class, responseContainer = "List", tags={ "work-place-resource", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = WorkPlaceDTO.class, responseContainer = "List"),
         @ApiResponse(code = 201, message = "Created"),

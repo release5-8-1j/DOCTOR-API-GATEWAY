@@ -6,6 +6,7 @@
 package com.bytatech.ayoos.client.doctor.api;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import com.bytatech.ayoos.client.doctor.domain.ReservedSlot;
 import com.bytatech.ayoos.client.doctor.model.ReservedSlotDTO;
@@ -28,7 +29,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-08T13:00:17.619+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-15T12:17:04.753+05:30[Asia/Calcutta]")
 
 @Api(value = "ReservedSlotResource", description = "the ReservedSlotResource API")
 public interface ReservedSlotResourceApi {
@@ -54,10 +55,10 @@ public interface ReservedSlotResourceApi {
         @ApiResponse(code = 401, message = "Unauthorized"),
         @ApiResponse(code = 403, message = "Forbidden"),
         @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/api/slot/{date}",
+    @RequestMapping(value = "/api/slot/{date}/{doctorId}",
         produces = "*/*", 
         method = RequestMethod.POST)
-    ResponseEntity<List<ReservedSlotDTO>> createSlotUsingPOST(@ApiParam(value = "date",required=true) @PathVariable("date") LocalDate date);
+    ResponseEntity<List<ReservedSlotDTO>> createSlotUsingPOST(@ApiParam(value = "date",required=true) @PathVariable("date") LocalDate date,@ApiParam(value = "doctorId",required=true) @PathVariable("doctorId") Long doctorId,@ApiParam(value = "Page number of the requested page") @Valid @RequestParam(value = "page", required = false) Integer page,@ApiParam(value = "Size of a page") @Valid @RequestParam(value = "size", required = false) Integer size,@ApiParam(value = "Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.") @Valid @RequestParam(value = "sort", required = false) List<String> sort);
 
 
     @ApiOperation(value = "deleteReservedSlot", nickname = "deleteReservedSlotUsingDELETE", notes = "", tags={ "reserved-slot-resource", })
@@ -69,6 +70,17 @@ public interface ReservedSlotResourceApi {
     @RequestMapping(value = "/api/reserved-slots/{id}",
         method = RequestMethod.DELETE)
     ResponseEntity<Void> deleteReservedSlotUsingDELETE(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
+
+
+    @ApiOperation(value = "findReservedSlotByDoctorId", nickname = "findReservedSlotByDoctorIdUsingGET", notes = "", tags={ "reserved-slot-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/reserved-slot/findBydoctorId/{doctorId}",
+        method = RequestMethod.GET)
+    ResponseEntity<Void> findReservedSlotByDoctorIdUsingGET(@ApiParam(value = "doctorId",required=true) @PathVariable("doctorId") Long doctorId);
 
 
     @ApiOperation(value = "getAllReservedSlots", nickname = "getAllReservedSlotsUsingGET", notes = "", response = ReservedSlotDTO.class, responseContainer = "List", tags={ "reserved-slot-resource", })
@@ -107,7 +119,7 @@ public interface ReservedSlotResourceApi {
     ResponseEntity<ReservedSlotDTO> getReservedSlotUsingGET(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
 
 
-    @ApiOperation(value = "listToDto", nickname = "listToDtoUsingPOST3", notes = "", response = ReservedSlotDTO.class, responseContainer = "List", tags={ "reserved-slot-resource", })
+    @ApiOperation(value = "listToDto", nickname = "listToDtoUsingPOST4", notes = "", response = ReservedSlotDTO.class, responseContainer = "List", tags={ "reserved-slot-resource", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = ReservedSlotDTO.class, responseContainer = "List"),
         @ApiResponse(code = 201, message = "Created"),
@@ -118,7 +130,7 @@ public interface ReservedSlotResourceApi {
         produces = "*/*", 
         consumes = "application/json",
         method = RequestMethod.POST)
-    ResponseEntity<List<ReservedSlotDTO>> listToDtoUsingPOST3(@ApiParam(value = "reservedSlot" ,required=true )  @Valid @RequestBody List<ReservedSlot> reservedSlot);
+    ResponseEntity<List<ReservedSlotDTO>> listToDtoUsingPOST4(@ApiParam(value = "reservedSlot" ,required=true )  @Valid @RequestBody List<ReservedSlot> reservedSlot);
 
 
     @ApiOperation(value = "searchReservedSlots", nickname = "searchReservedSlotsUsingGET", notes = "", response = ReservedSlotDTO.class, responseContainer = "List", tags={ "reserved-slot-resource", })

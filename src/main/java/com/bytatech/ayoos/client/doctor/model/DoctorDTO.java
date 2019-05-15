@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
  * DoctorDTO
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-08T13:00:17.619+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-15T12:17:04.753+05:30[Asia/Calcutta]")
 
 public class DoctorDTO   {
   @JsonProperty("contactInfoId")
@@ -22,6 +22,15 @@ public class DoctorDTO   {
 
   @JsonProperty("doctorId")
   private String doctorId = null;
+
+  @JsonProperty("doctorSettingsId")
+  private Long doctorSettingsId = null;
+
+  @JsonProperty("email")
+  private String email = null;
+
+  @JsonProperty("firstName")
+  private String firstName = null;
 
   @JsonProperty("id")
   private Long id = null;
@@ -34,6 +43,9 @@ public class DoctorDTO   {
 
   @JsonProperty("paymentSettingsId")
   private Long paymentSettingsId = null;
+
+  @JsonProperty("phoneNumber")
+  private Long phoneNumber = null;
 
   @JsonProperty("practiceSince")
   private OffsetDateTime practiceSince = null;
@@ -85,6 +97,66 @@ public class DoctorDTO   {
 
   public void setDoctorId(String doctorId) {
     this.doctorId = doctorId;
+  }
+
+  public DoctorDTO doctorSettingsId(Long doctorSettingsId) {
+    this.doctorSettingsId = doctorSettingsId;
+    return this;
+  }
+
+  /**
+   * Get doctorSettingsId
+   * @return doctorSettingsId
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public Long getDoctorSettingsId() {
+    return doctorSettingsId;
+  }
+
+  public void setDoctorSettingsId(Long doctorSettingsId) {
+    this.doctorSettingsId = doctorSettingsId;
+  }
+
+  public DoctorDTO email(String email) {
+    this.email = email;
+    return this;
+  }
+
+  /**
+   * Get email
+   * @return email
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public DoctorDTO firstName(String firstName) {
+    this.firstName = firstName;
+    return this;
+  }
+
+  /**
+   * Get firstName
+   * @return firstName
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
   }
 
   public DoctorDTO id(Long id) {
@@ -165,6 +237,26 @@ public class DoctorDTO   {
 
   public void setPaymentSettingsId(Long paymentSettingsId) {
     this.paymentSettingsId = paymentSettingsId;
+  }
+
+  public DoctorDTO phoneNumber(Long phoneNumber) {
+    this.phoneNumber = phoneNumber;
+    return this;
+  }
+
+  /**
+   * Get phoneNumber
+   * @return phoneNumber
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public Long getPhoneNumber() {
+    return phoneNumber;
+  }
+
+  public void setPhoneNumber(Long phoneNumber) {
+    this.phoneNumber = phoneNumber;
   }
 
   public DoctorDTO practiceSince(OffsetDateTime practiceSince) {
@@ -260,10 +352,14 @@ public class DoctorDTO   {
     DoctorDTO doctorDTO = (DoctorDTO) o;
     return Objects.equals(this.contactInfoId, doctorDTO.contactInfoId) &&
         Objects.equals(this.doctorId, doctorDTO.doctorId) &&
+        Objects.equals(this.doctorSettingsId, doctorDTO.doctorSettingsId) &&
+        Objects.equals(this.email, doctorDTO.email) &&
+        Objects.equals(this.firstName, doctorDTO.firstName) &&
         Objects.equals(this.id, doctorDTO.id) &&
         Objects.equals(this.image, doctorDTO.image) &&
         Objects.equals(this.imageContentType, doctorDTO.imageContentType) &&
         Objects.equals(this.paymentSettingsId, doctorDTO.paymentSettingsId) &&
+        Objects.equals(this.phoneNumber, doctorDTO.phoneNumber) &&
         Objects.equals(this.practiceSince, doctorDTO.practiceSince) &&
         Objects.equals(this.registerNumber, doctorDTO.registerNumber) &&
         Objects.equals(this.specialization, doctorDTO.specialization) &&
@@ -272,7 +368,7 @@ public class DoctorDTO   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(contactInfoId, doctorId, id, image, imageContentType, paymentSettingsId, practiceSince, registerNumber, specialization, totalRating);
+    return Objects.hash(contactInfoId, doctorId, doctorSettingsId, email, firstName, id, image, imageContentType, paymentSettingsId, phoneNumber, practiceSince, registerNumber, specialization, totalRating);
   }
 
   @Override
@@ -282,10 +378,14 @@ public class DoctorDTO   {
     
     sb.append("    contactInfoId: ").append(toIndentedString(contactInfoId)).append("\n");
     sb.append("    doctorId: ").append(toIndentedString(doctorId)).append("\n");
+    sb.append("    doctorSettingsId: ").append(toIndentedString(doctorSettingsId)).append("\n");
+    sb.append("    email: ").append(toIndentedString(email)).append("\n");
+    sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    image: ").append(toIndentedString(image)).append("\n");
     sb.append("    imageContentType: ").append(toIndentedString(imageContentType)).append("\n");
     sb.append("    paymentSettingsId: ").append(toIndentedString(paymentSettingsId)).append("\n");
+    sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
     sb.append("    practiceSince: ").append(toIndentedString(practiceSince)).append("\n");
     sb.append("    registerNumber: ").append(toIndentedString(registerNumber)).append("\n");
     sb.append("    specialization: ").append(toIndentedString(specialization)).append("\n");

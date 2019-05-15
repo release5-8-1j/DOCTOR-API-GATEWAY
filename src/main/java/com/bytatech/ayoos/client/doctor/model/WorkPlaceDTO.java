@@ -5,8 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
-import org.springframework.data.elasticsearch.annotations.GeoPointField;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -15,7 +13,7 @@ import javax.validation.constraints.*;
  * WorkPlaceDTO
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-08T13:00:17.619+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-15T12:17:04.753+05:30[Asia/Calcutta]")
 
 public class WorkPlaceDTO   {
   @JsonProperty("doctorId")
@@ -24,7 +22,6 @@ public class WorkPlaceDTO   {
   @JsonProperty("id")
   private Long id = null;
 
-  @GeoPointField
   @JsonProperty("location")
   private String location = null;
 

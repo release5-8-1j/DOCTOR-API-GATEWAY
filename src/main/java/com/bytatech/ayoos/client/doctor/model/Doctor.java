@@ -2,6 +2,7 @@ package com.bytatech.ayoos.client.doctor.model;
 
 import java.util.Objects;
 import com.bytatech.ayoos.client.doctor.model.ContactInfo;
+import com.bytatech.ayoos.client.doctor.model.DoctorSettings;
 import com.bytatech.ayoos.client.doctor.model.PaymentSettings;
 import com.bytatech.ayoos.client.doctor.model.Qualification;
 import com.bytatech.ayoos.client.doctor.model.ReservedSlot;
@@ -23,7 +24,7 @@ import javax.validation.constraints.*;
  * Doctor
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-08T13:00:17.619+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-15T12:17:04.753+05:30[Asia/Calcutta]")
 
 public class Doctor   {
   @JsonProperty("contactInfo")
@@ -31,6 +32,15 @@ public class Doctor   {
 
   @JsonProperty("doctorId")
   private String doctorId = null;
+
+  @JsonProperty("doctorSettings")
+  private DoctorSettings doctorSettings = null;
+
+  @JsonProperty("email")
+  private String email = null;
+
+  @JsonProperty("firstName")
+  private String firstName = null;
 
   @JsonProperty("id")
   private Long id = null;
@@ -43,6 +53,9 @@ public class Doctor   {
 
   @JsonProperty("paymentSettings")
   private PaymentSettings paymentSettings = null;
+
+  @JsonProperty("phoneNumber")
+  private Long phoneNumber = null;
 
   @JsonProperty("practiceSince")
   private OffsetDateTime practiceSince = null;
@@ -115,6 +128,67 @@ public class Doctor   {
 
   public void setDoctorId(String doctorId) {
     this.doctorId = doctorId;
+  }
+
+  public Doctor doctorSettings(DoctorSettings doctorSettings) {
+    this.doctorSettings = doctorSettings;
+    return this;
+  }
+
+  /**
+   * Get doctorSettings
+   * @return doctorSettings
+  **/
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public DoctorSettings getDoctorSettings() {
+    return doctorSettings;
+  }
+
+  public void setDoctorSettings(DoctorSettings doctorSettings) {
+    this.doctorSettings = doctorSettings;
+  }
+
+  public Doctor email(String email) {
+    this.email = email;
+    return this;
+  }
+
+  /**
+   * Get email
+   * @return email
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public Doctor firstName(String firstName) {
+    this.firstName = firstName;
+    return this;
+  }
+
+  /**
+   * Get firstName
+   * @return firstName
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
   }
 
   public Doctor id(Long id) {
@@ -196,6 +270,26 @@ public class Doctor   {
 
   public void setPaymentSettings(PaymentSettings paymentSettings) {
     this.paymentSettings = paymentSettings;
+  }
+
+  public Doctor phoneNumber(Long phoneNumber) {
+    this.phoneNumber = phoneNumber;
+    return this;
+  }
+
+  /**
+   * Get phoneNumber
+   * @return phoneNumber
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public Long getPhoneNumber() {
+    return phoneNumber;
+  }
+
+  public void setPhoneNumber(Long phoneNumber) {
+    this.phoneNumber = phoneNumber;
   }
 
   public Doctor practiceSince(OffsetDateTime practiceSince) {
@@ -436,10 +530,14 @@ public class Doctor   {
     Doctor doctor = (Doctor) o;
     return Objects.equals(this.contactInfo, doctor.contactInfo) &&
         Objects.equals(this.doctorId, doctor.doctorId) &&
+        Objects.equals(this.doctorSettings, doctor.doctorSettings) &&
+        Objects.equals(this.email, doctor.email) &&
+        Objects.equals(this.firstName, doctor.firstName) &&
         Objects.equals(this.id, doctor.id) &&
         Objects.equals(this.image, doctor.image) &&
         Objects.equals(this.imageContentType, doctor.imageContentType) &&
         Objects.equals(this.paymentSettings, doctor.paymentSettings) &&
+        Objects.equals(this.phoneNumber, doctor.phoneNumber) &&
         Objects.equals(this.practiceSince, doctor.practiceSince) &&
         Objects.equals(this.qualifications, doctor.qualifications) &&
         Objects.equals(this.registerNumber, doctor.registerNumber) &&
@@ -453,7 +551,7 @@ public class Doctor   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(contactInfo, doctorId, id, image, imageContentType, paymentSettings, practiceSince, qualifications, registerNumber, reservedSlots, reviews, specialization, totalRating, userRatings, workPlaces);
+    return Objects.hash(contactInfo, doctorId, doctorSettings, email, firstName, id, image, imageContentType, paymentSettings, phoneNumber, practiceSince, qualifications, registerNumber, reservedSlots, reviews, specialization, totalRating, userRatings, workPlaces);
   }
 
   @Override
@@ -463,10 +561,14 @@ public class Doctor   {
     
     sb.append("    contactInfo: ").append(toIndentedString(contactInfo)).append("\n");
     sb.append("    doctorId: ").append(toIndentedString(doctorId)).append("\n");
+    sb.append("    doctorSettings: ").append(toIndentedString(doctorSettings)).append("\n");
+    sb.append("    email: ").append(toIndentedString(email)).append("\n");
+    sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    image: ").append(toIndentedString(image)).append("\n");
     sb.append("    imageContentType: ").append(toIndentedString(imageContentType)).append("\n");
     sb.append("    paymentSettings: ").append(toIndentedString(paymentSettings)).append("\n");
+    sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
     sb.append("    practiceSince: ").append(toIndentedString(practiceSince)).append("\n");
     sb.append("    qualifications: ").append(toIndentedString(qualifications)).append("\n");
     sb.append("    registerNumber: ").append(toIndentedString(registerNumber)).append("\n");

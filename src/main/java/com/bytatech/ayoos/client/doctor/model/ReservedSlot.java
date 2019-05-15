@@ -20,7 +20,7 @@ import javax.validation.constraints.*;
  * ReservedSlot
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-08T13:00:17.619+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-15T12:17:04.753+05:30[Asia/Calcutta]")
 
 public class ReservedSlot   {
   @JsonProperty("date")
@@ -41,6 +41,9 @@ public class ReservedSlot   {
   @JsonProperty("statuses")
   @Valid
   private List<Status> statuses = null;
+
+  @JsonProperty("tokenNumber")
+  private Integer tokenNumber = null;
 
   public ReservedSlot date(LocalDate date) {
     this.date = date;
@@ -173,6 +176,26 @@ public class ReservedSlot   {
     this.statuses = statuses;
   }
 
+  public ReservedSlot tokenNumber(Integer tokenNumber) {
+    this.tokenNumber = tokenNumber;
+    return this;
+  }
+
+  /**
+   * Get tokenNumber
+   * @return tokenNumber
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public Integer getTokenNumber() {
+    return tokenNumber;
+  }
+
+  public void setTokenNumber(Integer tokenNumber) {
+    this.tokenNumber = tokenNumber;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -188,12 +211,13 @@ public class ReservedSlot   {
         Objects.equals(this.endTime, reservedSlot.endTime) &&
         Objects.equals(this.id, reservedSlot.id) &&
         Objects.equals(this.startTime, reservedSlot.startTime) &&
-        Objects.equals(this.statuses, reservedSlot.statuses);
+        Objects.equals(this.statuses, reservedSlot.statuses) &&
+        Objects.equals(this.tokenNumber, reservedSlot.tokenNumber);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, doctor, endTime, id, startTime, statuses);
+    return Objects.hash(date, doctor, endTime, id, startTime, statuses, tokenNumber);
   }
 
   @Override
@@ -207,6 +231,7 @@ public class ReservedSlot   {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    statuses: ").append(toIndentedString(statuses)).append("\n");
+    sb.append("    tokenNumber: ").append(toIndentedString(tokenNumber)).append("\n");
     sb.append("}");
     return sb.toString();
   }
