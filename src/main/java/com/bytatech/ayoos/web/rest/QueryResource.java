@@ -35,6 +35,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bytatech.ayoos.client.appointment.api.AppointmentQueryResourceApi;
+import com.bytatech.ayoos.client.appointment.model.Appointment;
+import com.bytatech.ayoos.client.appointment.model.OpenAppointmentResponse;
 import com.bytatech.ayoos.client.consultation.api.ConsultationQueryResourceApi;
 import com.bytatech.ayoos.client.consultation.model.DataResponse;
 import com.bytatech.ayoos.client.doctor.api.ContactInfoResourceApi;
@@ -83,6 +86,8 @@ public class QueryResource {
 	ReservedSlotResourceApi reservedSlotResourceApi;
 	@Autowired
 	ConsultationQueryResourceApi consultationQueryResource;
+	@Autowired
+	AppointmentQueryResourceApi appointmentQueryResourceApi;
 	
 	// productResourceApi.listToDtoUsingPOST(queryService.findAllProduct(page).getContent());
 	@GetMapping("/doctor/{searchTerm}")
@@ -196,5 +201,15 @@ public class QueryResource {
 	@GetMapping("/prescription-as-pdf")
 	public ResponseEntity<byte[]> getPrescriptionAsPDF(){
 		return consultationQueryResource.getPrescriptionAsPdfUsingGET();
+	}
+	//.............................................Appintment...........................................................................
+	@GetMapping("/open-appointments")
+	public ResponseEntity<List<OpenAppointmentResponse>> getOpenAppointments(@RequestParam String assignee){
+		return appointmentQueryResourceApi.getMyAppointmentsUsingGET(null, assignee, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+	}
+
+	@GetMapping("/appointments/{searchTerm}")
+	public Page<Appointment> getAppointmentsByDoctorId(@PathVariable String searchTerm ,Pageable pageable){
+		return queryService.findAppointmentsByDoctorId(searchTerm, pageable);
 	}
 }

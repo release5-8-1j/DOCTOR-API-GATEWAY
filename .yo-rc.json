@@ -38,6 +38,9 @@
             },
             "consultation": {
                 "spec": "http://35.243.137.225:8001/v2/api-docs"
+            },
+            "appointment": {
+                "spec": "http://35.243.137.225:8090/v2/api-docs"
             }
         },
         "promptValues": {

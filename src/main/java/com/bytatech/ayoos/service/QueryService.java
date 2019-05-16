@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import com.bytatech.ayoos.client.appointment.model.Appointment;
 import com.bytatech.ayoos.client.doctor.domain.*;
 
 public interface QueryService {
@@ -56,5 +57,12 @@ public interface QueryService {
 	Page<SessionInfo> findSessionInfos(String searchTerm, Pageable pageable);
 
 	Page<SessionInfo> findSessionInfoByDoctorsWorkPlace(String doctorId, Long workPlaceId, Pageable pageable);
+
+	/**
+	 * @param searchTerm
+	 * @param pageable
+	 * @return
+	 */
+	Page<Appointment> findAppointmentsByDoctorId(String searchTerm, Pageable pageable);
 
 }

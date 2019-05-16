@@ -38,6 +38,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.bytatech.ayoos.client.appointment.api.AppointmentCommandResourceApi;
+import com.bytatech.ayoos.client.appointment.model.AppointmentConfirmationResponse;
 import com.bytatech.ayoos.client.consultation.api.ConsultationCommandResourceApi;
 import com.bytatech.ayoos.client.consultation.api.ConsultationQueryResourceApi;
 import com.bytatech.ayoos.client.consultation.model.ConsultationRequest;
@@ -90,6 +92,9 @@ public class CommandResource {
 	  
 	  @Autowired
 	  ConsultationQueryResourceApi consultationQueryApi;
+	  
+	  @Autowired
+	  AppointmentCommandResourceApi appointmentCommandResourceApi;
 	  
 	  @PostMapping("/doctors")
 	    public ResponseEntity<DoctorDTO> createDoctor(@RequestBody DoctorDTO doctorDTO) throws URISyntaxException {
@@ -204,6 +209,11 @@ public class CommandResource {
 	public String uploadPrescription( @RequestParam MultipartFile file){
 		consultationApi.uploadFileUsingPOST(file);
 		return "success";
+	}
+	//.....................................................Appointment...................................................
+	@PostMapping("/processAppointmentRequest/{taskId}")
+	public ResponseEntity<com.bytatech.ayoos.client.appointment.model.CommandResource> getProcessAppointmentRequest(@PathVariable String taskId,@RequestBody AppointmentConfirmationResponse appointmentConfirmationResponse){
+		return appointmentCommandResourceApi.processAppointmentRequestUsingPOST(taskId, appointmentConfirmationResponse);
 	}
 	
 }

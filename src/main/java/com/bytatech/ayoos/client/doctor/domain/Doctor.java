@@ -52,6 +52,7 @@ public class Doctor implements Serializable {
   
     private String imageContentType;
 
+    
 
     private String doctorId;
 

@@ -19,6 +19,7 @@ import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.data.elasticsearch.core.query.StringQuery;
 import org.springframework.stereotype.Service;
 
+import com.bytatech.ayoos.client.appointment.model.Appointment;
 import com.bytatech.ayoos.client.doctor.domain.*;
 import com.bytatech.ayoos.service.QueryService;
 
@@ -70,6 +71,7 @@ public class QueryServiceImpl implements QueryService {
 
 	}
 
+	
 	@Override
 	public Page<WorkPlace> findWorkPlaces(String searchTerm, Pageable pageable) {
 		// StringQuery stringQuery = new
@@ -115,6 +117,7 @@ public class QueryServiceImpl implements QueryService {
 		return elasticsearchOperations.queryForPage(searchQuery, SessionInfo.class);
 	}
 
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -148,6 +151,14 @@ public class QueryServiceImpl implements QueryService {
 		return elasticsearchOperations.queryForPage(searchQuery, SessionInfo.class);
 	}
 
+	//..................................Appointment..............................................................................
+	@Override
+	public Page<Appointment> findAppointmentsByDoctorId(String searchTerm, Pageable pageable) {
+		SearchQuery searchQuery = new NativeSearchQueryBuilder()
+				.withQuery(termQuery("doctorId", searchTerm)).build();
+		return elasticsearchOperations.queryForPage(searchQuery, Appointment.class);
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * 
