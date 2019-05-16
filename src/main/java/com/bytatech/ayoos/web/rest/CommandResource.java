@@ -134,7 +134,7 @@ public class CommandResource {
 		 return qualificationApi.updateQualificationUsingPUT(qualificationDTO);
 	  }
 	  
-	  @DeleteMapping("/qualifications")
+	  @DeleteMapping("/qualifications/{id}")
 	  public void deleteQualification(@PathVariable Long id){
 		  qualificationApi.deleteQualificationUsingDELETE(id);
 	  }
