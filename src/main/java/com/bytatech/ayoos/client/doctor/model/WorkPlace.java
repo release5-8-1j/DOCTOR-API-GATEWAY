@@ -29,6 +29,9 @@ public class WorkPlace   {
   @JsonProperty("location")
   private String location = null;
 
+
+  @JsonProperty("locationName")
+  private String locationName = null;
   @JsonProperty("name")
   private String name = null;
 
@@ -102,6 +105,25 @@ public class WorkPlace   {
     return this;
   }
 
+  /**
+   * Get locationName
+   * @return locationName
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getLocationName() {
+    return location;
+  }
+
+  public void setLocationName(String location) {
+    this.location = location;
+  }
+
+  public WorkPlace locationName(String locationName) {
+    this.locationName = locationName;
+    return this;
+  }
   /**
    * Get name
    * @return name

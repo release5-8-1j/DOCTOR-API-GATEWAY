@@ -27,7 +27,8 @@ public class WorkPlaceDTO   {
   @JsonProperty("location")
   @GeoPointField
   private String location = null;
-
+  @JsonProperty("locationName")
+  private String locationName=null;
   @JsonProperty("name")
   private String name = null;
 
@@ -109,6 +110,21 @@ public class WorkPlaceDTO   {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  /**
+   * Get locationName
+   * @return locationName
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getLocationName() {
+    return locationName;
+  }
+
+  public void setLocationName(String locationName) {
+    this.locationName = locationName;
   }
 
 

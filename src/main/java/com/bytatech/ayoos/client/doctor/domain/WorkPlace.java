@@ -31,7 +31,16 @@ public class WorkPlace implements Serializable {
     @GeoPointField
     private String location;
 
-    private Doctor doctor;
+    private String locationName;
+    public String getLocationName() {
+		return locationName;
+	}
+
+	public void setLocationName(String locationName) {
+		this.locationName = locationName;
+	}
+
+	private Doctor doctor;
 
     private Set<SessionInfo> sessionInfos = new HashSet<>();
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
