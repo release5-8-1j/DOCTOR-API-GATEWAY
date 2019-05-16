@@ -9,7 +9,6 @@ import com.bytatech.ayoos.client.consultation.model.ConsultationDetails;
 import com.bytatech.ayoos.client.consultation.model.DataResponse;
 import com.bytatech.ayoos.client.consultation.model.HistoricProcessInstanceResponse;
 import com.bytatech.ayoos.client.consultation.model.HistoricTaskInstanceQueryRequest;
-import com.bytatech.ayoos.client.consultation.model.PrescriptionRequest;
 import com.bytatech.ayoos.client.consultation.model.RestVariable;
 import com.bytatech.ayoos.client.consultation.model.TaskResponse;
 import io.swagger.annotations.*;
@@ -31,7 +30,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-14T13:01:51.492+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-16T08:48:40.336+05:30[Asia/Kolkata]")
 
 @Api(value = "ConsultationQueryResource", description = "the ConsultationQueryResource API")
 public interface ConsultationQueryResourceApi {
@@ -80,22 +79,10 @@ public interface ConsultationQueryResourceApi {
         @ApiResponse(code = 401, message = "Unauthorized"),
         @ApiResponse(code = 403, message = "Forbidden"),
         @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/api/query/pdf/prescriptionReport",
+    @RequestMapping(value = "/api/query/pdf/downloadPrescriptionReport",
         produces = "*/*", 
         method = RequestMethod.GET)
     ResponseEntity<byte[]> getPrescriptionAsPdfUsingGET();
-
-
-    @ApiOperation(value = "getPrescriptionDetails", nickname = "getPrescriptionDetailsUsingGET", notes = "", response = PrescriptionRequest.class, tags={ "consultation-query-resource", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = PrescriptionRequest.class),
-        @ApiResponse(code = 401, message = "Unauthorized"),
-        @ApiResponse(code = 403, message = "Forbidden"),
-        @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/api/query/prescription-details/{processInstanceId}",
-        produces = "*/*", 
-        method = RequestMethod.GET)
-    ResponseEntity<PrescriptionRequest> getPrescriptionDetailsUsingGET(@ApiParam(value = "processInstanceId",required=true) @PathVariable("processInstanceId") String processInstanceId);
 
 
     @ApiOperation(value = "getTaskFormProperties", nickname = "getTaskFormPropertiesUsingGET", notes = "", response = DataResponse.class, tags={ "consultation-query-resource", })

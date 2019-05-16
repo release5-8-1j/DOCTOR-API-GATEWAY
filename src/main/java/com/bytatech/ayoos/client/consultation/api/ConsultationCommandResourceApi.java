@@ -8,6 +8,7 @@ package com.bytatech.ayoos.client.consultation.api;
 import com.bytatech.ayoos.client.consultation.model.ConsultationRequest;
 import com.bytatech.ayoos.client.consultation.model.DefaultInfoRequest;
 import com.bytatech.ayoos.client.consultation.model.InitiateMedicalSummaryRequest;
+import java.util.List;
 import com.bytatech.ayoos.client.consultation.model.ParamedicalExaminationRequest;
 import com.bytatech.ayoos.client.consultation.model.PrescriptionRequest;
 import org.springframework.core.io.Resource;
@@ -32,7 +33,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-14T13:01:51.492+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-16T08:48:40.336+05:30[Asia/Kolkata]")
 
 @Api(value = "ConsultationCommandResource", description = "the ConsultationCommandResource API")
 public interface ConsultationCommandResourceApi {
@@ -86,31 +87,7 @@ public interface ConsultationCommandResourceApi {
     @RequestMapping(value = "/api/command/collectPrescriptionInfo/{taskId}",
         consumes = "application/json",
         method = RequestMethod.POST)
-    ResponseEntity<Void> collectPrescriptionInformationsUsingPOST(@ApiParam(value = "taskId",required=true) @PathVariable("taskId") String taskId,@ApiParam(value = "prescriptionRequest" ,required=true )  @Valid @RequestBody PrescriptionRequest prescriptionRequest);
-
-
-    @ApiOperation(value = "createPrescriptionReportAndSave", nickname = "createPrescriptionReportAndSaveUsingPOST", notes = "", tags={ "consultation-command-resource", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK"),
-        @ApiResponse(code = 201, message = "Created"),
-        @ApiResponse(code = 401, message = "Unauthorized"),
-        @ApiResponse(code = 403, message = "Forbidden"),
-        @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/api/command/createPrescriptionReportAndSave",
-        method = RequestMethod.POST)
-    ResponseEntity<Void> createPrescriptionReportAndSaveUsingPOST();
-
-
-    @ApiOperation(value = "createPrescriptionReports", nickname = "createPrescriptionReportsUsingPOST", notes = "", tags={ "consultation-command-resource", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK"),
-        @ApiResponse(code = 201, message = "Created"),
-        @ApiResponse(code = 401, message = "Unauthorized"),
-        @ApiResponse(code = 403, message = "Forbidden"),
-        @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/api/command/createPrescriptionReport",
-        method = RequestMethod.POST)
-    ResponseEntity<Void> createPrescriptionReportsUsingPOST();
+    ResponseEntity<Void> collectPrescriptionInformationsUsingPOST(@ApiParam(value = "taskId",required=true) @PathVariable("taskId") String taskId,@ApiParam(value = "prescriptionRequest" ,required=true )  @Valid @RequestBody List<PrescriptionRequest> prescriptionRequest);
 
 
     @ApiOperation(value = "createSite", nickname = "createSiteUsingPOST", notes = "", response = String.class, tags={ "consultation-command-resource", })
@@ -125,6 +102,18 @@ public interface ConsultationCommandResourceApi {
         consumes = "application/json",
         method = RequestMethod.POST)
     ResponseEntity<String> createSiteUsingPOST(@ApiParam(value = "siteBodyCreate" ,required=true )  @Valid @RequestBody SiteBodyCreate siteBodyCreate);
+
+
+    @ApiOperation(value = "getPatientDMSID", nickname = "getPatientDMSIDUsingGET", notes = "", response = String.class, tags={ "consultation-command-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/command/dmsid/{id}",
+        produces = "*/*", 
+        method = RequestMethod.GET)
+    ResponseEntity<String> getPatientDMSIDUsingGET(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
 
 
     @ApiOperation(value = "initiateConsultationSummary", nickname = "initiateConsultationSummaryUsingPOST", notes = "", response = String.class, tags={ "consultation-command-resource", })
@@ -168,17 +157,17 @@ public interface ConsultationCommandResourceApi {
     ResponseEntity<String> signUsingPOST(@ApiParam(value = "signingCredentials" ,required=true )  @Valid @RequestBody SigningCredentials signingCredentials);
 
 
-    @ApiOperation(value = "upload", nickname = "uploadUsingPOST", notes = "", response = String.class, tags={ "consultation-command-resource", })
+    @ApiOperation(value = "uploadFile", nickname = "uploadFileUsingPOST", notes = "", response = String.class, tags={ "consultation-command-resource", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = String.class),
         @ApiResponse(code = 201, message = "Created"),
         @ApiResponse(code = 401, message = "Unauthorized"),
         @ApiResponse(code = 403, message = "Forbidden"),
         @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/api/command/upload",
+    @RequestMapping(value = "/api/command/uploadFile",
         produces = "*/*", 
         consumes = "multipart/form-data",
         method = RequestMethod.POST)
-    ResponseEntity<String> uploadUsingPOST(@ApiParam(value = "file detail") @RequestParam("file") MultipartFile file);
+    ResponseEntity<String> uploadFileUsingPOST(@ApiParam(value = "file detail") @RequestParam("file") MultipartFile file);
 
 }
