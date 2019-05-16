@@ -1,6 +1,5 @@
 package com.bytatech.ayoos.client.consultation.model;
 
-import java.util.Date;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -8,7 +7,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
+import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -17,7 +19,7 @@ import javax.validation.constraints.*;
  * ConsultationRequest
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-14T13:01:51.492+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-16T08:48:40.336+05:30[Asia/Kolkata]")
 
 public class ConsultationRequest   {
   @JsonProperty("date")
@@ -25,7 +27,8 @@ public class ConsultationRequest   {
   private Date date = null;
 
   @JsonProperty("evaluation")
-  private String evaluation = null;
+  @Valid
+  private List<String> evaluation = null;
 
   @JsonProperty("examinationRequired")
   private String examinationRequired = null;
@@ -34,7 +37,8 @@ public class ConsultationRequest   {
   private String labResultDMSURL = null;
 
   @JsonProperty("symptom")
-  private String symptom = null;
+  @Valid
+  private List<String> symptom = null;
 
   public ConsultationRequest date(Date date) {
     this.date = date;
@@ -57,8 +61,16 @@ public class ConsultationRequest   {
     this.date = date;
   }
 
-  public ConsultationRequest evaluation(String evaluation) {
+  public ConsultationRequest evaluation(List<String> evaluation) {
     this.evaluation = evaluation;
+    return this;
+  }
+
+  public ConsultationRequest addEvaluationItem(String evaluationItem) {
+    if (this.evaluation == null) {
+      this.evaluation = new ArrayList<String>();
+    }
+    this.evaluation.add(evaluationItem);
     return this;
   }
 
@@ -69,11 +81,11 @@ public class ConsultationRequest   {
   @ApiModelProperty(value = "")
 
 
-  public String getEvaluation() {
+  public List<String> getEvaluation() {
     return evaluation;
   }
 
-  public void setEvaluation(String evaluation) {
+  public void setEvaluation(List<String> evaluation) {
     this.evaluation = evaluation;
   }
 
@@ -117,8 +129,16 @@ public class ConsultationRequest   {
     this.labResultDMSURL = labResultDMSURL;
   }
 
-  public ConsultationRequest symptom(String symptom) {
+  public ConsultationRequest symptom(List<String> symptom) {
     this.symptom = symptom;
+    return this;
+  }
+
+  public ConsultationRequest addSymptomItem(String symptomItem) {
+    if (this.symptom == null) {
+      this.symptom = new ArrayList<String>();
+    }
+    this.symptom.add(symptomItem);
     return this;
   }
 
@@ -129,11 +149,11 @@ public class ConsultationRequest   {
   @ApiModelProperty(value = "")
 
 
-  public String getSymptom() {
+  public List<String> getSymptom() {
     return symptom;
   }
 
-  public void setSymptom(String symptom) {
+  public void setSymptom(List<String> symptom) {
     this.symptom = symptom;
   }
 

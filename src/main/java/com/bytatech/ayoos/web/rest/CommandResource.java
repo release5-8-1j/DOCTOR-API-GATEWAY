@@ -39,6 +39,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bytatech.ayoos.client.consultation.api.ConsultationCommandResourceApi;
+import com.bytatech.ayoos.client.consultation.api.ConsultationQueryResourceApi;
 import com.bytatech.ayoos.client.consultation.model.ConsultationRequest;
 import com.bytatech.ayoos.client.consultation.model.DefaultInfoRequest;
 import com.bytatech.ayoos.client.consultation.model.InitiateMedicalSummaryRequest;
@@ -86,6 +87,9 @@ public class CommandResource {
 	  
 	  @Autowired
 	  ConsultationCommandResourceApi consultationApi;
+	  
+	  @Autowired
+	  ConsultationQueryResourceApi consultationQueryApi;
 	  
 	  @PostMapping("/doctors")
 	    public ResponseEntity<DoctorDTO> createDoctor(@RequestBody DoctorDTO doctorDTO) throws URISyntaxException {
@@ -191,14 +195,15 @@ public class CommandResource {
 	}
 
 	@PostMapping("/collect-Prescription-Info/{taskId}")
-	public void collectPrescriptionInformations(@PathVariable String taskId, PrescriptionRequest prescriptionRequest) {
+	public void collectPrescriptionInformations(@PathVariable String taskId, @RequestBody List<PrescriptionRequest> prescriptionRequest) {
 
 		consultationApi.collectPrescriptionInformationsUsingPOST(taskId, prescriptionRequest);
 	}
 
-	@PostMapping("/upload-prescription")
-	public void uploadPrescription( @RequestParam MultipartFile file){
-		consultationApi.uploadUsingPOST(file);
+	@PostMapping("/upload-File")
+	public String uploadPrescription( @RequestParam MultipartFile file){
+		consultationApi.uploadFileUsingPOST(file);
+		return "success";
 	}
 	
 }
