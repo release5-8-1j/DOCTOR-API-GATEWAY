@@ -48,7 +48,7 @@ public interface ReservedSlotResourceApi {
     ResponseEntity<ReservedSlotDTO> createReservedSlotUsingPOST(@ApiParam(value = "reservedSlotDTO" ,required=true )  @Valid @RequestBody ReservedSlotDTO reservedSlotDTO);
 
 
-    @ApiOperation(value = "createSlot", nickname = "createSlotUsingPOST", notes = "", response = ReservedSlotDTO.class, responseContainer = "List", tags={ "reserved-slot-resource", })
+    @ApiOperation(value = "createSlot", nickname = "createSlotUsingGET", notes = "", response = ReservedSlotDTO.class, responseContainer = "List", tags={ "reserved-slot-resource", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = ReservedSlotDTO.class, responseContainer = "List"),
         @ApiResponse(code = 201, message = "Created"),
@@ -57,8 +57,8 @@ public interface ReservedSlotResourceApi {
         @ApiResponse(code = 404, message = "Not Found") })
     @RequestMapping(value = "/api/slot/{date}/{doctorId}",
         produces = "*/*", 
-        method = RequestMethod.POST)
-    ResponseEntity<List<ReservedSlotDTO>> createSlotUsingPOST(@ApiParam(value = "date",required=true) @PathVariable("date") LocalDate date,@ApiParam(value = "doctorId",required=true) @PathVariable("doctorId") Long doctorId);
+        method = RequestMethod.GET)
+    ResponseEntity<List<ReservedSlotDTO>> createSlotUsingGET(@ApiParam(value = "date",required=true) @PathVariable("date") LocalDate date,@ApiParam(value = "doctorId",required=true) @PathVariable("doctorId") Long doctorId);
 
 
     @ApiOperation(value = "deleteReservedSlot", nickname = "deleteReservedSlotUsingDELETE", notes = "", tags={ "reserved-slot-resource", })
