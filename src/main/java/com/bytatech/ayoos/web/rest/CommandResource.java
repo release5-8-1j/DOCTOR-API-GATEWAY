@@ -165,8 +165,8 @@ public class CommandResource {
 	 }
 	 
 	  @PostMapping("/slot/{date}/{doctorId}")
-	  public ResponseEntity<List<ReservedSlotDTO>> createSlot(@PathVariable LocalDate date,@PathVariable Long doctorId){
-		 return  reservedSlotResourceApi.createSlotUsingPOST(date,doctorId);
+	  public ResponseEntity<List<ReservedSlotDTO>> createSlot(@PathVariable String date,@PathVariable Long doctorId){
+		 return  reservedSlotResourceApi.createSlotUsingGET(date,doctorId);
 	  }
 	
 	  
