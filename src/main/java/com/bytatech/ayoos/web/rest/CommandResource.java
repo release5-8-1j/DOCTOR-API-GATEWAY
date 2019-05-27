@@ -164,11 +164,7 @@ public class CommandResource {
 		return  sessionInfoAPi.setSessionToMonthUsingPOST(monthList, sessionInfoDTO);
 	 }
 	 
-	  @PostMapping("/slot/{date}/{doctorId}")
-	  public ResponseEntity<List<ReservedSlotDTO>> createSlot(@PathVariable String date,@PathVariable Long doctorId){
-		 return  reservedSlotResourceApi.createSlotUsingGET(date,doctorId);
-	  }
-	
+	 
 	  
  ///////////--------------CONSULTATION----------------\\\\\\\\\\\\\\\\\\
 	  

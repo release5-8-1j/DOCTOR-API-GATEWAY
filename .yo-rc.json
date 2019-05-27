@@ -34,7 +34,7 @@
     "generator-jhipster-swagger-cli": {
         "apis": {
             "doctor": {
-                "spec": "http://35.243.137.225:8083/v2/api-docs"
+                "spec": "http://localhost:8083/v2/api-docs"
             },
             "consultation": {
                 "spec": "http://35.243.137.225:8001/v2/api-docs"

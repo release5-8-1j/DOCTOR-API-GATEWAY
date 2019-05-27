@@ -6,7 +6,7 @@
 package com.bytatech.ayoos.client.doctor.api;
 
 import java.util.List;
-import com.bytatech.ayoos.client.doctor.domain.Review;
+import com.bytatech.ayoos.client.doctor.model.Review;
 import com.bytatech.ayoos.client.doctor.model.ReviewDTO;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
@@ -27,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-15T12:17:04.753+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-25T10:42:10.566+05:30[Asia/Calcutta]")
 
 @Api(value = "ReviewResource", description = "the ReviewResource API")
 public interface ReviewResourceApi {
@@ -67,6 +67,18 @@ public interface ReviewResourceApi {
         produces = "*/*", 
         method = RequestMethod.GET)
     ResponseEntity<List<ReviewDTO>> getAllReviewsUsingGET(@ApiParam(value = "Page number of the requested page") @Valid @RequestParam(value = "page", required = false) Integer page,@ApiParam(value = "Size of a page") @Valid @RequestParam(value = "size", required = false) Integer size,@ApiParam(value = "Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.") @Valid @RequestParam(value = "sort", required = false) List<String> sort);
+
+
+    @ApiOperation(value = "getReviewByDoctorId", nickname = "getReviewByDoctorIdUsingGET", notes = "", response = ReviewDTO.class, responseContainer = "List", tags={ "review-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = ReviewDTO.class, responseContainer = "List"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/review/findByDoctorId/{doctorId}",
+        produces = "*/*", 
+        method = RequestMethod.GET)
+    ResponseEntity<List<ReviewDTO>> getReviewByDoctorIdUsingGET(@ApiParam(value = "doctorId",required=true) @PathVariable("doctorId") Long doctorId);
 
 
     @ApiOperation(value = "getReview", nickname = "getReviewUsingGET", notes = "", response = ReviewDTO.class, tags={ "review-resource", })

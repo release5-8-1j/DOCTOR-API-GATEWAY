@@ -20,6 +20,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -63,7 +64,7 @@ public class Doctor implements Serializable {
     private String registerNumber;
 
 
-    private ZonedDateTime practiceSince;
+    private LocalDate practiceSince;
 
 
     private Double totalRating;
@@ -170,16 +171,16 @@ public class Doctor implements Serializable {
         this.registerNumber = registerNumber;
     }
 
-    public ZonedDateTime getPracticeSince() {
+    public LocalDate getPracticeSince() {
         return practiceSince;
     }
 
-    public Doctor practiceSince(ZonedDateTime practiceSince) {
+    public Doctor practiceSince(LocalDate practiceSince) {
         this.practiceSince = practiceSince;
         return this;
     }
 
-    public void setPracticeSince(ZonedDateTime practiceSince) {
+    public void setPracticeSince(LocalDate practiceSince) {
         this.practiceSince = practiceSince;
     }
 

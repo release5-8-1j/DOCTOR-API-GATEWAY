@@ -13,8 +13,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.time.OffsetDateTime;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
@@ -24,7 +26,7 @@ import javax.validation.constraints.*;
  * Doctor
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-15T12:17:04.753+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-25T10:42:10.566+05:30[Asia/Calcutta]")
 
 public class Doctor   {
   @JsonProperty("contactInfo")
@@ -58,7 +60,7 @@ public class Doctor   {
   private Long phoneNumber = null;
 
   @JsonProperty("practiceSince")
-  private OffsetDateTime practiceSince = null;
+  private LocalDate practiceSince = null;
 
   @JsonProperty("qualifications")
   @Valid
@@ -292,7 +294,7 @@ public class Doctor   {
     this.phoneNumber = phoneNumber;
   }
 
-  public Doctor practiceSince(OffsetDateTime practiceSince) {
+  public Doctor practiceSince(LocalDate practiceSince) {
     this.practiceSince = practiceSince;
     return this;
   }
@@ -305,11 +307,11 @@ public class Doctor   {
 
   @Valid
 
-  public OffsetDateTime getPracticeSince() {
+  public LocalDate getPracticeSince() {
     return practiceSince;
   }
 
-  public void setPracticeSince(OffsetDateTime practiceSince) {
+  public void setPracticeSince(LocalDate practiceSince) {
     this.practiceSince = practiceSince;
   }
 

@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
+import java.time.LocalDate;
+import java.util.Date;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -13,7 +16,7 @@ import javax.validation.constraints.*;
  * ReviewDTO
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-15T12:17:04.753+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-25T10:42:10.566+05:30[Asia/Calcutta]")
 
 public class ReviewDTO   {
   @JsonProperty("doctorId")
@@ -24,6 +27,12 @@ public class ReviewDTO   {
 
   @JsonProperty("review")
   private String review = null;
+
+  @JsonProperty("reviewedOn")
+  private LocalDate reviewedOn = null;
+
+  @JsonProperty("userName")
+  private String userName = null;
 
   public ReviewDTO doctorId(Long doctorId) {
     this.doctorId = doctorId;
@@ -85,6 +94,47 @@ public class ReviewDTO   {
     this.review = review;
   }
 
+  public ReviewDTO reviewedOn(LocalDate reviewedOn) {
+    this.reviewedOn = reviewedOn;
+    return this;
+  }
+
+  /**
+   * Get reviewedOn
+   * @return reviewedOn
+  **/
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public LocalDate getReviewedOn() {
+    return reviewedOn;
+  }
+
+  public void setReviewedOn(LocalDate reviewedOn) {
+    this.reviewedOn = reviewedOn;
+  }
+
+  public ReviewDTO userName(String userName) {
+    this.userName = userName;
+    return this;
+  }
+
+  /**
+   * Get userName
+   * @return userName
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getUserName() {
+    return userName;
+  }
+
+  public void setUserName(String userName) {
+    this.userName = userName;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -97,12 +147,14 @@ public class ReviewDTO   {
     ReviewDTO reviewDTO = (ReviewDTO) o;
     return Objects.equals(this.doctorId, reviewDTO.doctorId) &&
         Objects.equals(this.id, reviewDTO.id) &&
-        Objects.equals(this.review, reviewDTO.review);
+        Objects.equals(this.review, reviewDTO.review) &&
+        Objects.equals(this.reviewedOn, reviewDTO.reviewedOn) &&
+        Objects.equals(this.userName, reviewDTO.userName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(doctorId, id, review);
+    return Objects.hash(doctorId, id, review, reviewedOn, userName);
   }
 
   @Override
@@ -113,6 +165,8 @@ public class ReviewDTO   {
     sb.append("    doctorId: ").append(toIndentedString(doctorId)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    review: ").append(toIndentedString(review)).append("\n");
+    sb.append("    reviewedOn: ").append(toIndentedString(reviewedOn)).append("\n");
+    sb.append("    userName: ").append(toIndentedString(userName)).append("\n");
     sb.append("}");
     return sb.toString();
   }

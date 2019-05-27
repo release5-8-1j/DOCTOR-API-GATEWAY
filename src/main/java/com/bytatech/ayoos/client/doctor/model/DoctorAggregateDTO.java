@@ -1,6 +1,9 @@
 package com.bytatech.ayoos.client.doctor.model;
 
 import java.util.Objects;
+import com.bytatech.ayoos.client.doctor.model.ContactInfo;
+import com.bytatech.ayoos.client.doctor.model.DoctorSettings;
+import com.bytatech.ayoos.client.doctor.model.PaymentSettings;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
@@ -13,20 +16,20 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * DoctorDTO
+ * DoctorAggregateDTO
  */
 @Validated
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-25T10:42:10.566+05:30[Asia/Calcutta]")
 
-public class DoctorDTO   {
-  @JsonProperty("contactInfoId")
-  private Long contactInfoId = null;
+public class DoctorAggregateDTO   {
+  @JsonProperty("contactInfo")
+  private ContactInfo contactInfo = null;
 
   @JsonProperty("doctorId")
   private String doctorId = null;
 
-  @JsonProperty("doctorSettingsId")
-  private Long doctorSettingsId = null;
+  @JsonProperty("doctorSettings")
+  private DoctorSettings doctorSettings = null;
 
   @JsonProperty("email")
   private String email = null;
@@ -43,8 +46,8 @@ public class DoctorDTO   {
   @JsonProperty("imageContentType")
   private String imageContentType = null;
 
-  @JsonProperty("paymentSettingsId")
-  private Long paymentSettingsId = null;
+  @JsonProperty("paymentSettings")
+  private PaymentSettings paymentSettings = null;
 
   @JsonProperty("phoneNumber")
   private Long phoneNumber = null;
@@ -61,27 +64,28 @@ public class DoctorDTO   {
   @JsonProperty("totalRating")
   private Double totalRating = null;
 
-  public DoctorDTO contactInfoId(Long contactInfoId) {
-    this.contactInfoId = contactInfoId;
+  public DoctorAggregateDTO contactInfo(ContactInfo contactInfo) {
+    this.contactInfo = contactInfo;
     return this;
   }
 
   /**
-   * Get contactInfoId
-   * @return contactInfoId
+   * Get contactInfo
+   * @return contactInfo
   **/
   @ApiModelProperty(value = "")
 
+  @Valid
 
-  public Long getContactInfoId() {
-    return contactInfoId;
+  public ContactInfo getContactInfo() {
+    return contactInfo;
   }
 
-  public void setContactInfoId(Long contactInfoId) {
-    this.contactInfoId = contactInfoId;
+  public void setContactInfo(ContactInfo contactInfo) {
+    this.contactInfo = contactInfo;
   }
 
-  public DoctorDTO doctorId(String doctorId) {
+  public DoctorAggregateDTO doctorId(String doctorId) {
     this.doctorId = doctorId;
     return this;
   }
@@ -101,27 +105,28 @@ public class DoctorDTO   {
     this.doctorId = doctorId;
   }
 
-  public DoctorDTO doctorSettingsId(Long doctorSettingsId) {
-    this.doctorSettingsId = doctorSettingsId;
+  public DoctorAggregateDTO doctorSettings(DoctorSettings doctorSettings) {
+    this.doctorSettings = doctorSettings;
     return this;
   }
 
   /**
-   * Get doctorSettingsId
-   * @return doctorSettingsId
+   * Get doctorSettings
+   * @return doctorSettings
   **/
   @ApiModelProperty(value = "")
 
+  @Valid
 
-  public Long getDoctorSettingsId() {
-    return doctorSettingsId;
+  public DoctorSettings getDoctorSettings() {
+    return doctorSettings;
   }
 
-  public void setDoctorSettingsId(Long doctorSettingsId) {
-    this.doctorSettingsId = doctorSettingsId;
+  public void setDoctorSettings(DoctorSettings doctorSettings) {
+    this.doctorSettings = doctorSettings;
   }
 
-  public DoctorDTO email(String email) {
+  public DoctorAggregateDTO email(String email) {
     this.email = email;
     return this;
   }
@@ -141,7 +146,7 @@ public class DoctorDTO   {
     this.email = email;
   }
 
-  public DoctorDTO firstName(String firstName) {
+  public DoctorAggregateDTO firstName(String firstName) {
     this.firstName = firstName;
     return this;
   }
@@ -161,7 +166,7 @@ public class DoctorDTO   {
     this.firstName = firstName;
   }
 
-  public DoctorDTO id(Long id) {
+  public DoctorAggregateDTO id(Long id) {
     this.id = id;
     return this;
   }
@@ -181,7 +186,7 @@ public class DoctorDTO   {
     this.id = id;
   }
 
-  public DoctorDTO image(byte[] image) {
+  public DoctorAggregateDTO image(byte[] image) {
     this.image = image;
     return this;
   }
@@ -201,7 +206,7 @@ public class DoctorDTO   {
     this.image = image;
   }
 
-  public DoctorDTO imageContentType(String imageContentType) {
+  public DoctorAggregateDTO imageContentType(String imageContentType) {
     this.imageContentType = imageContentType;
     return this;
   }
@@ -221,27 +226,28 @@ public class DoctorDTO   {
     this.imageContentType = imageContentType;
   }
 
-  public DoctorDTO paymentSettingsId(Long paymentSettingsId) {
-    this.paymentSettingsId = paymentSettingsId;
+  public DoctorAggregateDTO paymentSettings(PaymentSettings paymentSettings) {
+    this.paymentSettings = paymentSettings;
     return this;
   }
 
   /**
-   * Get paymentSettingsId
-   * @return paymentSettingsId
+   * Get paymentSettings
+   * @return paymentSettings
   **/
   @ApiModelProperty(value = "")
 
+  @Valid
 
-  public Long getPaymentSettingsId() {
-    return paymentSettingsId;
+  public PaymentSettings getPaymentSettings() {
+    return paymentSettings;
   }
 
-  public void setPaymentSettingsId(Long paymentSettingsId) {
-    this.paymentSettingsId = paymentSettingsId;
+  public void setPaymentSettings(PaymentSettings paymentSettings) {
+    this.paymentSettings = paymentSettings;
   }
 
-  public DoctorDTO phoneNumber(Long phoneNumber) {
+  public DoctorAggregateDTO phoneNumber(Long phoneNumber) {
     this.phoneNumber = phoneNumber;
     return this;
   }
@@ -261,7 +267,7 @@ public class DoctorDTO   {
     this.phoneNumber = phoneNumber;
   }
 
-  public DoctorDTO practiceSince(LocalDate practiceSince) {
+  public DoctorAggregateDTO practiceSince(LocalDate practiceSince) {
     this.practiceSince = practiceSince;
     return this;
   }
@@ -282,7 +288,7 @@ public class DoctorDTO   {
     this.practiceSince = practiceSince;
   }
 
-  public DoctorDTO registerNumber(String registerNumber) {
+  public DoctorAggregateDTO registerNumber(String registerNumber) {
     this.registerNumber = registerNumber;
     return this;
   }
@@ -302,7 +308,7 @@ public class DoctorDTO   {
     this.registerNumber = registerNumber;
   }
 
-  public DoctorDTO specialization(String specialization) {
+  public DoctorAggregateDTO specialization(String specialization) {
     this.specialization = specialization;
     return this;
   }
@@ -322,7 +328,7 @@ public class DoctorDTO   {
     this.specialization = specialization;
   }
 
-  public DoctorDTO totalRating(Double totalRating) {
+  public DoctorAggregateDTO totalRating(Double totalRating) {
     this.totalRating = totalRating;
     return this;
   }
@@ -351,42 +357,42 @@ public class DoctorDTO   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DoctorDTO doctorDTO = (DoctorDTO) o;
-    return Objects.equals(this.contactInfoId, doctorDTO.contactInfoId) &&
-        Objects.equals(this.doctorId, doctorDTO.doctorId) &&
-        Objects.equals(this.doctorSettingsId, doctorDTO.doctorSettingsId) &&
-        Objects.equals(this.email, doctorDTO.email) &&
-        Objects.equals(this.firstName, doctorDTO.firstName) &&
-        Objects.equals(this.id, doctorDTO.id) &&
-        Objects.equals(this.image, doctorDTO.image) &&
-        Objects.equals(this.imageContentType, doctorDTO.imageContentType) &&
-        Objects.equals(this.paymentSettingsId, doctorDTO.paymentSettingsId) &&
-        Objects.equals(this.phoneNumber, doctorDTO.phoneNumber) &&
-        Objects.equals(this.practiceSince, doctorDTO.practiceSince) &&
-        Objects.equals(this.registerNumber, doctorDTO.registerNumber) &&
-        Objects.equals(this.specialization, doctorDTO.specialization) &&
-        Objects.equals(this.totalRating, doctorDTO.totalRating);
+    DoctorAggregateDTO doctorAggregateDTO = (DoctorAggregateDTO) o;
+    return Objects.equals(this.contactInfo, doctorAggregateDTO.contactInfo) &&
+        Objects.equals(this.doctorId, doctorAggregateDTO.doctorId) &&
+        Objects.equals(this.doctorSettings, doctorAggregateDTO.doctorSettings) &&
+        Objects.equals(this.email, doctorAggregateDTO.email) &&
+        Objects.equals(this.firstName, doctorAggregateDTO.firstName) &&
+        Objects.equals(this.id, doctorAggregateDTO.id) &&
+        Objects.equals(this.image, doctorAggregateDTO.image) &&
+        Objects.equals(this.imageContentType, doctorAggregateDTO.imageContentType) &&
+        Objects.equals(this.paymentSettings, doctorAggregateDTO.paymentSettings) &&
+        Objects.equals(this.phoneNumber, doctorAggregateDTO.phoneNumber) &&
+        Objects.equals(this.practiceSince, doctorAggregateDTO.practiceSince) &&
+        Objects.equals(this.registerNumber, doctorAggregateDTO.registerNumber) &&
+        Objects.equals(this.specialization, doctorAggregateDTO.specialization) &&
+        Objects.equals(this.totalRating, doctorAggregateDTO.totalRating);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(contactInfoId, doctorId, doctorSettingsId, email, firstName, id, image, imageContentType, paymentSettingsId, phoneNumber, practiceSince, registerNumber, specialization, totalRating);
+    return Objects.hash(contactInfo, doctorId, doctorSettings, email, firstName, id, image, imageContentType, paymentSettings, phoneNumber, practiceSince, registerNumber, specialization, totalRating);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DoctorDTO {\n");
+    sb.append("class DoctorAggregateDTO {\n");
     
-    sb.append("    contactInfoId: ").append(toIndentedString(contactInfoId)).append("\n");
+    sb.append("    contactInfo: ").append(toIndentedString(contactInfo)).append("\n");
     sb.append("    doctorId: ").append(toIndentedString(doctorId)).append("\n");
-    sb.append("    doctorSettingsId: ").append(toIndentedString(doctorSettingsId)).append("\n");
+    sb.append("    doctorSettings: ").append(toIndentedString(doctorSettings)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    image: ").append(toIndentedString(image)).append("\n");
     sb.append("    imageContentType: ").append(toIndentedString(imageContentType)).append("\n");
-    sb.append("    paymentSettingsId: ").append(toIndentedString(paymentSettingsId)).append("\n");
+    sb.append("    paymentSettings: ").append(toIndentedString(paymentSettings)).append("\n");
     sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
     sb.append("    practiceSince: ").append(toIndentedString(practiceSince)).append("\n");
     sb.append("    registerNumber: ").append(toIndentedString(registerNumber)).append("\n");

@@ -18,28 +18,40 @@ package com.bytatech.ayoos.client.doctor.domain;
 
 
 import org.springframework.data.elasticsearch.annotations.Document;
+
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  * A UserRating.
  */
 @Document(indexName = "userrating")
 public class UserRating implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+private static final long serialVersionUID = 1L;
     
-
+  
     private Long id;
 
-   
     private String userName;
 
+  
     private Double rating;
 
- 
-    private ZonedDateTime ratedOn;
+   
+    private LocalDate ratedOn;
+
+    private Doctor doctor;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -76,17 +88,30 @@ public class UserRating implements Serializable {
         this.rating = rating;
     }
 
-    public ZonedDateTime getRatedOn() {
+    public LocalDate getRatedOn() {
         return ratedOn;
     }
 
-    public UserRating ratedOn(ZonedDateTime ratedOn) {
+    public UserRating ratedOn(LocalDate ratedOn) {
         this.ratedOn = ratedOn;
         return this;
     }
 
-    public void setRatedOn(ZonedDateTime ratedOn) {
+    public void setRatedOn(LocalDate ratedOn) {
         this.ratedOn = ratedOn;
+    }
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public UserRating doctor(Doctor doctor) {
+        this.doctor = doctor;
+        return this;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
