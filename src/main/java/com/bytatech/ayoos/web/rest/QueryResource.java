@@ -149,6 +149,8 @@ public class QueryResource {
 	}
 	
 	
+	//.............................................Consultation...........................................................................
+	
 	@GetMapping("/tasks")
 	public ResponseEntity<DataResponse> getTasks(@RequestParam(value = "name", required = false) String name,
 			   @RequestParam(value = "nameLike", required = false) String nameLike, 
@@ -202,7 +204,7 @@ public class QueryResource {
 	public ResponseEntity<byte[]> getPrescriptionAsPDF(){
 		return consultationQueryResource.getPrescriptionAsPdfUsingGET();
 	}
-	//.............................................Appintment...........................................................................
+	//.............................................Appointment...........................................................................
 	@GetMapping("/open-appointments")
 	public ResponseEntity<List<OpenAppointmentResponse>> getOpenAppointments(@RequestParam String assignee){
 		return appointmentQueryResourceApi.getMyAppointmentsUsingGET(null, assignee, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
