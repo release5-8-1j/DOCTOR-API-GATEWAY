@@ -148,7 +148,11 @@ public class QueryResource {
 	return	reservedSlotResourceApi.getAllUnReservedSlotsUsingGET(page, size, sort);
 	}
 	
-	
+	@GetMapping("/Dr-slots/{date}/{doctorId}")
+	public ResponseEntity<List<ReservedSlotDTO>> findSlots(@PathVariable String date, @PathVariable Long doctorId){
+		return reservedSlotResourceApi.test2UsingGET(date, doctorId);
+	}
+	//..........................................CONSULTATION..........................................................................
 	@GetMapping("/tasks")
 	public ResponseEntity<DataResponse> getTasks(@RequestParam(value = "name", required = false) String name,
 			   @RequestParam(value = "nameLike", required = false) String nameLike, 
