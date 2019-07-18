@@ -211,4 +211,9 @@ jhipster:
 # https://www.jhipster.tech/common-application-properties/
 # ===================================================================
 
-# application:
+application:
+doctor:
+   url: 34.68.84.96:8083
+  
+consultation:
+   url: 34.68.84.96:8001
