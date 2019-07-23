@@ -137,8 +137,8 @@ public class QueryResource {
 	} 
 	//add findsessionInfoHavingWorkPlaceIdAndDoctorId
 	@GetMapping("/session-infos-doctorsworkplace/{doctorId}/{workPlaceId}")
-	public ResponseEntity<List<SessionInfoDTO>> findAllSesionInfoByDoctorsWorkPlace(@PathVariable String doctorId,@PathVariable Long workPlaceId, Pageable pageable) {
-		return sessionInfoResourceApi.listToDtoUsingPOST6(queryService.findSessionInfoByDoctorsWorkPlace(doctorId, workPlaceId, pageable).getContent());
+	public Page<SessionInfo> findAllSesionInfoByDoctorsWorkPlace(@PathVariable String doctorId,@PathVariable Long workPlaceId, Pageable pageable) {
+		return queryService.findSessionInfoByDoctorsWorkPlace(doctorId, workPlaceId, pageable);
 	}
 	@GetMapping("/slots/{searchTerm}")
 	public ResponseEntity<List<ReservedSlotDTO>> findAllSlots(@PathVariable String searchTerm, Pageable pageable){
@@ -150,9 +150,16 @@ public class QueryResource {
 	return	reservedSlotResourceApi.getAllUnReservedSlotsUsingGET(page, size, sort);
 	}
 	
+
+	@GetMapping("/Dr-slots/{date}/{doctorId}")
+	public ResponseEntity<List<ReservedSlotDTO>> findSlots(@PathVariable String date, @PathVariable Long doctorId){
+		return reservedSlotResourceApi.test2UsingGET(date, doctorId);
+	}
+
 	
 	//.............................................Consultation...........................................................................
 	
+
 	@GetMapping("/tasks")
 	public ResponseEntity<DataResponse> getTasks(@RequestParam(value = "name", required = false) String name,
 			   @RequestParam(value = "nameLike", required = false) String nameLike, 

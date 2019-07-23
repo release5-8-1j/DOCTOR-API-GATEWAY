@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 
 import com.bytatech.ayoos.client.appointment.model.Appointment;
 import com.bytatech.ayoos.client.doctor.domain.*;
+import com.bytatech.ayoos.client.doctor.model.SessionInfoDTO;
 
 public interface QueryService {
 
