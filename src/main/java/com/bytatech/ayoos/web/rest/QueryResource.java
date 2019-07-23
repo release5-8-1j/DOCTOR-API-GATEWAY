@@ -57,8 +57,10 @@ import com.bytatech.ayoos.client.doctor.model.ReservedSlotDTO;
 import com.bytatech.ayoos.client.doctor.model.SessionInfoDTO;
 import com.bytatech.ayoos.client.doctor.model.WorkPlaceDTO;
 import com.bytatech.ayoos.service.QueryService;
+import com.bytatech.ayoos.service.dto.PdfDTO;
 import com.bytatech.ayoos.web.rest.errors.BadRequestAlertException;
 import com.bytatech.ayoos.web.rest.util.HeaderUtil;
+
 
 import io.swagger.annotations.ApiParam;
 
@@ -204,6 +206,18 @@ public class QueryResource {
 	public ResponseEntity<byte[]> getPrescriptionAsPDF(){
 		return consultationQueryResource.getPrescriptionAsPdfUsingGET();
 	}
+	
+	@GetMapping("/prescription/pdf")
+	public ResponseEntity<PdfDTO> exportPrescriptionAsPdf(){
+		
+		PdfDTO pdf = new PdfDTO();
+		pdf.setPdf(this.consultationQueryResource.getPrescriptionAsPdfUsingGET().getBody());
+		pdf.setContentType("application/pdf");
+		return ResponseEntity.ok().body(pdf);
+	}
+	
+	
+	
 	//.............................................Appointment...........................................................................
 	@GetMapping("/open-appointments")
 	public ResponseEntity<List<OpenAppointmentResponse>> getOpenAppointments(@RequestParam String assignee){
