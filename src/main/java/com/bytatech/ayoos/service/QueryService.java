@@ -57,7 +57,7 @@ public interface QueryService {
 	 */
 	Page<SessionInfo> findSessionInfos(String searchTerm, Pageable pageable);
 
-	Page<SessionInfoDTO> findSessionInfoByDoctorsWorkPlace(String doctorId, Long workPlaceId, Pageable pageable);
+	Page<SessionInfo> findSessionInfoByDoctorsWorkPlace(String doctorId, Long workPlaceId, Pageable pageable);
 
 	/**
 	 * @param searchTerm
