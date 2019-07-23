@@ -135,9 +135,10 @@ public class QueryResource {
 	} 
 	//add findsessionInfoHavingWorkPlaceIdAndDoctorId
 	@GetMapping("/session-infos-doctorsworkplace/{doctorId}/{workPlaceId}")
-	public Page<SessionInfo> findAllSesionInfoByDoctorsWorkPlace(@PathVariable String doctorId,@PathVariable Long workPlaceId, Pageable pageable) {
-		return queryService.findSessionInfoByDoctorsWorkPlace(doctorId, workPlaceId, pageable);
+	public ResponseEntity<Page<SessionInfo>> findAllSesionInfoByDoctorsWorkPlace(@PathVariable String doctorId,@PathVariable Long workPlaceId, Pageable pageable) {
+		return ResponseEntity.ok().body(queryService.findSessionInfoByDoctorsWorkPlace(doctorId, workPlaceId, pageable));
 	}
+	
 	@GetMapping("/slots/{searchTerm}")
 	public ResponseEntity<List<ReservedSlotDTO>> findAllSlots(@PathVariable String searchTerm, Pageable pageable){
 	return reservedSlotResourceApi.listToDtoUsingPOST4(queryService.findAllReservedSlot(searchTerm,pageable).getContent());
