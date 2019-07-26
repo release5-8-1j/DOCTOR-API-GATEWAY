@@ -43,6 +43,8 @@ import com.bytatech.ayoos.client.consultation.model.DataResponse;
 import com.bytatech.ayoos.client.doctor.api.ContactInfoResourceApi;
 import com.bytatech.ayoos.client.doctor.api.DoctorResourceApi;
 import com.bytatech.ayoos.client.doctor.api.DoctorResourceApiClient;
+import com.bytatech.ayoos.client.doctor.api.DoctorSettingsResourceApi;
+import com.bytatech.ayoos.client.doctor.api.PaymentSettingsResourceApi;
 import com.bytatech.ayoos.client.doctor.api.QualificationResourceApi;
 import com.bytatech.ayoos.client.doctor.api.ReservedSlotResourceApi;
 import com.bytatech.ayoos.client.doctor.api.SessionInfoResourceApi;
@@ -52,6 +54,8 @@ import com.bytatech.ayoos.client.doctor.domain.Doctor;
 import com.bytatech.ayoos.client.doctor.domain.WorkPlace;
 import com.bytatech.ayoos.client.doctor.model.ContactInfoDTO;
 import com.bytatech.ayoos.client.doctor.model.DoctorDTO;
+import com.bytatech.ayoos.client.doctor.model.DoctorSettingsDTO;
+import com.bytatech.ayoos.client.doctor.model.PaymentSettingsDTO;
 import com.bytatech.ayoos.client.doctor.model.QualificationDTO;
 import com.bytatech.ayoos.client.doctor.model.ReservedSlotDTO;
 import com.bytatech.ayoos.client.doctor.model.SessionInfoDTO;
@@ -90,6 +94,10 @@ public class QueryResource {
 	ConsultationQueryResourceApi consultationQueryResource;
 	@Autowired
 	AppointmentQueryResourceApi appointmentQueryResourceApi;
+	@Autowired
+	DoctorSettingsResourceApi doctorSettingsResourceApi;
+	@Autowired
+	PaymentSettingsResourceApi paymentSettingResourceApi;
 	
 	// productResourceApi.listToDtoUsingPOST(queryService.findAllProduct(page).getContent());
 	@GetMapping("/doctor/{searchTerm}")
@@ -157,6 +165,16 @@ public class QueryResource {
 		return reservedSlotResourceApi.test2UsingGET(date, doctorId);
 	}
 
+	
+	@GetMapping("/doctor-settings/{id}")
+	public ResponseEntity<DoctorSettingsDTO> findDoctorSettings(@PathVariable Long id) {
+		return doctorSettingsResourceApi.getDoctorSettingsUsingGET(id);
+	}
+	
+	@GetMapping("/payment-settings/{id}")
+	public ResponseEntity<PaymentSettingsDTO> findPaymentSettings(@PathVariable Long id) {
+		return paymentSettingResourceApi.getPaymentSettingsUsingGET(id);
+	}
 	
 	//.............................................Consultation...........................................................................
 	

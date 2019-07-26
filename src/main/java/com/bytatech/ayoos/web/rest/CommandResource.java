@@ -104,8 +104,11 @@ public class CommandResource {
 	  
 	  @PostMapping("/doctors")
 	    public ResponseEntity<DoctorDTO> createDoctor(@RequestBody DoctorDTO doctorDTO) throws URISyntaxException {
-		  
-		  return  doctorApi.createDoctorUsingPOST(doctorDTO);
+		 
+		
+		  ResponseEntity<DoctorDTO> doctorDto = doctorApi.createDoctorUsingPOST(doctorDTO); 
+		    
+		  return  doctorDto;
 	  }
 	  
 	  @PutMapping("/doctors")
@@ -176,13 +179,20 @@ public class CommandResource {
 		return paymentSettingsResourceApi.createPaymentSettingsUsingPOST(paymentSettingsDTO);
 	}
 
+	@PutMapping("/paymentSettings")
+	public ResponseEntity<PaymentSettingsDTO> updatePaymentSetting(@RequestBody PaymentSettingsDTO paymentSettingsDTO) {
+		return paymentSettingsResourceApi.updatePaymentSettingsUsingPUT(paymentSettingsDTO);
+	}
 	
 	@PostMapping("/doctorSettings")
 	public ResponseEntity<DoctorSettingsDTO> createDoctorSetting(@RequestBody DoctorSettingsDTO doctorSettingsDTO) {
 		return doctorSettingsResourceApi.createDoctorSettingsUsingPOST(doctorSettingsDTO);
 	}
 	
-	
+	@PutMapping("/doctorSettings")
+	public ResponseEntity<DoctorSettingsDTO> updateDoctorSetting(@RequestBody DoctorSettingsDTO doctorSettingsDTO) {
+		return doctorSettingsResourceApi.updateDoctorSettingsUsingPUT(doctorSettingsDTO);
+	}
 	
 	
 	
