@@ -251,8 +251,8 @@ public class QueryResource {
 	}
 
 	@GetMapping("/appointments/{doctorId}")
-	public Page<Appointment> getAppointmentsByDoctorId(@PathVariable String searchTerm ,Pageable pageable){
-		return queryService.findAppointmentsByDoctorId(searchTerm, pageable);
+	public Page<Appointment> getAppointmentsByDoctorId(@PathVariable String doctorId ,Pageable pageable){
+		return queryService.findAppointmentsByDoctorId(doctorId, pageable);
 	}
 	
 	@GetMapping("/appointments/{doctorId}/{date}")
