@@ -145,7 +145,7 @@ public class QueryResource {
 	} 
 	//add findsessionInfoHavingWorkPlaceIdAndDoctorId
 	@GetMapping("/session-infos-doctorsworkplace/{doctorId}/{workPlaceId}")
-	public ResponseEntity<Page<SessionInfo>> findAllSesionInfoByDoctorsWorkPlace(@PathVariable String doctorId,@PathVariable Long workPlaceId, Pageable pageable) {
+	public ResponseEntity<Page<SessionInfo>> findAllSesionInfoByDoctorsWorkPlace(@PathVariable String doctorId,@PathVariable Long workPlaceId,@PageableDefault(size = 20) Pageable pageable) {
 		return ResponseEntity.ok().body(queryService.findSessionInfoByDoctorsWorkPlace(doctorId, workPlaceId, pageable));
 	}
 	
