@@ -51,8 +51,6 @@ import com.bytatech.ayoos.client.doctor.api.ReservedSlotResourceApi;
 import com.bytatech.ayoos.client.doctor.api.SessionInfoResourceApi;
 import com.bytatech.ayoos.client.doctor.api.WorkPlaceResourceApi;
 import com.bytatech.ayoos.client.doctor.domain.*;
-import com.bytatech.ayoos.client.doctor.domain.Doctor;
-import com.bytatech.ayoos.client.doctor.domain.WorkPlace;
 import com.bytatech.ayoos.client.doctor.model.ContactInfoDTO;
 import com.bytatech.ayoos.client.doctor.model.DoctorDTO;
 import com.bytatech.ayoos.client.doctor.model.DoctorSettingsDTO;
@@ -141,9 +139,9 @@ public class QueryResource {
 	}
 
 	@GetMapping("/session-infos/{searchTerm}")
-	public ResponseEntity<List<SessionInfoDTO>> findAllSesionInfo(@PathVariable String searchTerm,@PageableDefault(size = 20) Pageable pageable) {
+	public Page<SessionInfo> findAllSesionInfo(@PathVariable String searchTerm,@PageableDefault(size = 20) Pageable pageable) {
 		//pageable = new 
-		return sessionInfoResourceApi.listToDtoUsingPOST6(queryService.findAllSessionInfo(searchTerm, pageable).getContent());
+		return queryService.findAllSessionInfo(searchTerm, pageable);
 	} 
 	//add findsessionInfoHavingWorkPlaceIdAndDoctorId
 	@GetMapping("/session-infos-doctorsworkplace/{doctorId}/{workPlaceId}")
