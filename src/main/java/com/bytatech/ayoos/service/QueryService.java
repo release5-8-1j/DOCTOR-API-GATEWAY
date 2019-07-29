@@ -1,5 +1,6 @@
 package com.bytatech.ayoos.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -65,5 +66,13 @@ public interface QueryService {
 	 * @return
 	 */
 	Page<Appointment> findAppointmentsByDoctorId(String searchTerm, Pageable pageable);
+
+	/**
+	 * @param doctorId
+	 * @param date
+	 * @param pageable
+	 * @return
+	 */
+	Page<Appointment> findAppointmentsByDoctorId(String doctorId, LocalDate date, Pageable pageable);
 
 }

@@ -26,6 +26,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -140,7 +141,8 @@ public class QueryResource {
 	}
 
 	@GetMapping("/session-infos/{searchTerm}")
-	public ResponseEntity<List<SessionInfoDTO>> findAllSesionInfo(@PathVariable String searchTerm, Pageable pageable) {
+	public ResponseEntity<List<SessionInfoDTO>> findAllSesionInfo(@PathVariable String searchTerm,@PageableDefault(size = 20) Pageable pageable) {
+		//pageable = new 
 		return sessionInfoResourceApi.listToDtoUsingPOST6(queryService.findAllSessionInfo(searchTerm, pageable).getContent());
 	} 
 	//add findsessionInfoHavingWorkPlaceIdAndDoctorId
@@ -250,8 +252,14 @@ public class QueryResource {
 		return appointmentQueryResourceApi.getMyAppointmentsUsingGET(null, assignee, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 	}
 
-	@GetMapping("/appointments/{searchTerm}")
+	@GetMapping("/appointments/{doctorId}")
 	public Page<Appointment> getAppointmentsByDoctorId(@PathVariable String searchTerm ,Pageable pageable){
 		return queryService.findAppointmentsByDoctorId(searchTerm, pageable);
 	}
+	
+	@GetMapping("/appointments/{doctorId}/{date}")
+	public Page<Appointment> getAppointmentsByDoctorIdAndDate(@PathVariable String doctorId,@PathVariable LocalDate date ,Pageable pageable){
+		return queryService.findAppointmentsByDoctorId(doctorId,date, pageable);
+	}
+	
 }

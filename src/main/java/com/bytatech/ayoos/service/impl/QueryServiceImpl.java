@@ -158,6 +158,17 @@ public class QueryServiceImpl implements QueryService {
 				.withQuery(termQuery("doctorId", searchTerm)).build();
 		return elasticsearchOperations.queryForPage(searchQuery, Appointment.class);
 	}
+
+	/* (non-Javadoc)
+	 * @see com.bytatech.ayoos.service.QueryService#findAppointmentsByDoctorId(java.lang.String, java.time.LocalDate, org.springframework.data.domain.Pageable)
+	 */
+	@Override
+	public Page<Appointment> findAppointmentsByDoctorId(String doctorId, LocalDate date, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 	
 	/*
 	 * (non-Javadoc)
