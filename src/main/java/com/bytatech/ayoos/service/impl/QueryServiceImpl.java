@@ -71,7 +71,6 @@ public class QueryServiceImpl implements QueryService {
 
 	}
 
-	
 	@Override
 	public Page<WorkPlace> findWorkPlaces(String searchTerm, Pageable pageable) {
 		// StringQuery stringQuery = new
@@ -117,7 +116,6 @@ public class QueryServiceImpl implements QueryService {
 		return elasticsearchOperations.queryForPage(searchQuery, SessionInfo.class);
 	}
 
-	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -143,33 +141,39 @@ public class QueryServiceImpl implements QueryService {
 	@Override
 	public Page<SessionInfo> findSessionInfoByDoctorsWorkPlace(String doctorId, Long workPlaceId, Pageable pageable) {
 
-	
 		SearchQuery searchQuery = new NativeSearchQueryBuilder()
-				.withQuery(QueryBuilders.boolQuery().must(QueryBuilders.matchQuery("workPlace.doctor.doctorId", doctorId))
-						.must(QueryBuilders.matchQuery("workPlace.id", workPlaceId))).withPageable(pageable)
-				.build();
+				.withQuery(
+						QueryBuilders.boolQuery().must(QueryBuilders.matchQuery("workPlace.doctor.doctorId", doctorId))
+								.must(QueryBuilders.matchQuery("workPlace.id", workPlaceId)))
+				.withPageable(pageable).build();
 		return elasticsearchOperations.queryForPage(searchQuery, SessionInfo.class);
 	}
 
-	//..................................Appointment..............................................................................
+	// ..................................Appointment..............................................................................
 	@Override
 	public Page<Appointment> findAppointmentsByDoctorId(String searchTerm, Pageable pageable) {
-		SearchQuery searchQuery = new NativeSearchQueryBuilder()
-				.withQuery(termQuery("doctorId", searchTerm)).build();
+		SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(termQuery("doctorId", searchTerm)).build();
 		return elasticsearchOperations.queryForPage(searchQuery, Appointment.class);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.bytatech.ayoos.service.QueryService#findAppointmentsByDoctorId(java.lang.String, java.time.LocalDate, org.springframework.data.domain.Pageable)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.bytatech.ayoos.service.QueryService#findAppointmentsByDoctorId(java.
+	 * lang.String, java.time.LocalDate,
+	 * org.springframework.data.domain.Pageable)
 	 */
 	@Override
 	public Page<Appointment> findAppointmentsByDoctorId(String doctorId, LocalDate date, Pageable pageable) {
-		// TODO Auto-generated method stub
-		return null;
+		//.....if match not work in date plz change accordingly...........
+		SearchQuery searchQuery = new NativeSearchQueryBuilder()
+				.withQuery(QueryBuilders.boolQuery().must(QueryBuilders.matchQuery("doctorId", doctorId))
+						.must(QueryBuilders.matchQuery("appointmentDateAndTime", date)))
+				.withPageable(pageable).build();
+		return elasticsearchOperations.queryForPage(searchQuery, Appointment.class);
 	}
-	
-	
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
