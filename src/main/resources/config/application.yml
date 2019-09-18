@@ -213,7 +213,7 @@ jhipster:
 
 application:
 doctor:
-   url: 34.74.202.141:8083
+   url: 35.229.27.47:8083
   
 consultation:
-   url: 34.74.202.141:8001
+   url: 35.229.27.47:8001
