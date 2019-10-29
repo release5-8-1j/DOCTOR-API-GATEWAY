@@ -4,7 +4,7 @@ package com.bytatech.ayoos.client.doctor.domain;
 
 import javax.persistence.*;
 
-import org.springframework.data.elasticsearch.annotations.Document;
+//import org.springframework.data.elasticsearch.annotations.Document;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -12,7 +12,7 @@ import java.util.Objects;
  * A ContactInfo.
  */
 
-@Document(indexName = "contactinfo")
+//@Document(indexName = "contactinfo")
 public class ContactInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;

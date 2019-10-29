@@ -15,7 +15,7 @@
 */
 package com.bytatech.ayoos.web.rest;
 
-import static org.elasticsearch.index.query.QueryBuilders.termQuery;
+//import static org.elasticsearch.index.query.QueryBuilders.termQuery;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -25,8 +25,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
-import org.springframework.data.elasticsearch.core.query.SearchQuery;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -69,7 +68,7 @@ public class CommandResource {
 		return "success";
 	}
 
-	@Autowired
+	/*@Autowired
 	PaymentSettingsResourceApi paymentSettingsResourceApi;
 
 	@Autowired
@@ -245,5 +244,5 @@ public class CommandResource {
 		return appointmentCommandResourceApi.processAppointmentRequestUsingPOST(taskId,
 				appointmentConfirmationResponse);
 	}
-
+*/
 }

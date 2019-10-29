@@ -21,6 +21,7 @@ public interface QueryService {
 	 * @param pageable
 	 * @return
 	 */
+
 	ContactInfo findContactInfo(String searchTerm);
 
 	/**
@@ -28,6 +29,7 @@ public interface QueryService {
 	 * @param pageable
 	 * @return
 	 */
+
 	Page<WorkPlace> findWorkPlaces(String searchTerm, Pageable pageable);
 
 	/**
@@ -35,6 +37,7 @@ public interface QueryService {
 	 * @param pageable
 	 * @return
 	 */
+
 	Page<Qualification> findAllQualification(String searchTerm, Pageable pageable);
 
 	/**
@@ -42,13 +45,15 @@ public interface QueryService {
 	 * @param pageable
 	 * @return
 	 */
-	Page<SessionInfo> findAllSessionInfo(String searchTerm, Pageable pageable);
+	/*
+	 * Page<SessionInfo> findAllSessionInfo(String searchTerm, Pageable pageable);
+	 * 
+	 *//**
+		 * @param searchTerm
+		 * @param pageable
+		 * @return
+		 */
 
-	/**
-	 * @param searchTerm
-	 * @param pageable
-	 * @return
-	 */
 	Page<ReservedSlot> findAllReservedSlot(String searchTerm, Pageable pageable);
 
 	/**
@@ -56,8 +61,15 @@ public interface QueryService {
 	 * @param pageable
 	 * @return
 	 */
-	Page<SessionInfo> findSessionInfos(String searchTerm, Pageable pageable);
+	/*
+	 * Page<SessionInfo> findSessionInfos(String searchTerm, Pageable pageable);
+	 */
 
+	/**
+	 * @param searchTerm
+	 * @param pageable
+	 * @return
+	 */
 	Page<SessionInfo> findSessionInfoByDoctorsWorkPlace(String doctorId, Long workPlaceId, Pageable pageable);
 
 	/**
@@ -65,6 +77,7 @@ public interface QueryService {
 	 * @param pageable
 	 * @return
 	 */
+
 	Page<Appointment> findAppointmentsByDoctorId(String searchTerm, Pageable pageable);
 
 	/**

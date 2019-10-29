@@ -3,7 +3,7 @@ package com.bytatech.ayoos.service;
 import com.bytatech.ayoos.DoctorgatewayApp;
 import com.bytatech.ayoos.config.Constants;
 import com.bytatech.ayoos.domain.User;
-import com.bytatech.ayoos.repository.search.UserSearchRepository;
+//import com.bytatech.ayoos.repository.search.UserSearchRepository;
 import com.bytatech.ayoos.repository.UserRepository;
 import com.bytatech.ayoos.service.dto.UserDTO;
 import com.bytatech.ayoos.security.AuthoritiesConstants;
@@ -61,9 +61,9 @@ public class UserServiceIntTest {
      *
      * @see com.bytatech.ayoos.repository.search.UserSearchRepositoryMockConfiguration
      */
-    @Autowired
+    /*@Autowired
     private UserSearchRepository mockUserSearchRepository;
-
+*/
     @Autowired
     private AuditingHandler auditingHandler;
 

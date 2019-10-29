@@ -4,7 +4,7 @@ import com.bytatech.ayoos.DoctorgatewayApp;
 import com.bytatech.ayoos.domain.Authority;
 import com.bytatech.ayoos.domain.User;
 import com.bytatech.ayoos.repository.UserRepository;
-import com.bytatech.ayoos.repository.search.UserSearchRepository;
+//import com.bytatech.ayoos.repository.search.UserSearchRepository;
 import com.bytatech.ayoos.security.AuthoritiesConstants;
 
 import com.bytatech.ayoos.service.UserService;
@@ -69,9 +69,9 @@ public class UserResourceIntTest {
      *
      * @see com.bytatech.ayoos.repository.search.UserSearchRepositoryMockConfiguration
      */
-    @Autowired
+  /*  @Autowired
     private UserSearchRepository mockUserSearchRepository;
-
+*/
     @Autowired
     private UserService userService;
 
@@ -97,7 +97,7 @@ public class UserResourceIntTest {
 
     private User user;
 
-    @Before
+  /*  @Before
     public void setup() {
         cacheManager.getCache(UserRepository.USERS_BY_LOGIN_CACHE).clear();
         cacheManager.getCache(UserRepository.USERS_BY_EMAIL_CACHE).clear();
@@ -108,7 +108,7 @@ public class UserResourceIntTest {
             .setControllerAdvice(exceptionTranslator)
             .setMessageConverters(jacksonMessageConverter)
             .build();
-    }
+    }*/
 
     /**
      * Create a User.
@@ -141,8 +141,7 @@ public class UserResourceIntTest {
     public void getAllUsers() throws Exception {
         // Initialize the database
         userRepository.saveAndFlush(user);
-        mockUserSearchRepository.save(user);
-
+      //  mockUserSearchRepository.save(user);
         // Get all the users
         restUserMockMvc.perform(get("/api/users?sort=id,desc")
             .accept(MediaType.APPLICATION_JSON))
@@ -161,7 +160,7 @@ public class UserResourceIntTest {
     public void getUser() throws Exception {
         // Initialize the database
         userRepository.saveAndFlush(user);
-        mockUserSearchRepository.save(user);
+     //   mockUserSearchRepository.save(user);
 
         assertThat(cacheManager.getCache(UserRepository.USERS_BY_LOGIN_CACHE).get(user.getLogin())).isNull();
 

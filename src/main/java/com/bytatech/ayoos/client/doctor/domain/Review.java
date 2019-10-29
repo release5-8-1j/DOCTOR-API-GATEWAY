@@ -16,7 +16,7 @@
 package com.bytatech.ayoos.client.doctor.domain;
 
 
-import org.springframework.data.elasticsearch.annotations.Document;
+//import org.springframework.data.elasticsearch.annotations.Document;
 
 
 
@@ -39,7 +39,7 @@ import java.util.Objects;
 /**
  * A Review.
  */
-@Document(indexName = "review")
+//@Document(indexName = "review")
 public class Review implements Serializable {
 	
     private Long id;

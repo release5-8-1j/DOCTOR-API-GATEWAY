@@ -17,7 +17,7 @@ package com.bytatech.ayoos.client.doctor.domain;
 
 
 
-import org.springframework.data.elasticsearch.annotations.Document;
+//import org.springframework.data.elasticsearch.annotations.Document;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -36,7 +36,7 @@ import javax.persistence.ManyToOne;
 /**
  * A UserRating.
  */
-@Document(indexName = "userrating")
+//@Document(indexName = "userrating")
 public class UserRating implements Serializable {
 private static final long serialVersionUID = 1L;
     

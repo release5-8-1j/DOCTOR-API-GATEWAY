@@ -1,72 +1,52 @@
 package com.bytatech.ayoos.config;
-
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.github.vanroy.springdata.jest.JestElasticsearchTemplate;
-import com.github.vanroy.springdata.jest.mapper.DefaultJestResultsMapper;
-import io.searchbox.client.JestClient;
-import org.springframework.boot.autoconfigure.data.elasticsearch.ElasticsearchProperties;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.apache.http.HttpHost;
+import org.apache.http.auth.AuthScope;
+import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.client.CredentialsProvider;
+import org.apache.http.impl.client.BasicCredentialsProvider;
+import org.elasticsearch.client.RestClient;
+import org.elasticsearch.client.RestClientBuilder;
+import org.elasticsearch.client.RestHighLevelClient;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
-import org.springframework.data.elasticsearch.core.EntityMapper;
-import org.springframework.data.elasticsearch.core.convert.ElasticsearchConverter;
-import org.springframework.data.elasticsearch.core.mapping.SimpleElasticsearchMappingContext;
 
-import java.io.IOException;
 
 @Configuration
-@EnableConfigurationProperties(ElasticsearchProperties.class)
 public class ElasticsearchConfiguration {
-
-    private ObjectMapper mapper;
-
-    public ElasticsearchConfiguration(ObjectMapper mapper) {
-        this.mapper = mapper;
+	 
+    @Value("${elasticsearch.host}")
+    private String host;
+    @Value("${elasticsearch.port}")
+    private int port;
+    @Value("${elasticsearch.username}")
+    private String userName;
+    @Value("${elasticsearch.password}")
+    private String password;
+    
+    public String getHost() {
+        return host;
     }
-
+    public int getPort() {
+        return port;
+    }
+    public String getUserName() {
+        return userName;
+    }
+    public String getPassword() {
+        return password;
+    }
+    private int timeout = 60;
     @Bean
-    public EntityMapper getEntityMapper() {
-        return new CustomEntityMapper(mapper);
+    public RestHighLevelClient client(){
+        System.out.println("host:"+ host+"port:"+port);
+        final CredentialsProvider credentialsProvider =new BasicCredentialsProvider();
+        credentialsProvider.setCredentials(AuthScope.ANY,new UsernamePasswordCredentials(userName, password));
+        RestClientBuilder builder =RestClient.builder(new HttpHost(host, port, "https")).setHttpClientConfigCallback(httpClientBuilder -> httpClientBuilder.setDefaultCredentialsProvider(credentialsProvider));
+        builder.setRequestConfigCallback(requestConfigBuilder -> requestConfigBuilder.setConnectTimeout(timeout * 1000).setSocketTimeout(timeout * 1000)
+                .setConnectionRequestTimeout(0));
+
+        RestHighLevelClient client = new RestHighLevelClient(builder);
+        return client;
     }
-
-    @Bean
-    @Primary
-    public ElasticsearchOperations elasticsearchTemplate(final JestClient jestClient,
-                                                         final ElasticsearchConverter elasticsearchConverter,
-                                                         final SimpleElasticsearchMappingContext simpleElasticsearchMappingContext,
-                                                         EntityMapper mapper) {
-        return new JestElasticsearchTemplate(
-            jestClient,
-            elasticsearchConverter,
-            new DefaultJestResultsMapper(simpleElasticsearchMappingContext, mapper));
-    }
-
-    public class CustomEntityMapper implements EntityMapper {
-
-        private ObjectMapper objectMapper;
-
-        public CustomEntityMapper(ObjectMapper objectMapper) {
-            this.objectMapper = objectMapper;
-            objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-            objectMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
-            objectMapper.configure(SerializationFeature.WRITE_DATE_TIMESTAMPS_AS_NANOSECONDS, true);
-            objectMapper.configure(SerializationFeature.INDENT_OUTPUT, false);
-            objectMapper.configure(DeserializationFeature.READ_DATE_TIMESTAMPS_AS_NANOSECONDS, true);
-        }
-
-        @Override
-        public String mapToString(Object object) throws IOException {
-            return objectMapper.writeValueAsString(object);
-        }
-
-        @Override
-        public <T> T mapToObject(String source, Class<T> clazz) throws IOException {
-            return objectMapper.readValue(source, clazz);
-        }
-    }
-
 }

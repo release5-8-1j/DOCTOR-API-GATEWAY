@@ -23,7 +23,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.springframework.data.elasticsearch.annotations.Document;
+//import org.springframework.data.elasticsearch.annotations.Document;
 
 
 
@@ -32,7 +32,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
  * @author MayaSanjeev
  * mayabytatech, maya.k.k@lxisoft.com
  */
-@Document(indexName = "doctorsettings")
+//@Document(indexName = "doctorsettings")
 public class DoctorSettings implements Serializable {
 
     private static final long serialVersionUID = 1L;

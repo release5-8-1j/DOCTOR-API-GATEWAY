@@ -24,7 +24,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import org.springframework.data.elasticsearch.annotations.Document;
+//import org.springframework.data.elasticsearch.annotations.Document;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @author MayaSanjeev
  * mayabytatech, maya.k.k@lxisoft.com
  */
-@Document(indexName = "status")
+//@Document(indexName = "status")
 public class Status implements Serializable {
 
     private static final long serialVersionUID = 1L;

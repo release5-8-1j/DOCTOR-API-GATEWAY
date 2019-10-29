@@ -64,7 +64,6 @@ import com.bytatech.ayoos.service.dto.PdfDTO;
 import com.bytatech.ayoos.web.rest.errors.BadRequestAlertException;
 import com.bytatech.ayoos.web.rest.util.HeaderUtil;
 
-
 import io.swagger.annotations.ApiParam;
 
 /**
@@ -97,167 +96,310 @@ public class QueryResource {
 	DoctorSettingsResourceApi doctorSettingsResourceApi;
 	@Autowired
 	PaymentSettingsResourceApi paymentSettingResourceApi;
-	
-	// productResourceApi.listToDtoUsingPOST(queryService.findAllProduct(page).getContent());
+
+//worked
 	@GetMapping("/doctor/{searchTerm}")
 	public ResponseEntity<DoctorDTO> findDoctor(@PathVariable String searchTerm) {
 		return doctorResourceApi.modelToDtoUsingPOST1(queryService.findDoctor(searchTerm));
 
+		// return ResponseEntity.ok().body(queryService.findDoctor(searchTerm));
 	}
 
+// worked
 	@GetMapping("/contact-infos/{searchTerm}")
 	public ResponseEntity<ContactInfoDTO> findContactInfo(@PathVariable String searchTerm) {
 
 		return contactInfoResourceApi.modelToDtoUsingPOST(queryService.findContactInfo(searchTerm));
+		// return ResponseEntity.ok().body(queryService.findContactInfo(searchTerm));
 	}
 
+// worked
 	@GetMapping("/work-places/{searchTerm}")
-	public ResponseEntity<List<WorkPlaceDTO>> findWorkPlace(@PathVariable String searchTerm, Pageable pageable) {
-		return workPlaceResourceApi.listToDtoUsingPOST7(queryService.findWorkPlaces(searchTerm, pageable).getContent());
+	public Page<WorkPlace> findWorkPlace(@PathVariable String searchTerm, Pageable pageable) {
+		// return
+		// workPlaceResourceApi.listToDtoUsingPOST7(queryService.findWorkPlaces(searchTerm,
+		// pageable).getContent());
+		return queryService.findWorkPlaces(searchTerm, pageable);
 	}
 
+// repeate
 	@GetMapping("/findworkplacesBydoctorId/{doctorId}")
 	public ResponseEntity<List<WorkPlaceDTO>> findAllWorkPlacesByDoctorId(@PathVariable Long doctorId) {
 		return workPlaceResourceApi.findAllWorkPlacesByDoctorIdUsingGET(doctorId);
 	}
 
 	@GetMapping("/review")
-	public Page<Review> findAllReview(/* @PathVariable String searchTerm, */ Pageable pageable) {
+	public Page<Review> findAllReview(@PathVariable String searchTerm, Pageable pageable) {
 		return queryService.findAllReview(pageable);
 	}
 
+//worked
 	@GetMapping("/qualifications/{searchTerm}")
-	public ResponseEntity<List<QualificationDTO>> findAllQualification(@PathVariable String searchTerm,
+	public ResponseEntity<List<Qualification>> findAllQualification(@PathVariable String searchTerm,
 			Pageable pageable) {
-		return qualificationResourceApi
-				.listToDtoUsingPOST3(queryService.findAllQualification(searchTerm, pageable).getContent());
+		// return qualificationResourceApi
+		// .listToDtoUsingPOST3(queryService.findAllQualification(searchTerm,
+		// pageable).getContent());
+		return ResponseEntity.ok(queryService.findAllQualification(searchTerm, pageable).getContent());
 	}
+//repeate
+	/*
+	 * @GetMapping("/qualification/{doctorId}") public
+	 * ResponseEntity<List<QualificationDTO>>
+	 * findAllQualificationByDoctorId(@PathVariable Long doctorId) { return
+	 * qualificationResourceApi.findAllQualificationByDoctorIdUsingGET(doctorId); }
+	 */
 
-	@GetMapping("/qualification/{doctorId}")
-	public ResponseEntity<List<QualificationDTO>> findAllQualificationByDoctorId(@PathVariable Long doctorId) {
-		return qualificationResourceApi.findAllQualificationByDoctorIdUsingGET(doctorId);
-	}
+//repeate
+	/*
+	 * GetMapping("/session-infos/{searchTerm}") public Page<SessionInfo>
+	 * findAllSesionInfo(@PathVariable String searchTerm,
+	 * 
+	 * @PageableDefault(size = 20) Pageable pageable) { // pageable = new return
+	 * queryService.findAllSessionInfo(searchTerm, pageable); } // add
+	 */
 
-	@GetMapping("/session-infos/{searchTerm}")
-	public Page<SessionInfo> findAllSesionInfo(@PathVariable String searchTerm,@PageableDefault(size = 20) Pageable pageable) {
-		//pageable = new 
-		return queryService.findAllSessionInfo(searchTerm, pageable);
-	} 
-	//add findsessionInfoHavingWorkPlaceIdAndDoctorId
+//worked
 	@GetMapping("/session-infos-doctorsworkplace/{doctorId}/{workPlaceId}")
-	public ResponseEntity<Page<SessionInfo>> findAllSesionInfoByDoctorsWorkPlace(@PathVariable String doctorId,@PathVariable Long workPlaceId,@PageableDefault(size = 20) Pageable pageable) {
-		return ResponseEntity.ok().body(queryService.findSessionInfoByDoctorsWorkPlace(doctorId, workPlaceId, pageable));
+	public ResponseEntity<Page<SessionInfo>> findAllSesionInfoByDoctorsWorkPlace(@PathVariable String doctorId,
+			@PathVariable Long workPlaceId, @PageableDefault(size = 20) Pageable pageable) {
+		return ResponseEntity.ok()
+				.body(queryService.findSessionInfoByDoctorsWorkPlace(doctorId, workPlaceId, pageable));
 	}
-	
-	@GetMapping("/slots/{searchTerm}")
-	public ResponseEntity<List<ReservedSlotDTO>> findAllSlots(@PathVariable String searchTerm, Pageable pageable){
-	return reservedSlotResourceApi.listToDtoUsingPOST4(queryService.findAllReservedSlot(searchTerm,pageable).getContent());
-	}
+
+	/*
+	 * @GetMapping("/slots/{searchTerm}") public
+	 * ResponseEntity<List<ReservedSlotDTO>> findAllSlots(@PathVariable String
+	 * searchTerm, Pageable pageable){ return
+	 * reservedSlotResourceApi.listToDtoUsingPOST4(queryService.findAllReservedSlot(
+	 * searchTerm,pageable).getContent()); }
+	 */
 
 	@GetMapping("/unreserved-slots")
-	public ResponseEntity<List<ReservedSlotDTO>> findAllUnReservedSlots(@RequestParam Integer page,@RequestParam Integer size,@RequestParam ArrayList<String> sort){
-	return	reservedSlotResourceApi.getAllUnReservedSlotsUsingGET(page, size, sort);
+	public ResponseEntity<List<ReservedSlotDTO>> findAllUnReservedSlots(@RequestParam Integer page,
+			@RequestParam Integer size, @RequestParam ArrayList<String> sort) {
+		return reservedSlotResourceApi.getAllUnReservedSlotsUsingGET(page, size, sort);
 	}
-	
 
 	@GetMapping("/Dr-slots/{date}/{doctorId}")
-	public ResponseEntity<List<ReservedSlotDTO>> findSlots(@PathVariable String date, @PathVariable Long doctorId){
+	public ResponseEntity<List<ReservedSlotDTO>> findSlots(@PathVariable String date, @PathVariable Long doctorId) {
 		return reservedSlotResourceApi.test2UsingGET(date, doctorId);
 	}
 
-	
 	@GetMapping("/doctor-settings/{id}")
 	public ResponseEntity<DoctorSettingsDTO> findDoctorSettings(@PathVariable Long id) {
 		return doctorSettingsResourceApi.getDoctorSettingsUsingGET(id);
 	}
-	
+
 	@GetMapping("/payment-settings/{id}")
 	public ResponseEntity<PaymentSettingsDTO> findPaymentSettings(@PathVariable Long id) {
 		return paymentSettingResourceApi.getPaymentSettingsUsingGET(id);
 	}
-	
-	//.............................................Consultation...........................................................................
-	
 
-	@GetMapping("/tasks")
-	public ResponseEntity<DataResponse> getTasks(@RequestParam(value = "name", required = false) String name,
-			   @RequestParam(value = "nameLike", required = false) String nameLike, 
-			   @RequestParam(value = "description", required = false) String description, 
-			   @RequestParam(value = "priority", required = false) String priority,
-			   @RequestParam(value = "minimumPriority", required = false) String minimumPriority, 
-			   @RequestParam(value = "maximumPriority", required = false) String maximumPriority, 
-			   @RequestParam(value = "assignee", required = false) String assignee,
-			   @RequestParam(value = "assigneeLike", required = false) String assigneeLike,
-			   @RequestParam(value = "owner", required = false) String owner,
-			   @RequestParam(value = "ownerLike", required = false) String ownerLike,
-			   @RequestParam(value = "unassigned", required = false) String unassigned,
-			   @RequestParam(value = "delegationState", required = false) String delegationState,
-			   @RequestParam(value = "candidateUser", required = false) String candidateUser, 
-			   @RequestParam(value = "candidateGroup", required = false) String candidateGroup, 
-			   @RequestParam(value = "candidateGroups", required = false) String candidateGroups,
-			   @RequestParam(value = "involvedUser", required = false) String involvedUser, 
-			   @RequestParam(value = "taskDefinitionKey", required = false) String taskDefinitionKey, 
-			   @RequestParam(value = "taskDefinitionKeyLike", required = false) String taskDefinitionKeyLike, 
-			   @RequestParam(value = "processInstanceId", required = false) String processInstanceId, 
-			   @RequestParam(value = "processInstanceBusinessKey", required = false) String processInstanceBusinessKey, 
-			   @RequestParam(value = "processInstanceBusinessKeyLike", required = false) String processInstanceBusinessKeyLike,
-			   @ApiParam(value = "Only return tasks which are part of a process instance which has a process definition with the given id.") @Valid @RequestParam(value = "processDefinitionId", required = false) String processDefinitionId,
-			   @ApiParam(value = "Only return tasks which are part of a process instance which has a process definition with the given key.") @Valid @RequestParam(value = "processDefinitionKey", required = false) String processDefinitionKey,
-			   @ApiParam(value = "Only return tasks which are part of a process instance which has a process definition with a key like the given value.") @Valid @RequestParam(value = "processDefinitionKeyLike", required = false) String processDefinitionKeyLike,
-			   @ApiParam(value = "Only return tasks which are part of a process instance which has a process definition with the given name.") @Valid @RequestParam(value = "processDefinitionName", required = false) String processDefinitionName,
-			   @ApiParam(value = "Only return tasks which are part of a process instance which has a process definition with a name like the given value.") @Valid @RequestParam(value = "processDefinitionNameLike", required = false) String processDefinitionNameLike,
-			   @ApiParam(value = "Only return tasks which are part of the execution with the given id.") @Valid @RequestParam(value = "executionId", required = false) String executionId,
-			   @ApiParam(value = "Only return tasks which are created on the given date.") @Valid @RequestParam(value = "createdOn", required = false) String createdOn,
-			   @ApiParam(value = "Only return tasks which are created before the given date.") @Valid @RequestParam(value = "createdBefore", required = false) String createdBefore,
-			   @ApiParam(value = "Only return tasks which are created after the given date.") @Valid @RequestParam(value = "createdAfter", required = false) String createdAfter,
-			   @ApiParam(value = "Only return tasks which are due on the given date.") @Valid @RequestParam(value = "dueOn", required = false) String dueOn,
-			   @ApiParam(value = "Only return tasks which are due before the given date.") @Valid @RequestParam(value = "dueBefore", required = false) String dueBefore,
-			   @ApiParam(value = "Only return tasks which are due after the given date.") @Valid @RequestParam(value = "dueAfter", required = false) String dueAfter,
-			   @ApiParam(value = "Only return tasks which don�t have a due date. The property is ignored if the value is false.") @Valid @RequestParam(value = "withoutDueDate", required = false) Boolean withoutDueDate,
-			   @ApiParam(value = "Only return tasks that are not a subtask of another task.") @Valid @RequestParam(value = "excludeSubTasks", required = false) Boolean excludeSubTasks,
-			   @ApiParam(value = "If true, only return tasks that are not suspended (either part of a process that is not suspended or not part of a process at all). If false, only tasks that are part of suspended process instances are returned.") @Valid @RequestParam(value = "active", required = false) Boolean active,
-			   @ApiParam(value = "Indication to include task local variables in the result.") @Valid @RequestParam(value = "includeTaskLocalVariables", required = false) Boolean includeTaskLocalVariables,
-			   @ApiParam(value = "Indication to include process variables in the result.") @Valid @RequestParam(value = "includeProcessVariables", required = false) Boolean includeProcessVariables,
-			   @ApiParam(value = "Only return tasks with the given tenantId.") @Valid @RequestParam(value = "tenantId", required = false) String tenantId,
-			   @ApiParam(value = "Only return tasks with a tenantId like the given value.") @Valid @RequestParam(value = "tenantIdLike", required = false) String tenantIdLike,
-			   @ApiParam(value = "If true, only returns tasks without a tenantId set. If false, the withoutTenantId parameter is ignored.") @Valid @RequestParam(value = "withoutTenantId", required = false) Boolean withoutTenantId,
-			   @ApiParam(value = "Select tasks that has been claimed or assigned to user or waiting to claim by user (candidate user or groups).") @Valid @RequestParam(value = "candidateOrAssigned", required = false) String candidateOrAssigned,
-			   @ApiParam(value = "Select tasks with the given category. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml). ") @Valid @RequestParam(value = "category", required = false) String category){
-		
-		return consultationQueryResource.getTasksUsingGET(active, assignee, assigneeLike, candidateGroup, candidateGroups, candidateOrAssigned, candidateUser, category, createdAfter, createdBefore, createdOn, delegationState, description, dueAfter, dueBefore, dueOn, excludeSubTasks, executionId, includeProcessVariables, includeTaskLocalVariables, involvedUser, maximumPriority, minimumPriority, name, nameLike, owner, ownerLike, maximumPriority, processDefinitionId, processDefinitionKey, processDefinitionKeyLike, processDefinitionName, processDefinitionNameLike, processInstanceBusinessKey, processInstanceBusinessKeyLike, processInstanceId, taskDefinitionKey, taskDefinitionKeyLike, tenantId, tenantIdLike, unassigned, withoutDueDate, withoutTenantId);
-		
-	}
+	// .............................................Consultation..................
+	// .........................................................
 
-	@GetMapping("/prescription-as-pdf")
-	public ResponseEntity<byte[]> getPrescriptionAsPDF(){
-		return consultationQueryResource.getPrescriptionAsPdfUsingGET();
-	}
-	
-	@GetMapping("/prescription/pdf")
-	public ResponseEntity<PdfDTO> exportPrescriptionAsPdf(){
-		
-		PdfDTO pdf = new PdfDTO();
-		pdf.setPdf(this.consultationQueryResource.getPrescriptionAsPdfUsingGET().getBody());
-		pdf.setContentType("application/pdf");
-		return ResponseEntity.ok().body(pdf);
-	}
-	
-	
-	
-	//.............................................Appointment...........................................................................
-	@GetMapping("/open-appointments")
-	public ResponseEntity<List<OpenAppointmentResponse>> getOpenAppointments(@RequestParam String assignee){
-		return appointmentQueryResourceApi.getMyAppointmentsUsingGET(null, assignee, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-	}
-
-	@GetMapping("/appointments/{doctorId}")
-	public Page<Appointment> getAppointmentsByDoctorId(@PathVariable String doctorId ,Pageable pageable){
-		return queryService.findAppointmentsByDoctorId(doctorId, pageable);
-	}
-	
-	@GetMapping("/appointments/{doctorId}/{date}")
-	public Page<Appointment> getAppointmentsByDoctorIdAndDate(@PathVariable String doctorId,@PathVariable LocalDate date ,Pageable pageable){
-		return queryService.findAppointmentsByDoctorId(doctorId,date, pageable);
-	}
-	
+	/*
+	 * @GetMapping("/tasks") public ResponseEntity<DataResponse>
+	 * getTasks(@RequestParam(value = "name", required = false) String name,
+	 * 
+	 * @RequestParam(value = "nameLike", required = false) String nameLike,
+	 * 
+	 * @RequestParam(value = "description", required = false) String description,
+	 * 
+	 * @RequestParam(value = "priority", required = false) String priority,
+	 * 
+	 * @RequestParam(value = "minimumPriority", required = false) String
+	 * minimumPriority,
+	 * 
+	 * @RequestParam(value = "maximumPriority", required = false) String
+	 * maximumPriority,
+	 * 
+	 * @RequestParam(value = "assignee", required = false) String assignee,
+	 * 
+	 * @RequestParam(value = "assigneeLike", required = false) String assigneeLike,
+	 * 
+	 * @RequestParam(value = "owner", required = false) String owner,
+	 * 
+	 * @RequestParam(value = "ownerLike", required = false) String ownerLike,
+	 * 
+	 * @RequestParam(value = "unassigned", required = false) String unassigned,
+	 * 
+	 * @RequestParam(value = "delegationState", required = false) String
+	 * delegationState,
+	 * 
+	 * @RequestParam(value = "candidateUser", required = false) String
+	 * candidateUser,
+	 * 
+	 * @RequestParam(value = "candidateGroup", required = false) String
+	 * candidateGroup,
+	 * 
+	 * @RequestParam(value = "candidateGroups", required = false) String
+	 * candidateGroups,
+	 * 
+	 * @RequestParam(value = "involvedUser", required = false) String involvedUser,
+	 * 
+	 * @RequestParam(value = "taskDefinitionKey", required = false) String
+	 * taskDefinitionKey,
+	 * 
+	 * @RequestParam(value = "taskDefinitionKeyLike", required = false) String
+	 * taskDefinitionKeyLike,
+	 * 
+	 * @RequestParam(value = "processInstanceId", required = false) String
+	 * processInstanceId,
+	 * 
+	 * @RequestParam(value = "processInstanceBusinessKey", required = false) String
+	 * processInstanceBusinessKey,
+	 * 
+	 * @RequestParam(value = "processInstanceBusinessKeyLike", required = false)
+	 * String processInstanceBusinessKeyLike,
+	 * 
+	 * @ApiParam(value =
+	 * "Only return tasks which are part of a process instance which has a process definition with the given id."
+	 * ) @Valid @RequestParam(value = "processDefinitionId", required = false)
+	 * String processDefinitionId,
+	 * 
+	 * @ApiParam(value =
+	 * "Only return tasks which are part of a process instance which has a process definition with the given key."
+	 * ) @Valid @RequestParam(value = "processDefinitionKey", required = false)
+	 * String processDefinitionKey,
+	 * 
+	 * @ApiParam(value =
+	 * "Only return tasks which are part of a process instance which has a process definition with a key like the given value."
+	 * ) @Valid @RequestParam(value = "processDefinitionKeyLike", required = false)
+	 * String processDefinitionKeyLike,
+	 * 
+	 * @ApiParam(value =
+	 * "Only return tasks which are part of a process instance which has a process definition with the given name."
+	 * ) @Valid @RequestParam(value = "processDefinitionName", required = false)
+	 * String processDefinitionName,
+	 * 
+	 * @ApiParam(value =
+	 * "Only return tasks which are part of a process instance which has a process definition with a name like the given value."
+	 * ) @Valid @RequestParam(value = "processDefinitionNameLike", required = false)
+	 * String processDefinitionNameLike,
+	 * 
+	 * @ApiParam(value =
+	 * "Only return tasks which are part of the execution with the given id."
+	 * ) @Valid @RequestParam(value = "executionId", required = false) String
+	 * executionId,
+	 * 
+	 * @ApiParam(value = "Only return tasks which are created on the given date."
+	 * ) @Valid @RequestParam(value = "createdOn", required = false) String
+	 * createdOn,
+	 * 
+	 * @ApiParam(value =
+	 * "Only return tasks which are created before the given date."
+	 * ) @Valid @RequestParam(value = "createdBefore", required = false) String
+	 * createdBefore,
+	 * 
+	 * @ApiParam(value = "Only return tasks which are created after the given date."
+	 * ) @Valid @RequestParam(value = "createdAfter", required = false) String
+	 * createdAfter,
+	 * 
+	 * @ApiParam(value =
+	 * "Only return tasks which are due on the given date.") @Valid @RequestParam(
+	 * value = "dueOn", required = false) String dueOn,
+	 * 
+	 * @ApiParam(value = "Only return tasks which are due before the given date."
+	 * ) @Valid @RequestParam(value = "dueBefore", required = false) String
+	 * dueBefore,
+	 * 
+	 * @ApiParam(value =
+	 * "Only return tasks which are due after the given date.") @Valid @RequestParam
+	 * (value = "dueAfter", required = false) String dueAfter,
+	 * 
+	 * @ApiParam(value =
+	 * "Only return tasks which don�t have a due date. The property is ignored if the value is false."
+	 * ) @Valid @RequestParam(value = "withoutDueDate", required = false) Boolean
+	 * withoutDueDate,
+	 * 
+	 * @ApiParam(value = "Only return tasks that are not a subtask of another task."
+	 * ) @Valid @RequestParam(value = "excludeSubTasks", required = false) Boolean
+	 * excludeSubTasks,
+	 * 
+	 * @ApiParam(value =
+	 * "If true, only return tasks that are not suspended (either part of a process that is not suspended or not part of a process at all). If false, only tasks that are part of suspended process instances are returned."
+	 * ) @Valid @RequestParam(value = "active", required = false) Boolean active,
+	 * 
+	 * @ApiParam(value = "Indication to include task local variables in the result."
+	 * ) @Valid @RequestParam(value = "includeTaskLocalVariables", required = false)
+	 * Boolean includeTaskLocalVariables,
+	 * 
+	 * @ApiParam(value = "Indication to include process variables in the result."
+	 * ) @Valid @RequestParam(value = "includeProcessVariables", required = false)
+	 * Boolean includeProcessVariables,
+	 * 
+	 * @ApiParam(value =
+	 * "Only return tasks with the given tenantId.") @Valid @RequestParam(value =
+	 * "tenantId", required = false) String tenantId,
+	 * 
+	 * @ApiParam(value = "Only return tasks with a tenantId like the given value."
+	 * ) @Valid @RequestParam(value = "tenantIdLike", required = false) String
+	 * tenantIdLike,
+	 * 
+	 * @ApiParam(value =
+	 * "If true, only returns tasks without a tenantId set. If false, the withoutTenantId parameter is ignored."
+	 * ) @Valid @RequestParam(value = "withoutTenantId", required = false) Boolean
+	 * withoutTenantId,
+	 * 
+	 * @ApiParam(value =
+	 * "Select tasks that has been claimed or assigned to user or waiting to claim by user (candidate user or groups)."
+	 * ) @Valid @RequestParam(value = "candidateOrAssigned", required = false)
+	 * String candidateOrAssigned,
+	 * 
+	 * @ApiParam(value =
+	 * "Select tasks with the given category. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml). "
+	 * ) @Valid @RequestParam(value = "category", required = false) String
+	 * category){
+	 * 
+	 * return consultationQueryResource.getTasksUsingGET(active, assignee,
+	 * assigneeLike, candidateGroup, candidateGroups, candidateOrAssigned,
+	 * candidateUser, category, createdAfter, createdBefore, createdOn,
+	 * delegationState, description, dueAfter, dueBefore, dueOn, excludeSubTasks,
+	 * executionId, includeProcessVariables, includeTaskLocalVariables,
+	 * involvedUser, maximumPriority, minimumPriority, name, nameLike, owner,
+	 * ownerLike, maximumPriority, processDefinitionId, processDefinitionKey,
+	 * processDefinitionKeyLike, processDefinitionName, processDefinitionNameLike,
+	 * processInstanceBusinessKey, processInstanceBusinessKeyLike,
+	 * processInstanceId, taskDefinitionKey, taskDefinitionKeyLike, tenantId,
+	 * tenantIdLike, unassigned, withoutDueDate, withoutTenantId);
+	 * 
+	 * }
+	 * 
+	 * @GetMapping("/prescription-as-pdf") public ResponseEntity<byte[]>
+	 * getPrescriptionAsPDF(){ return
+	 * consultationQueryResource.getPrescriptionAsPdfUsingGET(); }
+	 * 
+	 * @GetMapping("/prescription/pdf") public ResponseEntity<PdfDTO>
+	 * exportPrescriptionAsPdf(){
+	 * 
+	 * PdfDTO pdf = new PdfDTO();
+	 * pdf.setPdf(this.consultationQueryResource.getPrescriptionAsPdfUsingGET().
+	 * getBody()); pdf.setContentType("application/pdf"); return
+	 * ResponseEntity.ok().body(pdf); }
+	 * 
+	 * 
+	 * 
+	 * //.............................................Appointment...................
+	 * ........................................................
+	 * 
+	 * @GetMapping("/open-appointments") public
+	 * ResponseEntity<List<OpenAppointmentResponse>>
+	 * getOpenAppointments(@RequestParam String assignee){ return
+	 * appointmentQueryResourceApi.getMyAppointmentsUsingGET(null, assignee, null,
+	 * null, null, null, null, null, null, null, null, null, null, null, null, null,
+	 * null, null, null, null, null, null, null, null, null, null, null, null, null,
+	 * null, null, null, null, null, null, null, null, null, null, null, null, null,
+	 * null); }
+	 * 
+	 * @GetMapping("/appointments/{doctorId}") public Page<Appointment>
+	 * getAppointmentsByDoctorId(@PathVariable String doctorId ,Pageable pageable){
+	 * return queryService.findAppointmentsByDoctorId(doctorId, pageable); }
+	 * 
+	 * @GetMapping("/appointments/{doctorId}/{date}") public Page<Appointment>
+	 * getAppointmentsByDoctorIdAndDate(@PathVariable String doctorId,@PathVariable
+	 * LocalDate date ,Pageable pageable){ return
+	 * queryService.findAppointmentsByDoctorId(doctorId,date, pageable); }
+	 */
 }

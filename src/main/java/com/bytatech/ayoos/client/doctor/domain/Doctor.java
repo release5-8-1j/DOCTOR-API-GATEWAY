@@ -16,7 +16,7 @@
 package com.bytatech.ayoos.client.doctor.domain;
 
 
-import org.springframework.data.elasticsearch.annotations.Document;
+//import org.springframework.data.elasticsearch.annotations.Document;
 
 
 import java.io.Serializable;
@@ -39,7 +39,7 @@ import java.util.Objects;
 /**
  * A Doctor.
  */
-@Document(indexName = "doctor")
+//@Document(indexName = "doctor")
 public class Doctor implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -5,8 +5,8 @@ package com.bytatech.ayoos.client.doctor.domain;
 
 import javax.persistence.*;
 
-import org.springframework.data.elasticsearch.annotations.Document;
-import org.springframework.data.elasticsearch.annotations.GeoPointField;
+/*import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.GeoPointField;*/
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -16,7 +16,7 @@ import java.util.Set;
 /**
  * A WorkPlace.
  */
-@Document(indexName = "workplace")
+//@Document(indexName = "workplace")
 public class WorkPlace implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -28,10 +28,12 @@ public class WorkPlace implements Serializable {
     
     private String name;
 
-    @GeoPointField
+   // @GeoPointField
     private String location;
 
     private String locationName;
+    
+	private Doctor doctor;
     public String getLocationName() {
 		return locationName;
 	}
@@ -40,7 +42,7 @@ public class WorkPlace implements Serializable {
 		this.locationName = locationName;
 	}
 
-	private Doctor doctor;
+
 
     private Set<SessionInfo> sessionInfos = new HashSet<>();
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
