@@ -68,7 +68,7 @@ public class CommandResource {
 		return "success";
 	}
 
-	/*@Autowired
+	@Autowired
 	PaymentSettingsResourceApi paymentSettingsResourceApi;
 
 	@Autowired
@@ -244,5 +244,5 @@ public class CommandResource {
 		return appointmentCommandResourceApi.processAppointmentRequestUsingPOST(taskId,
 				appointmentConfirmationResponse);
 	}
-*/
+
 }
