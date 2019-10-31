@@ -6,7 +6,7 @@
 package com.bytatech.ayoos.client.doctor.api;
 
 import java.util.List;
-import com.bytatech.ayoos.client.doctor.domain.WorkPlace;
+import com.bytatech.ayoos.client.doctor.model.WorkPlace;
 import com.bytatech.ayoos.client.doctor.model.WorkPlaceDTO;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
@@ -27,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-25T10:42:10.566+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-31T16:21:54.886+05:30[Asia/Kolkata]")
 
 @Api(value = "WorkPlaceResource", description = "the WorkPlaceResource API")
 public interface WorkPlaceResourceApi {

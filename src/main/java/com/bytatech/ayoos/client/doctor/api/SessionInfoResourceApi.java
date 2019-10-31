@@ -6,7 +6,7 @@
 package com.bytatech.ayoos.client.doctor.api;
 
 import java.util.List;
-import com.bytatech.ayoos.client.doctor.domain.SessionInfo;
+import com.bytatech.ayoos.client.doctor.model.SessionInfo;
 import com.bytatech.ayoos.client.doctor.model.SessionInfoDTO;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
@@ -27,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-25T10:42:10.566+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-31T16:21:54.886+05:30[Asia/Kolkata]")
 
 @Api(value = "SessionInfoResource", description = "the SessionInfoResource API")
 public interface SessionInfoResourceApi {
@@ -105,6 +105,20 @@ public interface SessionInfoResourceApi {
         produces = "*/*", 
         method = RequestMethod.GET)
     ResponseEntity<List<SessionInfoDTO>> searchSessionInfosUsingGET(@NotNull @ApiParam(value = "query", required = true) @Valid @RequestParam(value = "query", required = true) String query,@ApiParam(value = "Page number of the requested page") @Valid @RequestParam(value = "page", required = false) Integer page,@ApiParam(value = "Size of a page") @Valid @RequestParam(value = "size", required = false) Integer size,@ApiParam(value = "Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.") @Valid @RequestParam(value = "sort", required = false) List<String> sort);
+
+
+    @ApiOperation(value = "setSessionByDates", nickname = "setSessionByDatesUsingPOST", notes = "", response = SessionInfoDTO.class, responseContainer = "List", tags={ "session-info-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = SessionInfoDTO.class, responseContainer = "List"),
+        @ApiResponse(code = 201, message = "Created"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/sessionInfoByDate/{fromDate}/{toDate}",
+        produces = "*/*", 
+        consumes = "application/json",
+        method = RequestMethod.POST)
+    ResponseEntity<List<SessionInfoDTO>> setSessionByDatesUsingPOST(@ApiParam(value = "fromDate",required=true) @PathVariable("fromDate") String fromDate,@ApiParam(value = "toDate",required=true) @PathVariable("toDate") String toDate,@ApiParam(value = "sessionList" ,required=true )  @Valid @RequestBody List<SessionInfoDTO> sessionInfoDTO);
 
 
     @ApiOperation(value = "setSessionToMonth", nickname = "setSessionToMonthUsingPOST", notes = "", response = SessionInfoDTO.class, responseContainer = "List", tags={ "session-info-resource", })

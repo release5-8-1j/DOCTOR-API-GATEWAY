@@ -100,7 +100,7 @@ public class QueryResource {
 //worked
 	@GetMapping("/doctor/{searchTerm}")
 	public ResponseEntity<DoctorDTO> findDoctor(@PathVariable String searchTerm) {
-		return doctorResourceApi.modelToDtoUsingPOST1(queryService.findDoctor(searchTerm));
+		return doctorResourceApi.modelToDtoUsingPOST1((queryService.findDoctor(searchTerm)));
 
 		// return ResponseEntity.ok().body(queryService.findDoctor(searchTerm));
 	}

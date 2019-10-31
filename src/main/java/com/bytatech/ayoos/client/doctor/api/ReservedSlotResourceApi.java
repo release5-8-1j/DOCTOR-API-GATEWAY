@@ -8,7 +8,7 @@ package com.bytatech.ayoos.client.doctor.api;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
-import com.bytatech.ayoos.client.doctor.domain.ReservedSlot;
+import com.bytatech.ayoos.client.doctor.model.ReservedSlot;
 import com.bytatech.ayoos.client.doctor.model.ReservedSlotDTO;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
@@ -29,7 +29,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-25T10:42:10.566+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-31T16:21:54.886+05:30[Asia/Kolkata]")
 
 @Api(value = "ReservedSlotResource", description = "the ReservedSlotResource API")
 public interface ReservedSlotResourceApi {

@@ -27,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-25T10:42:10.566+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-31T16:21:54.886+05:30[Asia/Kolkata]")
 
 @Api(value = "ReviewResource", description = "the ReviewResource API")
 public interface ReviewResourceApi {
@@ -105,6 +105,20 @@ public interface ReviewResourceApi {
         consumes = "application/json",
         method = RequestMethod.POST)
     ResponseEntity<List<ReviewDTO>> listToDtoUsingPOST5(@ApiParam(value = "review" ,required=true )  @Valid @RequestBody List<Review> review);
+
+
+    @ApiOperation(value = "modelToDto", nickname = "modelToDtoUsingPOST3", notes = "", response = ReviewDTO.class, tags={ "review-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = ReviewDTO.class),
+        @ApiResponse(code = 201, message = "Created"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/review/modelToDto",
+        produces = "*/*", 
+        consumes = "application/json",
+        method = RequestMethod.POST)
+    ResponseEntity<ReviewDTO> modelToDtoUsingPOST3(@ApiParam(value = "Review" ,required=true )  @Valid @RequestBody Review review);
 
 
     @ApiOperation(value = "searchReviews", nickname = "searchReviewsUsingGET", notes = "", response = ReviewDTO.class, responseContainer = "List", tags={ "review-resource", })

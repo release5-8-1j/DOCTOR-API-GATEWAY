@@ -171,7 +171,12 @@ public class CommandResource {
 				@RequestParam List<Integer> monthList){
 		return  sessionInfoAPi.setSessionToMonthUsingPOST(monthList, sessionInfoDTO);
 	 }
-	 
+	 //please wire this method instead of createSessionInfo
+	  @PostMapping("/sessionInfobydate")
+		 public ResponseEntity<List<SessionInfoDTO>> createSessionInfoByDates(@RequestBody List<SessionInfoDTO> sessionInfoDTO,
+					@PathVariable String fromDate,@PathVariable String toDate){
+			return  sessionInfoAPi.setSessionByDatesUsingPOST(fromDate, toDate, sessionInfoDTO);
+		 }
 
 	@PostMapping("/paymentSettings")
 	public ResponseEntity<PaymentSettingsDTO> createPaymentSetting(@RequestBody PaymentSettingsDTO paymentSettingsDTO) {

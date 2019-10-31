@@ -215,14 +215,14 @@ public class QueryServiceImpl implements QueryService {
 	private <T> T getSearchResultSingle(SearchResponse response, T t) {
 
 		SearchHit[] searchHit = response.getHits().getHits();
-		T productList = null;
+		T type = null;
 
 		for (SearchHit hit : searchHit) {
 
-			productList = (T) objectMapper.convertValue(hit.getSourceAsMap(), t.getClass());
+			type = (T) objectMapper.convertValue(hit.getSourceAsMap(), t.getClass());
 		}
 
-		return productList;
+		return type;
 
 	}
 
