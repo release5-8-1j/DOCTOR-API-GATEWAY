@@ -159,7 +159,7 @@ jhipster:
 # application:
 
 elasticsearch:
-   host: 38e524aebb694595aae07688cbdbeb55.europe-west1.gcp.cloud.es.io
+   host: b25ac84061cb40a98a0321fd1f6d11eb.asia-northeast1.gcp.cloud.es.io
    port: 9243
    username: elastic
-   password: HYiJoPluYWsNsiULekPMMwBW
+   password: 4UbD3g0ivG9C6wzJYgD6dELu
